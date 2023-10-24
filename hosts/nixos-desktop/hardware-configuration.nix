@@ -10,6 +10,7 @@
 
   boot = {
     initrd = {
+      luks.devices."main".device = "/dev/disk/by-uuid/d40a9beb-67de-4b74-bebc-52e57546da8d";
       availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
       kernelModules = [ "amdgpu" ];
     };
@@ -50,7 +51,7 @@
       neededForBoot = true;
     };
 
-  boot.initrd.luks.devices."main".device = "/dev/disk/by-uuid/d40a9beb-67de-4b74-bebc-52e57546da8d";
+  #boot.initrd.luks.devices."main".device = "/dev/disk/by-uuid/d40a9beb-67de-4b74-bebc-52e57546da8d";
 
   fileSystems."/nix/persist" = { 
       device = "/dev/mapper/main";
@@ -90,7 +91,7 @@
       options = [ "bind" ];
     };
 
- # environment.etc."machine-id".source = /nix/persist/etc/machine-id;
+  environment.etc."machine-id".source = /nix/persist/etc/machine-id;
 
   fileSystems."/swap" = {
     device = "/dev/disk/by-uuid/99b332b1-5aaa-44b6-8459-d876bf97e941";
