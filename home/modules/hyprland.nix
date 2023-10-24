@@ -52,7 +52,7 @@
       }
 
       decoration {
-        rounding = 4 #4
+        rounding = 0 #4
         multisample_edges = yes
         blur {
           enabled = yes

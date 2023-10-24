@@ -95,7 +95,7 @@ window > box {
   color: #a4abcf;
   border: 2px solid;
   background: #16161e;
-  border-radius: 8px;
+  /*border-radius: 8px;*/
   transition-property: color;
   transition-duration: 0s;
   /*drop-shadow: 10px 10px 1px 1px #101010;*/
