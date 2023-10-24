@@ -114,14 +114,14 @@ window#waybar.hidden {
   font-size: 16px;
   background: none;
   border: 2px solid;
-  border-radius: 4px;
+  /*border-radius: 4px;*/
 }
 
 #workspaces button.active {
   font-size: 16px;
   background: none;
   border: 2px solid;
-  border-radius: 4px;
+  /*border-radius: 4px;*/
   /*box-shadow: 2 2 2 2px;*/
 }
 
@@ -131,7 +131,7 @@ window#waybar.hidden {
 }
 
 #workspaces button:hover {
-  border-radius: 4px;
+  /*border-radius: 4px;*/
   box-shadow: none;
   text-shadow: inherit;
   background: none;
