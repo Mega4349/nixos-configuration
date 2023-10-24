@@ -17,6 +17,7 @@
       exec-once = swaync
       exec-once = hyprpaper
       exec-once = discordcanary & firefox
+      exec-once = waybar
 
       exec-once = ${pkgs.xdg-desktop-portal-hyprland}/libexec/xdg-desktop-portal-hyprland
 
