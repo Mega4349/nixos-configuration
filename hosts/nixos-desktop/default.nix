@@ -24,7 +24,11 @@
 
   programs.honkers-railway-launcher.enable = true;
 
-  environment.systemPackages = [ pkgs.distrobox pkgs.docker ];
+  environment.systemPackages = with pkgs; [ 
+    distrobox 
+    docker 
+    neofetch
+    ];
 
   environment.persistence."/nix/persist" = {
     hideMounts = true;

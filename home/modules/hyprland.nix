@@ -40,8 +40,8 @@
         gaps_in = 4
         gaps_out = 8
         border_size = 2
-        #col.active_border = rgba(7aa2f7ee)
-        #col.inactive_border = rgba(24283bee)
+        col.active_border = rgba(7aa2f7ee) rgba(1a4ab2ee) 45deg
+        col.inactive_border = rgba(24283bee)
 
         layout = master
         cursor_inactive_timeout = 3

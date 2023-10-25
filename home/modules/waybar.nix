@@ -95,10 +95,9 @@ window > box {
   color: #a4abcf;
   border: 2px solid;
   background: #16161e;
-  /*border-radius: 8px;*/
   transition-property: color;
   transition-duration: 0s;
-  /*drop-shadow: 10px 10px 1px 1px #101010;*/
+  box-shadow: 0 0 3px #151515;
 }
 
 window#waybar.hidden {
@@ -108,35 +107,34 @@ window#waybar.hidden {
 #workspaces button {
   font-size: 16px; 
   border: none;
+  border-radius: 0px;
 }
 
 #workspaces button.focused {
   font-size: 16px;
   background: none;
   border: 2px solid;
-  /*border-radius: 4px;*/
+  border-radius: 0px;
 }
 
 #workspaces button.active {
   font-size: 16px;
   background: none;
   border: 2px solid;
-  /*border-radius: 4px;*/
-  /*box-shadow: 2 2 2 2px;*/
+  border-radius: 0px;
 }
 
 #workspaces button.urgent {
   background: none;
-  border-radius: 10px;
 }
 
 #workspaces button:hover {
-  /*border-radius: 4px;*/
   box-shadow: none;
   text-shadow: inherit;
   background: none;
   border: 1px solid;
   transition-duration: 0.3s;
+  border-radius: 0px;
   /*padding: 0 3px;*/
 }
 
@@ -169,7 +167,6 @@ window#waybar.hidden {
 #window,
 #workspaces {
   background: none;
-  border-radius: 10px;
 }
 
 #clock {

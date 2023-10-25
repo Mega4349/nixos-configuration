@@ -79,7 +79,7 @@
     options = [ "subvol=games" "compress=zstd-force" ];
   };
 
-  fileSystems."/home/mega/.flake" = { 
+  fileSystems."/home/mega/nixos-configuration" = { 
       device = "/nix/persist/etc/nixos";
       fsType = "none";
       options = [ "bind" ];
