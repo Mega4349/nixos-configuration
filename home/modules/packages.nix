@@ -9,5 +9,4 @@
   #    "flathub:app/io.missioncenter.MissionCenter//stable"
   #  ];
   #};
-  #may need overlay, cosu-trainer, danser, xwayland
 }

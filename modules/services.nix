@@ -38,6 +38,7 @@
     };
 
     gvfs.enable = true; # For mounting and trash in thunar
+    tumbler.enable = true; # Thumbnail support for images
     dbus.enable = true;
   };
 

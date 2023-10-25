@@ -5,6 +5,8 @@
     ranger
     ffmpegthumbnailer
     xfce.thunar
+    xfce.thunar-archive-plugin
+    xfce.thunar-volman
   ];
 
   xdg.configFile = {
@@ -18,7 +20,7 @@
     "Vencord/settings/quickCss.css".source = ./config/Vencord/settings/quickCss.css; 
 
     #thunar configuration
-    "xfce4/xfconf/xfce-perchannel-xml/thunar.xml".source = ./config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml;
+    #"xfce4/xfconf/xfce-perchannel-xml/thunar.xml".source = ./config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml;
 
     # btop
     "btop/btop.conf".source = ./config/btop/btop.conf;

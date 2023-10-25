@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+  programs.helix = {
+    enable = true;
+  };
+
+
   xdg.configFile = {
     # astronvim's config
     "nvim".source = ./config/nvim;
