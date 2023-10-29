@@ -15,7 +15,7 @@
     ./modules/hyprland.nix
     ./modules/media.nix
     ./modules/ncmpcpp.nix #fix mpd not starting
-    ./modules/editor.nix
+    ./modules/editors.nix
     ./modules/packages.nix #combine with productive, add pavucontrol
     ./modules/productive.nix
     ./modules/qt.nix #may not be needed with stylix

@@ -7,6 +7,8 @@
     xfce.thunar
     xfce.thunar-archive-plugin
     xfce.thunar-volman
+
+    cinnamon.nemo
   ];
 
   xdg.configFile = {

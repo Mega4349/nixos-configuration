@@ -21,7 +21,7 @@
       mega = {
         isNormalUser = true;
         description = "mega";
-        extraGroups = [ "networkmanager" "wheel" "video" "libvirtd" "plugdev" "docker" ]; # Enable ‘sudo’ for the user. ## replaced with doas 
+        extraGroups = [ "networkmanager" "wheel" "video" "libvirtd" "plugdev" ]; # Enable ‘sudo’ for the user. ## replaced with doas 
         initialPassword = "1234";
       };
     };
@@ -43,12 +43,12 @@
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
     users.mega = import ../home;
-    sharedModules = [{ stylix.targets = {
-      sway.enable = false;
-      waybar.enable = false;
-      #hyprland.enable = false;
-    };
-    }];
+    #sharedModules = [{ stylix.targets = {
+    #  sway.enable = false;
+    #  waybar.enable = false;
+    #  hyprland.enable = false;
+    #};
+    #}];
   };
 
   system.stateVersion = "23.05";

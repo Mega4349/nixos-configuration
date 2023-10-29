@@ -17,7 +17,7 @@
     ../../modules/packages.nix #move to this file, maybe
     #../../modules/persistence.nix #move to this file
     ../../modules/services.nix
-    ../../modules/stylix.nix
+    #../../modules/stylix.nix
     ../../modules/users.nix
     ../../modules/virtualisation.nix #add stuff
   ];
@@ -25,8 +25,8 @@
   programs.honkers-railway-launcher.enable = true;
 
   environment.systemPackages = with pkgs; [ 
-    distrobox 
-    docker 
+    #distrobox 
+    #docker 
     neofetch
     ];
 

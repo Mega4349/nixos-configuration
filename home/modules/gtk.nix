@@ -4,10 +4,10 @@
   gtk = {
     enable = true;
     #gtk3.extraConfig.gtk-decoration-layout = "menu:";
-    #theme = {
-    #  name = "Flat-Remix-GTK-Blue-Dark";
-    #  package = pkgs.flat-remix-gtk;
-    #};
+    theme = {
+      name = "Tokyonight-Dark-BL";
+      package = pkgs.tokyo-night-gtk;
+    };
     iconTheme = {
       name = "Papirus";
       package = pkgs.papirus-icon-theme;
