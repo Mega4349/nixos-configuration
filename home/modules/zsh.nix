@@ -3,7 +3,7 @@
 {
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "~/.config/zsh";
     history.path = ".config/zsh/history";
     enableAutosuggestions = true;
     enableCompletion = true;

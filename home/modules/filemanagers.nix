@@ -11,10 +11,28 @@
     cinnamon.nemo
   ];
 
+  dconf.settings = {
+    "org/cinnamon/desktop/applications/terminal" = {
+      exec = "/home/mega/.config/nemo/wezterm_cwd";
+    };
+  };
+
   xdg.configFile = {
+    "nemo/wezterm_cwd" = {
+      text = ''
+        #!/bin/sh
+        wezterm start --cwd "$PWD"
+      '';
+      executable = true;
+    };
+
+
+
     "ranger/rc.conf".source = ./config/ranger/rc.conf;
-    "ranger/scope.sh".source = ./config/ranger/scope.sh;
-    "ranger/scope.sh".executable = true;
+    "ranger/scope.sh" = {
+      source = ./config/ranger/scope.sh;
+      executable = true;
+    };
     #add plugins aswell
 
     #TODO move to separate file
