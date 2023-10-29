@@ -57,7 +57,7 @@
         blur {
           enabled = yes
           size = 3
-          passes = 1 
+          passes = 2 
           new_optimizations = yes
           xray = yes
         }
@@ -114,7 +114,7 @@ $mainMod = SUPER
 bind = $mainMod, Return, exec, wezterm
 bind = $mainMod, Q, killactive, 
 bind = $mainMod, M, exit, 
-bind = $mainMod, E, exec, thunar
+bind = $mainMod, E, exec, nemo
 bind = $mainMod SHIFT, Space, togglefloating, 
 bind = $mainMod, D, exec, anyrun       #wofi --show drun
 bind = $mainMod, P, pseudo, # dwindle
