@@ -232,7 +232,8 @@ windowrule = noanim, ^(flameshot)$
 #windowrule = workspace: 7, ^(steam)$
 windowrule = float,title:^(Picture-in-Picture)$
 windowrule = pin,title:^(Picture-in-Picture)$
-windowrule = maxsize: 480 270,title:^(Picture-in-Picture)$
+windowrule = maxsize: 25% 25%,title:^(Picture-in-Picture)$
+windowrule = keepaspectratio, title:^(Picture-in-Picture)$
 windowrule = float,title:^(File Operation Progress)$
 windowrule = float,title:^(Confirm to replace files)$
 

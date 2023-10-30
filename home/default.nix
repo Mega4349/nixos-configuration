@@ -60,6 +60,7 @@
         ".config/zsh"
         ".config/wootility-lekker"
         ".config/musikcube"
+        ".config/nemo"
 
         ".local/share/Steam"
         ".local/share/osu"
@@ -75,6 +76,9 @@
 
         ".stepmania-5.1"
         #".osu" # using another subvolume instead because I had issues with persisting this one
+      ];
+      files = [
+        "history" #zsh command history
       ];
     };
  

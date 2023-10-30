@@ -1,5 +1,20 @@
 { pkgs, ... }:
 
+let 
+  wezterm_cwd = pkgs.writeTextFile {
+    name = "wezterm_cwd";
+    destination = "/bin/wezterm_cwd";
+    executable = true;
+
+    text = ''
+      #!/bin/sh
+
+      wezterm start --cwd "$PWD"
+    '';
+  };
+  
+in
+
 {
   home.packages = with pkgs; [
     ranger
@@ -7,27 +22,18 @@
     xfce.thunar
     xfce.thunar-archive-plugin
     xfce.thunar-volman
-
     cinnamon.nemo
+
+    wezterm_cwd
   ];
 
   dconf.settings = {
     "org/cinnamon/desktop/applications/terminal" = {
-      exec = "/home/mega/.config/nemo/wezterm_cwd";
+      exec = "wezterm_cwd";
     };
   };
 
   xdg.configFile = {
-    "nemo/wezterm_cwd" = {
-      text = ''
-        #!/bin/sh
-        wezterm start --cwd "$PWD"
-      '';
-      executable = true;
-    };
-
-
-
     "ranger/rc.conf".source = ./config/ranger/rc.conf;
     "ranger/scope.sh" = {
       source = ./config/ranger/scope.sh;

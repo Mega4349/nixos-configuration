@@ -105,12 +105,12 @@
     options = [ "subvol=swap" ];
     };
 
-  fileSystems."/run/media/mega/1TB_HDD" = {
-    device = "/dev/disk/by-uuid/9f23adfd-8f41-4fa7-bce9-dcf0e049dbfc";
-    fsType = "ntfs-3g";
-    options = [ "rw" "uid=mega" ];
-    neededForBoot = false;
-  };
+  #fileSystems."/run/media/mega/1TB_HDD" = {
+  #  device = "/dev/disk/by-uuid/9f23adfd-8f41-4fa7-bce9-dcf0e049dbfc";
+  #  fsType = "ntfs-3g";
+  #  options = [ "rw" "uid=mega" ];
+  #  neededForBoot = false;
+  #};
 
   swapDevices = [ {
     device = "/swap/swapfile";

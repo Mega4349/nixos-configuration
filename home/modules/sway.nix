@@ -17,6 +17,7 @@ let
     name = "configure-gtk";
     destination = "/bin/configure-gtk";
     executable = true;
+
     text = let
       schema = pkgs.gsettings-desktop-schemas;
       datadir = "${schema}/share/gsettings-schemas/${schema.name}";
