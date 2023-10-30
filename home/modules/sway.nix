@@ -130,7 +130,7 @@ in
         mod = "Mod4";
         term = "wezterm";
         menu = "anyrun";
-        filemanager = "thunar";
+        filemanager = "nemo";
       in {
         "${mod}+Return" = "exec ${term}";
         "${mod}+d" = "exec ${menu}";
