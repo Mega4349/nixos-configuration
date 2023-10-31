@@ -162,7 +162,7 @@ bindm = $mainMod, mouse:273, resizewindow
 bind = $mainMod, F, fullscreen
 
 # Open swaync notification center
-bind = $mainMod SHIFT, N, exec, swaync-client -t -sw
+bind = $mainMod, N, exec, swaync-client -t -sw
 
 # Lock screen
 bind = SUPER ALT, escape, exec, swaylock -f
@@ -230,14 +230,18 @@ windowrule = noanim, ^(flameshot)$
 #windowrule = workspace: 9, ^(discord)$
 #windowrule = workspace: 8, ^(Spotify)$
 #windowrule = workspace: 7, ^(steam)$
+
 windowrule = float,title:^(Picture-in-Picture)$
 windowrule = pin,title:^(Picture-in-Picture)$
-windowrule = maxsize: 25% 25%,title:^(Picture-in-Picture)$
+windowrule = size 25% 25%,title:^(Picture-in-Picture)$
 windowrule = keepaspectratio, title:^(Picture-in-Picture)$
+
 windowrule = float,title:^(File Operation Progress)$
 windowrule = float,title:^(Confirm to replace files)$
 
- windowrulev2 = float, class:floating 
+windowrulev2 = float, class:floating 
+
+#windowrule = float, title:*Properties
 
 windowrule = pin, ^(mpv)$
 windowrule = keepaspectratio, ^(mpv)$
@@ -245,15 +249,7 @@ windowrule = float, ^(mpv)$
 windowrule = size 55% 55%, ^(mpv)$
 # swaylock
 # powermeny
-# new launcher
-# theming
-# cursors
-# sticky toggle? 
-# kb layout+ in waybar
-# make picture in picture floatin
-# sddm
-
-    #'';
+    '';
   };
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''

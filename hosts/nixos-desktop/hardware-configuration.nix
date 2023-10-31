@@ -25,6 +25,7 @@
       mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
+    supportedFilesystems = [ "ntfs" ]; #For mounting windows disks
   };
 
   fileSystems."/" = {
@@ -50,8 +51,6 @@
       options = [ "subvol=nix" "compress=zstd-force" ];
       neededForBoot = true;
     };
-
-  #boot.initrd.luks.devices."main".device = "/dev/disk/by-uuid/d40a9beb-67de-4b74-bebc-52e57546da8d";
 
   fileSystems."/nix/persist" = { 
       device = "/dev/mapper/main";
@@ -100,7 +99,7 @@
   environment.etc."machine-id".source = /nix/persist/etc/machine-id;
 
   fileSystems."/swap" = {
-    device = "/dev/disk/by-uuid/99b332b1-5aaa-44b6-8459-d876bf97e941";
+    device = "/dev/mapper/main";
     fsType = "btrfs";
     options = [ "subvol=swap" ];
     };
@@ -108,7 +107,7 @@
   #fileSystems."/run/media/mega/1TB_HDD" = {
   #  device = "/dev/disk/by-uuid/9f23adfd-8f41-4fa7-bce9-dcf0e049dbfc";
   #  fsType = "ntfs-3g";
-  #  options = [ "rw" "uid=mega" ];
+  #  options = [ "rw" "uid=1000" ];
   #  neededForBoot = false;
   #};
 

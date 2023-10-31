@@ -1,4 +1,4 @@
-{ pkgs, inputs, buildGoModule, fetchFromGitHub, lib,  ... }:
+{ pkgs, inputs, system,  ... }:
 
 {
   imports = [
@@ -30,6 +30,8 @@
   #nixpkgs.overlays = [ inputs.nur.overlay ];
 
   home = {
+    packages = [ inputs.nx.packages."${pkgs.system}".nx-fetch ];
+    
     username = "mega";
     homeDirectory = "/home/mega";
     
@@ -61,6 +63,7 @@
         ".config/wootility-lekker"
         ".config/musikcube"
         ".config/nemo"
+        ".config/VencordDesktop"
 
         ".local/share/Steam"
         ".local/share/osu"

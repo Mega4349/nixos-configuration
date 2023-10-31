@@ -45,7 +45,12 @@
       #url = "github:n3oney/anyrun-nixos-options";
     #};
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    #hyprland.url = "github:hyprwm/Hyprland";
+  
+    nx = {
+      url = "sourcehut:~sntx/nx";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # Nix configurations, including binary cahces so you don't need to build things 
@@ -68,7 +73,7 @@
     ];
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, sops-nix, nur, stylix, nix-gaming, aagl, anyrun, hyprland, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, sops-nix, nur, stylix, nix-gaming, aagl, anyrun, nx, ... }: 
   let
     mkSystem = modules: nixpkgs.lib.nixosSystem {
       inherit modules;

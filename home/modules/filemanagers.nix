@@ -19,6 +19,9 @@ in
   home.packages = with pkgs; [
     ranger
     ffmpegthumbnailer
+    #poppler
+    evince
+    xfce.tumbler
     xfce.thunar
     xfce.thunar-archive-plugin
     xfce.thunar-volman
@@ -44,6 +47,8 @@ in
     #TODO move to separate file
     "Vencord/settings/settings.json".source = ./config/Vencord/settings/settings.json;
     "Vencord/settings/quickCss.css".source = ./config/Vencord/settings/quickCss.css; 
+
+    "swaync".source = ./config/swaync;
 
     #thunar configuration
     #"xfce4/xfconf/xfce-perchannel-xml/thunar.xml".source = ./config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml;

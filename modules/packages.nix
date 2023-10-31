@@ -28,10 +28,12 @@
     btop
     jq
 
-    #wineWowPackages.staging
+    wineWowPackages.staging
+
+    jmtpfs
 
     #fastfetch
-    pfetch
+    #pfetch
   ];
   
   # Overlay to remove vsync from xwayland
