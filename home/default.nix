@@ -31,7 +31,7 @@
   home = {
     packages = [ 
       inputs.nx.packages."${pkgs.system}".nx-fetch
-      #(pkgs.callPackage ./pkgs/danser {})
+      (pkgs.callPackage ./pkgs/bass {})
     ];
     
     username = "mega";
