@@ -1,4 +1,4 @@
-{ pkgs, inputs, system,  ... }:
+{ pkgs, inputs, system, ... }:
 
 {
   imports = [
@@ -23,14 +23,16 @@
     ./modules/waybar.nix #make vertical waybar
     ./modules/terminal.nix #wezterm or kitty
     ./modules/zsh.nix
+    #./pkgs
   ];
 
   programs.home-manager.enable = true;
 
-  #nixpkgs.overlays = [ inputs.nur.overlay ];
-
   home = {
-    packages = [ inputs.nx.packages."${pkgs.system}".nx-fetch ];
+    packages = [ 
+      inputs.nx.packages."${pkgs.system}".nx-fetch
+      #(pkgs.callPackage ./pkgs/danser {})
+    ];
     
     username = "mega";
     homeDirectory = "/home/mega";
@@ -46,7 +48,6 @@
         "Documents"
         "VMs"
         "Projects"
-        #"Games" # replaced with subvolume
 
         ".cache"
         ".mozilla"
@@ -78,10 +79,10 @@
         ".local/state/nix"
 
         ".stepmania-5.1"
-        #".osu" # using another subvolume instead because I had issues with persisting this one
       ];
       files = [
         "history" #zsh command history
+        ".config/mimeapps.list"
       ];
     };
  
@@ -92,55 +93,34 @@
     enable = true;
     indicator = true;
   };
-  
-  nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [
-    inputs.nur.overlay
-    (final: prev: {
-      xwayland = prev.xwayland.overrideAttrs (o: {
-        patches = (o.patches or []) ++ [
-          ../modules/files/xwayland-vsync.diff
-        ];
-      });
-    })
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      inputs.nur.overlay
+
+      (final: prev: {
+        xwayland = prev.xwayland.overrideAttrs (o: {
+          patches = (o.patches or []) ++ [
+            ../modules/files/xwayland-vsync.diff
+          ];
+        });
+      })
     
-    #https://github.com/NixOS/nixpkgs/issues/239424
-    (final: prev: {
-      avidemux = prev.avidemux.overrideAttrs (oldAttrs: {
-        buildCommand = oldAttrs.buildCommand + ''
-          mv $out/bin/avidemux $out/bin/avidemux3
-          echo 'LD_LIBRARY_PATH=$(dirname $(readlink -f $(which avidemux3)))/../lib/ avidemux3 "$@"' >> $out/bin/avidemux
-          chmod +x $out/bin/avidemux
+      #https://github.com/NixOS/nixpkgs/issues/239424
+      (final: prev: {
+        avidemux = prev.avidemux.overrideAttrs (oldAttrs: {
+          buildCommand = oldAttrs.buildCommand + ''
+            mv $out/bin/avidemux $out/bin/avidemux3
+            echo 'LD_LIBRARY_PATH=$(dirname $(readlink -f $(which avidemux3)))/../lib/ avidemux3 "$@"' >> $out/bin/avidemux
+            chmod +x $out/bin/avidemux
 
-          mv $out/bin/avidemux3_cli $out/bin/avidemux3_cli_old
-          echo 'LD_LIBRARY_PATH=$(dirname $(readlink -f $(which avidemux3_cli)))/../lib/ avidemux3_cli_old "$@"' >> $out/bin/avidemux3_cli
-          chmod +x $out/bin/avidemux3_cli
-        '';
-      });
-    }) 
-  
-    #(pkgs.buildGoModule {
-    #  name = "danser";
-    #  src = pkgs.fetchFromGitHub {
-    #    url = "https://github.com/Wieku/danser-go";
-    #  };
-    #})
-
-  ];
-
-  #buildGoModule rec {
-  #  pname = "danser";
-  #  version = "0.9.1";
-
-  #  src = fetchFromGitHub {
-  #    owner = "Wieku";
-  #    repo = "danser-go";
-  #    rev = "v${version}";
-  #    hash = "";
-  #  };
-
-  #  vendorHash = lib.fakeSha256;
-  #};
-  
+            mv $out/bin/avidemux3_cli $out/bin/avidemux3_cli_old
+            echo 'LD_LIBRARY_PATH=$(dirname $(readlink -f $(which avidemux3_cli)))/../lib/ avidemux3_cli_old "$@"' >> $out/bin/avidemux3_cli
+            chmod +x $out/bin/avidemux3_cli
+          '';
+        });
+      })
+    ];
+  };
 }

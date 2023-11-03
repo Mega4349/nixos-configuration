@@ -33,8 +33,8 @@
       enable = true;
       extraRules = [{
         users = [ "mega" ];
-	      keepEnv = true;
-	      persist = true;
+          keepEnv = true;
+          persist = true;
       }]; 
     };
   };

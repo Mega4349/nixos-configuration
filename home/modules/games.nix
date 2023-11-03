@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 
 {
   home.packages = let 
@@ -17,10 +17,10 @@
     #pkgs.wineWowPackages.staging # Conflicts with osu-wine from nix-gaming
     pkgs.winetricks
     pkgs.mono
-    #games.wine-osu
+    games.wine-osu
 
     games.osu-stable#.override rec {
-      #wine = <wine-osu>;
+      #wine = config.packages.wine-osu;
       #wine-discord-ipc-bridge = games.wine-discord-ipc-bridge.override {inherit wine;};
     #}
   ];

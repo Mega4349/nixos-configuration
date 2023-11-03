@@ -27,6 +27,9 @@
       window {
             background: none;
       }
+      entry {
+            background: #16161e;
+      }
     '';
 
     #extraConfigFiles."nixos-options.ron".text = let

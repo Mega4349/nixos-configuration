@@ -9,7 +9,6 @@
     settings = [{
       "layer" = "top";
       "position" = "left";
-      "exclusive" = "yes";
 
       modules-left = [ "sway/workspaces" "sway/mode" "hyprland/workspaces" ];
       modules-center = [ "clock" ];
