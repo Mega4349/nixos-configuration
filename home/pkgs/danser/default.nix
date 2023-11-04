@@ -9,7 +9,7 @@
 , makeWrapper
 , pkgs
 , stdenv
-,
+, 
 }:
 let
   pname = "danser";
@@ -25,9 +25,9 @@ let
     hash = "sha256-Aic+fjYYktvXeB7klPflJRDLipeTMtZdMSvbQ76BxPg=";
   };
 
-  go-modules = (buildGoModule {
+  goModules = (buildGoModule {
     inherit pname src vendorHash version;
-  }).go-modules;
+  }).goModules;
 
   vendorHash = "sha256-FPpyzWbEIkwjQ/9Z+6wcInJk22a21+YrC68PvM0eG50=";
 
@@ -59,7 +59,7 @@ stdenv.mkDerivation {
     export GOCACHE=$TMPDIR/go-cache
     export GOPATH="$TMPDIR/go"
     export GOPROXY=off
-    cp -r --reflink=auto ${go-modules} vendor
+    cp -r --reflink=auto ${goModules} vendor
   '';
 
   buildPhase = ''

@@ -31,7 +31,8 @@
   home = {
     packages = [ 
       inputs.nx.packages."${pkgs.system}".nx-fetch
-      (pkgs.callPackage ./pkgs/bass {})
+      #(pkgs.callPackage ./pkgs/bass {})
+      pkgs.danser
     ];
     
     username = "mega";
@@ -120,6 +121,10 @@
             chmod +x $out/bin/avidemux3_cli
           '';
         });
+      })
+
+      (self: supser: {
+        danser = self.callPackage ./pkgs/danser {};
       })
     ];
   };

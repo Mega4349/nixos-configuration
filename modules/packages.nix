@@ -32,6 +32,8 @@
 
     jmtpfs
 
+    appimage-run
+
     #fastfetch
     #pfetch
   ];

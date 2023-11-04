@@ -10,7 +10,7 @@
 
     games.osu-lazer-bin
 
-    games.proton-ge
+    #games.proton-ge
 
     games.wine-discord-ipc-bridge
 
