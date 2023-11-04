@@ -9,13 +9,15 @@
   )];
 
   boot = {
+    tmpOnTmpfs = true;
     initrd = {
       luks.devices."main".device = "/dev/disk/by-uuid/d40a9beb-67de-4b74-bebc-52e57546da8d";
       availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
       kernelModules = [ "amdgpu" ];
     };
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ]; # For virtual camera in OBS
+    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ]; #pkgs.linuxKernel.packages.linux_6_5.amdgpu-pro pkgs.amf-headers ]; # For virtual camera in OBS
     kernelParams = [ "radeon.si_support=0" "amdgpu.si_support=1" ];
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
@@ -144,5 +146,17 @@
   # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
   services.fstrim.enable = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware = {
+    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    opengl = {
+      extraPackages = with pkgs; [
+        amdvlk
+        vaapiVdpau
+        libva
+      ];
+      extraPackages32 = [
+        pkgs.pkgsi686Linux.amdvlk
+      ];
+    };
+  };
 }

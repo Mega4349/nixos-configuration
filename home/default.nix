@@ -9,6 +9,8 @@
     ./modules/anyrun.nix
     #./modules/danser.nix
     ./modules/filemanagers.nix # fix thunar configurations
+    ./modules/filemanagers.nix
+    ./modules/flatpak.nix
     ./modules/discord.nix
     ./modules/games.nix #add aagl
     ./modules/gtk.nix
@@ -33,6 +35,7 @@
       inputs.nx.packages."${pkgs.system}".nx-fetch
       #(pkgs.callPackage ./pkgs/bass {})
       pkgs.danser
+      pkgs.neofetch
     ];
     
     username = "mega";
@@ -58,6 +61,7 @@
         ".config/blender"
         ".config/obs-studio"
         ".config/dconf"
+        ".config/danser"
         ".config/musikcube"
         ".config/transmission"
         ".config/OpenTabletDriver"

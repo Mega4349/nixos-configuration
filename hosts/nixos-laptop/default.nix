@@ -27,6 +27,7 @@
   hardware.extraPackages = with pkgs; [
     intel-media-driver
     vaapiIntel
+    #libvdpau-va-gl whatever
   ];
 
   # Set hostname

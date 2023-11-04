@@ -8,7 +8,7 @@
     syntaxHighlighting.enable= true;
     shellAliases = {
       cl = "clear";
-     " cd.." = "cd ..";
+      "cd.." = "cd ..";
     };
     oh-my-zsh = {
       enable = true;

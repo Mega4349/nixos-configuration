@@ -8,6 +8,7 @@
     libreoffice
     xarchiver
     unrar
+    ffmpeg #_6-full
   ];
 
   programs.obs-studio = {
@@ -15,6 +16,7 @@
     plugins = with pkgs.obs-studio-plugins; [
       wlrobs
       obs-vkcapture
+      obs-vaapi
     ];
   };
 

@@ -7,10 +7,6 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
     };
     opentabletdriver = {
       enable = true;
@@ -20,7 +16,7 @@
   };
 
   environment = {
-    # Remove libinput default smoothing for opentabletdriver
+    #Remove libinput default smoothing for opentabletdriver
     etc."libinput/local-overrides.quirks".text = lib.mkForce ''
       [OpenTabletDriver Virtual Tablets]
       MatchName=OpenTabletDriver*
@@ -29,10 +25,12 @@
  
     systemPackages = with pkgs; [
       openrazer-daemon
-      razergenie # GUI for configuring razer devices
-      wootility # Wooting keyboard customization software
+      razergenie #GUI for configuring razer devices
+      wootility #Wooting keyboard customization software
     ];
   };
+
+  #udev rules for wootility access to my keyboard, https://help.wooting.io/article/147-configuring-device-access-for-wootility-under-linux-udev-rules
   services.udev.extraRules = ''
     # Wooting 60HE (ARM)
     SUBSYSTEM=="hidraw", ATTRS{idVendor}=="31e3", ATTRS{idProduct}=="1310", MODE="0660", TAG+="uaccess"

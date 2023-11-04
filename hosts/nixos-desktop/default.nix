@@ -12,7 +12,7 @@
     ../../modules/fonts.nix
     ../../modules/greet.nix
     ../../modules/hardware.nix #partially move to this file, some things will stay consistent
-    ../../modules/kernel.nix
+    #../../modules/kernel.nix
     ../../modules/nix.nix
     ../../modules/packages.nix #move to this file, maybe
     #../../modules/persistence.nix #move to this file
@@ -23,12 +23,6 @@
   ];
 
   programs.honkers-railway-launcher.enable = true;
-
-  environment.systemPackages = with pkgs; [ 
-    #distrobox 
-    #docker 
-    neofetch
-    ];
 
   environment.persistence."/nix/persist" = {
     hideMounts = true;
