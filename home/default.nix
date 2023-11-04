@@ -10,7 +10,7 @@
     #./modules/danser.nix
     ./modules/filemanagers.nix # fix thunar configurations
     ./modules/filemanagers.nix
-    ./modules/flatpak.nix
+    ./modules/flatpaks.nix
     ./modules/discord.nix
     ./modules/games.nix #add aagl
     ./modules/gtk.nix

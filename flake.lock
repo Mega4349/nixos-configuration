@@ -630,7 +630,7 @@
         "type": "github"
       }
     },
-    "flatpak": {
+    "flatpaks": {
       "inputs": {
         "nixpkgs": "nixpkgs",
         "utils": "utils"
@@ -979,7 +979,7 @@
       "inputs": {
         "aagl": "aagl",
         "anyrun": "anyrun",
-        "flatpak": "flatpak",
+        "flatpaks": "flatpaks",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nix-gaming": "nix-gaming",

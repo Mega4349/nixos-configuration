@@ -1,9 +1,9 @@
 { config, inputs, ... }:
 
 {
-  imports = [ inputs.flatpak.homeManagerModules.default ];
+  imports = [ inputs.flatpaks.homeManagerModules.default ];
 
-  services.flatpak = {
+  config.services.flatpak = {
     enable = true;
     enableModule = true;
     remotes = { "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo"; };
