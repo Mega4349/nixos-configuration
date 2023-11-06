@@ -69,15 +69,19 @@
         ".config/wootility-lekker"
         ".config/musikcube"
         ".config/nemo"
+        ".config/neofetch"
         ".config/VencordDesktop"
-
+        
+        ".local/share/flatpak"
+        ".local/danser"
         ".local/share/Steam"
         ".local/share/osu"
         ".local/share/nvim"
         ".local/share/mpd"
         ".local/share/PrismLauncher"
         ".local/share/honkers-railway-launhcer"
-
+        
+        ".local/state/flatpak-module"
         ".local/state/nvim"
         ".local/state/wireplumber"
         ".local/state/home-manager"
@@ -87,7 +91,7 @@
       ];
       files = [
         "history" #zsh command history
-        ".config/mimeapps.list"
+        #".config/mimeapps.list"
       ];
     };
  

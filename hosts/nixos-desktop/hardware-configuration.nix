@@ -9,7 +9,7 @@
   )];
 
   boot = {
-    tmpOnTmpfs = true;
+    tmp.useTmpfs = true;
     initrd = {
       luks.devices."main".device = "/dev/disk/by-uuid/d40a9beb-67de-4b74-bebc-52e57546da8d";
       availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
@@ -150,12 +150,13 @@
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     opengl = {
       extraPackages = with pkgs; [
-        amdvlk
+        #amdvlk
         vaapiVdpau
         libva
       ];
-      extraPackages32 = [
-        pkgs.pkgsi686Linux.amdvlk
+      extraPackages32 = with pkgs; [
+        #pkgsi686Linux.amdvlk
+        driversi686Linux.vaapiVdpau
       ];
     };
   };

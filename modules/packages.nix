@@ -27,10 +27,13 @@
     psmisc
     btop
     jq
+    libva-utils
 
     wineWowPackages.staging
 
     jmtpfs
+
+    amdgpu_top
 
     appimage-run
 

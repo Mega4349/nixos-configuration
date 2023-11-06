@@ -7,12 +7,13 @@
     #systemd.enable = true;
 
     settings = [{
-      "layer" = "bottom";
+      "layer" = "top";
       "position" = "left";
+      "exclusive" = "no";
 
       modules-left = [ "sway/workspaces" "sway/mode" "hyprland/workspaces" ];
       modules-center = [ "clock" ];
-      modules-right = [ "pulseaudio" "network" "sway/language" "tray" ]; #"hyprland/language" "tray" ];
+      modules-right = [ "pulseaudio" "network" "sway/language" "hyprland/language" "tray" ];
       
       "hyprland/workspaces" = {
         "format" = "{icon}";
@@ -102,12 +103,9 @@
     }];
 
     style = ''
-/** {
-    all: initial;
-}*/
-
 window#waybar {
   background: transparent;
+  border-radius: 0px;
 }
 
 window > box {
@@ -119,7 +117,7 @@ window > box {
   background: #16161e;
   transition-property: color;
   transition-duration: 0s;
-  /*box-shadow: 0 0 3px #151515;*/
+  box-shadow: 0 0 3px #151515;
 }
 
 window#waybar.hidden {
@@ -127,34 +125,20 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-   min-width: 0;
-}
-
-#workspaces button {
-  /*font-size: 16px;*/ 
+  font-size: 16px; 
   border: none;
-  border-radius: 0px;
-  padding: 5 10 5 10px;
-  margin: 2 2 2 2px;
-  color: #A4ABCF;
 }
 
 #workspaces button.focused {
-  /*font-size: 16px;*/
+  font-size: 16px;
   background: none;
   border: 2px solid;
-  border-radius: 0px;
-  margin: 0 0 0 0px;
-  color: #A4ABCF;
 }
 
 #workspaces button.active {
-  /*font-size: 16px;*/
+  font-size: 16px;
   background: none;
   border: 2px solid;
-  border-radius: 0px;
-  padding: 5 0 5 0px;
-  color: #A4ABCF;
 }
 
 #workspaces button.urgent {
@@ -166,11 +150,8 @@ window#waybar.hidden {
   text-shadow: inherit;
   background: none;
   border: 1px solid;
-  margin: 1 1 1 1px;
   transition-duration: 0.3s;
-  border-radius: 0px;
-  padding: 5 0 5 0px;
-  color: #A4ABCF;
+  /*padding: 0 3px;*/
 }
 
 #mode {
@@ -181,43 +162,53 @@ window#waybar.hidden {
 #battery,
 #cpu,
 #memory,
+#disk,
+#temperature,
 #backlight,
 #network,
 #pulseaudio,
+#wireplumber,
+#custom-media,
 #tray,
+#mode,
 #idle_inhibitor,
+#scratchpad,
+#custom-gpu_usage,
 #custom-notification,
 #language,
+#mpd {
+  padding: 0 10px;
+}
 
 #window,
 #workspaces {
   background: none;
-  padding: 0 0 0 0px;
 }
 
 #clock {
   font-size: 16px;
   background-color: transparent;
-  color: #A4ABCF;
+}
+
+label:focus {
 }
 
 #cpu {
+  font-family: RobotoMono Nerd Font;
   font-size: 16px;
   background-color: transparent;
-  color: #A4ABCF;
 }
 
 #memory {
+  font-family: RobotoMono Nerd Font;
   font-size: 16px;
   background-color: transparent;
-  color: #A4ABCF;
 }
 
 #network {
   margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 3px;
-  color: #A4ABCF;
 }
 
 #network.disconnected {
@@ -227,14 +218,37 @@ window#waybar.hidden {
   margin-right: 6px;
   margin-top: 5px;
   margin-bottom: 5px;
-  color: #A4ABCF;
 }
 
 #pulseaudio.muted {
   margin-right: 6px;
   margin-top: 5px;
   margin-bottom: 5px;
-  color: #A4ABCF;
+}
+
+#wireplumber {
+  background-color: transparent;
+}
+
+#wireplumber.muted {
+  background-color: transparent;
+}
+
+#custom-media {
+  min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+}
+
+#custom-media.custom-vlc {
+}
+
+#temperature {
+}
+
+#temperature.critical {
+
 }
 
 #tray {
@@ -248,31 +262,67 @@ window#waybar.hidden {
 
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
+
 }
 
 #idle_inhibitor {
+
 }
 
 #idle_inhibitor.activated {
+
+
 }
 
 #language {
   font-family: RobotoMono Nerd Font;
   font-size: 16px;
+
+
+  min-width: 20px;
+  /*margin: 0px;*/
   /* padding: 5 0px;*/
-  color: #A4ABCF;
+}
+
+#keyboard-state {
+  padding: 0 0px;
+  margin: 0 5px;
+  min-width: 16px;
+}
+
+#keyboard-state > label {
+  padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+  background-color: transparent;
+}
+
+#custom-gpu_usage {
+  font-family: RobotoMono Nerd Font;
+  font-size: 16px;
+
 }
 
 #custom-notification {
   font-family: RobotoMono Nerd Font;
   font-size: 16px;
-  color: #A4ABCF;
+
 }
 
 #language {
+  font-family: RobotoMono Nerd Font;
   font-size: 16px;
   background: none;
-  color: #A4ABCF;
+
 }
     '';
   };

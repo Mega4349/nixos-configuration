@@ -95,15 +95,15 @@ in
           xkb_options = "grp:alt_caps_toggle";
         };
         pointer = {
-	        accel_profile = "flat";
-	        pointer_accel = "-0.15";
-        }; 
-	      "1102:4618:ALP0013:00_044E:120A_Touchpad" = {
-	        tap = "enabled";
-	        natural_scroll = "enabled";
           accel_profile = "flat";
-	        pointer_accel = "-0.15";
-	        dwt = "disable";
+          pointer_accel = "-0.3";
+        }; 
+	"1102:4618:ALP0013:00_044E:120A_Touchpad" = {
+          tap = "enabled";
+          natural_scroll = "enabled";
+          accel_profile = "flat";
+          pointer_accel = "-0.15";
+          dwt = "disable";
         };
       }; 
 
@@ -115,16 +115,16 @@ in
         hide_cursor = "3000";
       };
 
-      startup = [
-        { command = "autotiling"; }
-        { command = "swaync"; }
-        { command = "firefox"; }
-        { command = "discord-canary"; }
-        { command = "nm-applet --indicator"; }
-        { command = "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"; }
-        { command = "autocutsel"; }
+      #startup = [
+      #  { command = "autotiling"; }
+      #  { command = "swaync"; }
+      #  { command = "firefox"; }
+      #  { command = "discord-canary"; }
+      #  { command = "nm-applet --indicator"; }
+      #  { command = "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"; }
+      #  { command = "autocutsel"; }
         #TODO fix { command = "swayidle -w timeout 300 'gtklock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'gtklock'"; }
-      ];
+      #];
 
       keybindings = let 
         mod = "Mod4";
@@ -144,7 +144,7 @@ in
 
         "${mod}+s" =      	"exec grimshot --notify copy area";
         "${mod}+Shift+s" = 	"exec grimshot --notify save screen - | swappy -f -";
-        "${mod}+a" =    		"exec grimshot --notify copy active";
+        "${mod}+a" =    	"exec grimshot --notify copy active";
 
         "${mod}+n" = "exec swaync-client -t -sw";
       
@@ -220,10 +220,10 @@ in
       };
     
       extraConfig = ''
-        output * bg ~/Pictures/Wallpapers/road.jpg fill
+        output * bg ~/Pictures/Wallpapers/main.jpeg fill
         bindsym --whole-window Mod4+button4 workspace prev
         bindsym --whole-window Mod4+button5 workspace next
-        corner_radius 8
+        corner_radius 0
         blur enable
         blur_xray enable
         blur_passes 2
@@ -237,15 +237,14 @@ in
         bindgesture swipe:left workspace next
 
         # Execute on startup
-        exec autotiling
+        exec autotiling --limit 2
         exec firefox
         exec swaync
-        exec discordcanary
-        exec nm-applet --indicator
+        #exec discordcanary
         exec autocutsel
         exec swayidle -w timeout 300 'gtklock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output *power on"' before-sleep 'gtklock
-	      exec dbus-sway-environment
-        exec configure-gtk
+        #exec dbus-sway-environment
+        #exec configure-gtk
 
         # Assign windows to workspaces
         assign [app_id="firefox"] 2
@@ -284,14 +283,13 @@ in
         for_window [class=".*"]  border pixel 2
         for_window [app_id=".*"] border pixel 2
  
-       
         # class                 border  bground text    indicator child_border
         client.focused          #7AA2F7 #7AA2F7 #F8F8F2 #7AA2F7   #7AA2F7
-        client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-        client.unfocused        #44475A #44475A #F8F8F2 #44475A   #44475A
+        client.focused_inactive #1a1b26 #1a1b26 #F8F8F2 #1a1b26   #1a1b26
+        client.unfocused        #1a1b26 #1a1b26 #F8F8F2 #1a1b26   #1a1b26
         client.urgent           #FF5555 #FF5555 #F8F8F2 #FF5555   #FF5555
-        client.placeholder      #44475A #44475A #F8F8F2 #44475A   #44475A
-        client.background       #44475A     
+        client.placeholder      #1a1b26 #1a1b26 #F8F8F2 #1a1b26   #1a1b26
+        client.background       #1a1b26     
       '';
   };
 
@@ -318,7 +316,7 @@ in
     }
 
     entry {
-      border-radius: 16px;
+      border-radius: 0px;
       margin: 6rem;
       box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
     }
