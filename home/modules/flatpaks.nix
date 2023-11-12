@@ -1,7 +1,7 @@
 { config, inputs, ... }:
 
 {
-  imports = [ inputs.flatpaks.homeManagerModules.default ];
+  imports = [ inputs.flatpak.homeManagerModules.default ];
 
   config.services.flatpak = {
     enableModule = true;

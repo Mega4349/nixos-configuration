@@ -104,7 +104,11 @@
   };
 
   nixpkgs = {
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+      allowBroken = true;
+    };
+
     overlays = [
       inputs.nur.overlay
 
@@ -115,7 +119,7 @@
           ];
         });
       })
-    
+   
       #https://github.com/NixOS/nixpkgs/issues/239424
       (final: prev: {
         avidemux = prev.avidemux.overrideAttrs (oldAttrs: {

@@ -30,6 +30,7 @@
     libva-utils
 
     wineWowPackages.staging
+    mono
 
     jmtpfs
 

@@ -44,6 +44,9 @@
 
     # Wooting 60HE (ARM) update mode
     SUBSYSTEM=="hidraw", ATTRS{idVendor}=="31e3", ATTRS{idProduct}=="131f", MODE="0660", TAG+="uaccess"
+
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="a8f8", ATTRS{idProduct}=="1829", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+
     EOF
   '';
 }

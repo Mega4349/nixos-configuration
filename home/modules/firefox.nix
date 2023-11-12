@@ -1,14 +1,28 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
+  #nixpkgs.overlays = 
+  #let
+    # Change this to a rev sha to pin
+  #  moz-rev = "master";
+  #  moz-url = builtins.fetchTarball { 
+  #    url = "https://github.com/mozilla/nixpkgs-mozilla/archive/${moz-rev}.tar.gz";
+  #    sha256 = "1fp637wkji0rhp12hg0hkr0nv50sqrhyf1jd4bpgj58y7wn4yjfl"; 
+  #  };
+  #  nightlyOverlay = (import "${moz-url}/firefox-overlay.nix");
+  #in [
+  #  nightlyOverlay
+  #];
+  
   programs.firefox = {
     enable = true;
+  #  package = (pkgs.latest.firefox-nightly-bin.override { extraNativeMessagingHosts = [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ]; });
     profiles.mega = {
       id = 0;
       name = "mega";
       search = {
         force = true;
-	      default = "DuckDuckGo";
+        default = "DuckDuckGo";
       };
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
@@ -41,6 +55,7 @@
       	video-downloadhelper
       	darkreader
       	text-contrast-for-dark-themes
+        #inputs.pipewire-screenaudio.packages.${pkgs.system}.default
       ];
     };
   };

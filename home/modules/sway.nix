@@ -321,4 +321,15 @@ in
       box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
     }
   '';
+
+  services.swayidle = {
+    enable = true;
+    events = [
+      { event = "before-sleep"; command = "${pkgs.gtklock}/bin/gtklock"; }
+      { event = "lock"; command = "lock"; }
+    ];
+    timeouts = [
+      { timeout = 360; command = "${pkgs.gtklock}/bin/gtklock"; }
+    ];
+  };
 }

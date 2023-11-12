@@ -20,7 +20,7 @@
       wireplumber.enable = true;
       lowLatency = {
         enable = true;
-        quantum = 56;
+        quantum = 32;
         rate = 48000;
       };
     };
@@ -83,7 +83,7 @@
   
   xdg.portal = {
     enable = true;
-    wlr.enable = false;
+    wlr.enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
   };
 }

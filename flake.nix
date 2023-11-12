@@ -29,7 +29,7 @@
     # Game stuff and pipewire low latency module
     nix-gaming.url = "github:fufexan/nix-gaming";
 
-    flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
+    flatpak.url = "github:GermanBread/declarative-flatpak/stable";
 
     # Game stuff
     aagl = {
@@ -53,6 +53,8 @@
       url = "sourcehut:~sntx/nx";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    #pipewire-screenaudio.url = "github:IceDBorn/pipewire-screenaudio";
   };
 
   # Nix configurations, including binary cahces so you don't need to build things 
@@ -75,7 +77,7 @@
     ];
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, sops-nix, nur, stylix, nix-gaming, flatpaks, aagl, anyrun, nx, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, sops-nix, nur, stylix, nix-gaming, flatpak, aagl, anyrun, nx, ... }: 
   let
     mkSystem = modules: nixpkgs.lib.nixosSystem {
       inherit modules;

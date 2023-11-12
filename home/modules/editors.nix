@@ -12,7 +12,7 @@
 
     # my custom astronvim config, astronvim will load it after base config
     # https://github.com/AstroNvim/AstroNvim/blob/v3.32.0/lua/astronvim/bootstrap.lua#L15-L16
-    "nvim/lua".source = ./config/astronvim/lua;
+    #"nvim/lua".source = ./config/astronvim/lua;
     #"nvim/lua/user".source = ./config/astronvim/lua/user;
   };
 
@@ -28,7 +28,7 @@
       defaultEditor = true;
 
       viAlias = false;
-      vimAlias = true;
+      vimAlias = false;
 
       #withPython3 = true;
       #withNodeJs = true;
