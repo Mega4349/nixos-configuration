@@ -24,6 +24,8 @@
       #wine-discord-ipc-bridge = games.wine-discord-ipc-bridge.override {inherit wine;};
     #}
   ];
+
+  xdg.configFile."pipewire".source = ./config/pipewire;
   
   #home.packages = let
   #  gamePkgs = inputs.nix-gaming.packages.${pkgs.system};

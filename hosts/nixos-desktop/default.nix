@@ -36,58 +36,11 @@
     files = [
       #"/etc/machine-id"
     ];
-    #users.mega = {
-    #  directories = [
-    #    "Desktop"
-    #    "Downloads"
-    #    "Pictures"
-    #    "Music"
-    #    "Videos"
-    #    "Documents" 
-    #    "VMs"
-    #    "Projects" 
-        
-    #     ".cache"
-    #    ".mozilla"
-    #    ".thunderbird"
-    #    ".config/discordcanary"
-    #    ".config/discord"
-    #    ".config/blender"
-    #    ".config/obs-studio"
-    #    ".config/dconf"
-  #	      ".config/transmission"
-  #	      ".config/OpenTabletDriver"
-  #	".config/zsh"         
-
-   #     #".local/share/flatpak"
-   #     ".local/share/Steam"
-   #     ".local/share/osu"
-   #     ".local/share/nvim"
-  #	      ".local/share/mpd"
-
-  #	      ".local/share/PrismLauncher"
-
-   #     ".local/state/nvim"
-   #     ".local/state/wireplumber"
-   #     ".local/state/home-manager"
-   #     ".local/state/nix"
-
-        #".zsh"
-   #     ".stepmania-5.1"
-   #     "nix-flake"
-        
-        #".osu"
-        #home manager profile?
-        #obs, osu lazer, blender
-  #    ];
-  #    files = [
-  #      ""
-  #    ];
-  #  };
   };
 
   programs.dconf.enable = true;
   programs.fuse.userAllowOther = true;
+
   # Set hostname
   networking = {
     hostName = "nixos-desktop";

@@ -5,7 +5,7 @@
     inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
  
-  # Only meant for ALSA configurations, set to false for pipewire
+  #Only meant for ALSA configurations, set to false for pipewire
   sound.enable = false;
 
   services = {

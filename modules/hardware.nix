@@ -27,6 +27,7 @@
       openrazer-daemon
       razergenie #GUI for configuring razer devices
       wootility #Wooting keyboard customization software
+      via
     ];
   };
 

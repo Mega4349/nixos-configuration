@@ -119,7 +119,6 @@ window > box {
   background: #16161e;
   transition-property: color;
   transition-duration: 0s;
-  /*box-shadow: 0 0 3px #151515;*/
 }
 
 window#waybar.hidden {

@@ -44,6 +44,7 @@ in
     sway-contrib.grimshot
     swayidle
     gtklock
+    wlogout
     swappy
     autocutsel
     wl-gammactl
@@ -71,9 +72,8 @@ in
     package = pkgs.swayfx;
   
     wrapperFeatures.gtk = true;
-    # may have to set env vars another way
+
     extraSessionCommands = ''
-      export XDG_SESSION_DESKTOP=sway
       export XDG_CURRENT_DESKTOP=sway
     '';
 
@@ -83,7 +83,7 @@ in
       focus= {
         followMouse = "always";
       };
-    
+        
       gaps = {
         outer = 5;
         inner = 5;
@@ -96,9 +96,9 @@ in
         };
         pointer = {
           accel_profile = "flat";
-          pointer_accel = "-0.3";
+          pointer_accel = "-0.5";
         }; 
-	"1102:4618:ALP0013:00_044E:120A_Touchpad" = {
+        "1102:4618:ALP0013:00_044E:120A_Touchpad" = {
           tap = "enabled";
           natural_scroll = "enabled";
           accel_profile = "flat";
@@ -106,10 +106,6 @@ in
           dwt = "disable";
         };
       }; 
-
-      #output = {
-      #  "*".background = "~/Pictures/Wallpapers/wp2.png fill";
-      #};
 
       seat.seat0 = {
         hide_cursor = "3000";
@@ -140,7 +136,9 @@ in
 
         "${mod}+Shift+c" = "reload";
 
-        "${mod}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shirtcut. Do you really want to exit sway? This will end your wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
+        #"${mod}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shirtcut. Do you really want to exit sway? This will end your wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
+  
+        "${mod}+Shift+e" = "exec wlogout -p layer-shell";
 
         "${mod}+s" =      	"exec grimshot --notify copy area";
         "${mod}+Shift+s" = 	"exec grimshot --notify save screen - | swappy -f -";
@@ -220,7 +218,7 @@ in
       };
     
       extraConfig = ''
-        output * bg ~/Pictures/Wallpapers/main.jpeg fill
+        output * bg ~/Pictures/Wallpapers/trees.jpg fill
         bindsym --whole-window Mod4+button4 workspace prev
         bindsym --whole-window Mod4+button5 workspace next
         corner_radius 0
@@ -229,7 +227,6 @@ in
         blur_passes 2
         blur_radius 4
         shadows enable
-        layer_effects waybar shadows enable
         default_border pixel 2
         default_floating_border pixel 2
         scratchpad_minimize disable
@@ -242,7 +239,6 @@ in
         exec swaync
         #exec discordcanary
         exec autocutsel
-        exec swayidle -w timeout 300 'gtklock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output *power on"' before-sleep 'gtklock
         #exec dbus-sway-environment
         #exec configure-gtk
 
@@ -290,37 +286,141 @@ in
         client.urgent           #FF5555 #FF5555 #F8F8F2 #FF5555   #FF5555
         client.placeholder      #1a1b26 #1a1b26 #F8F8F2 #1a1b26   #1a1b26
         client.background       #1a1b26     
+
+        layer_effects "waybar" shadows enable;
       '';
   };
 
-  xdg.configFile."gtklock/style.css".text = ''
-    window {
-      background: rgba(0, 0, 0, .5);
-    }
+  xdg.configFile = {
+    "gtklock/style.css".text = ''
+      window {
+        background: rgba(0, 0, 0, .5);
+      }
 
-    grid > label {
-      color: transparent;
-      margin: -20rem;
-    }
+      grid > label {
+        color: transparent;
+        margin: -20rem;
+      }
 
-    button {
-      all: unset;
-      color: transparent;
-      margin: -20rem;
-    }
+      button {
+        all: unset;
+        color: transparent;
+        margin: -20rem;
+      }
 
-    #clock-label {
-      font-size: 6rem;
-      margin-bottom: 4rem;
-      text-shadow: 0px 2px 10px rgba(0, 0, 0, .1);
-    }
+      #clock-label {
+        font-size: 6rem;
+        margin-bottom: 4rem;
+        text-shadow: 0px 2px 10px rgba(0, 0, 0, .1);
+      }
 
-    entry {
-      border-radius: 0px;
-      margin: 6rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
-    }
-  '';
+      entry {
+        border-radius: 0px;
+        margin: 6rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+      }
+    '';
+
+    "wlogout/style.css".text = ''
+      window {
+        font-size: 12pt;
+        color: #cdd6f4; 
+        background-color: rgba(30, 30, 46, 0.5);
+      }
+
+      button {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 20%;
+        border: none;
+        color: #ced7f4;
+        text-shadow: none;
+        background-color: rgba(30, 30, 46, 0);
+        margin: 5px;
+        transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+      }
+
+      button:hover {
+        background-color: rgba(49, 50, 68, 0.1);
+      }
+
+      button:focus {
+        background-color: #7aa7f2;
+        color: #18182a;
+        text-shadow: none;
+      }
+
+      #lock {
+        background-image: image(url("./images/lock.png"));
+      }
+      #lock:focus {
+        background-image: image(url("./images/lock-hover.png"));
+      }
+
+      #logout {
+        background-image: image(url("./images/logout.png"));
+      }
+      #logout:focus {
+        background-image: image(url("./images/logout-hover.png"));
+      }
+
+      #suspend {
+        background-image: image(url("./images/sleep.png"));
+      }
+      #suspend:focus {
+        background-image: image(url("./images/sleep-hover.png"));
+      }
+
+      #shutdown {
+        background-image: image(url("./images/power.png"));
+      }
+      #shutdown:focus {
+        background-image: image(url("./images/power-hover.png"));
+      }
+
+      #reboot {
+        background-image: image(url("./images/restart.png"));
+      }
+      #reboot:focus {
+        background-image: image(url("./images/restart-hover.png"));
+      }
+    '';
+
+    "wlogout/layout".text = ''
+      {
+        "label" : "lock",
+        "action" : "gtklock",
+        "text" : "Lock",
+        "keybind" : "l"
+      }
+      {
+        "label" : "reboot",
+        "action" : "systemctl reboot",
+        "text" : "Reboot",
+        "keybind" : "r"
+      }
+      {
+        "label" : "shutdown",
+        "action" : "systemctl poweroff",
+        "text" : "Shutdown",
+        "keybind" : "s"
+      }
+      {
+        "label" : "logout",
+        "action" : "swaymsg exit",
+        "text" : "Logout",
+        "keybind" : "e"
+      }
+      {
+        "label" : "suspend",
+        "action" : "systemctl suspend",
+        "text" : "Suspend",
+        "keybind" : "u"
+      }
+    '';
+
+    "wlogout/images".source = ./config/wlogout/images;
+  };
 
   services.swayidle = {
     enable = true;
