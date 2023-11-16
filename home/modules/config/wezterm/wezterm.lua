@@ -17,7 +17,7 @@ end
 enable_kitty_graphics = true
 
 -- This is where you actually apply your configuration options
-config.font_size = 10.0
+config.font_size = 8.0
 
 --config.colors = {
 --  background = '#111643'

@@ -51,6 +51,7 @@ in
     wl-clipboard
     xfce.thunar
     pavucontrol
+    wlopm
   ];
 
   home.sessionVariables = {
@@ -91,7 +92,7 @@ in
 
       input = {
         "*" = {
-          xkb_layout = "us,se";
+          xkb_layout = "us,se,canary";
           xkb_options = "grp:alt_caps_toggle";
         };
         pointer = {
@@ -116,10 +117,7 @@ in
       #  { command = "swaync"; }
       #  { command = "firefox"; }
       #  { command = "discord-canary"; }
-      #  { command = "nm-applet --indicator"; }
-      #  { command = "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"; }
       #  { command = "autocutsel"; }
-        #TODO fix { command = "swayidle -w timeout 300 'gtklock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'gtklock'"; }
       #];
 
       keybindings = let 
@@ -138,7 +136,7 @@ in
 
         #"${mod}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shirtcut. Do you really want to exit sway? This will end your wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
   
-        "${mod}+Shift+e" = "exec wlogout -p layer-shell";
+        "${mod}+Shift+e" = "exec wlogout -p layer-shell -b 5 -T 400 -B 400"; #TODO, not hardcoded pixel values, don't wanna figure it out now though...
 
         "${mod}+s" =      	"exec grimshot --notify copy area";
         "${mod}+Shift+s" = 	"exec grimshot --notify save screen - | swappy -f -";
@@ -172,7 +170,7 @@ in
         "${mod}+7" = "workspace number 7";
         "${mod}+8" = "workspace number 8";
         "${mod}+9" = "workspace number 9";
-        "${mod}+0" = "workspace number 10";
+        #"${mod}+0" = "workspace number 10";
       
         # Move focused container to workspace
         "${mod}+Shift+1" = "move container to workspace number 1";
@@ -210,7 +208,6 @@ in
         # Brightness
         "XF86MonBrightnessDown" = "exec light -U 10";
         "XF86MonBrightnessUp" = "exec light -A 10";
-
       };
 
       floating.modifier = "Mod4";
@@ -218,6 +215,8 @@ in
       };
     
       extraConfig = ''
+        bindsym Mod4+0 workspace number 10 #Hopefully fixes sway starting on workspace 10
+
         output * bg ~/Pictures/Wallpapers/trees.jpg fill
         bindsym --whole-window Mod4+button4 workspace prev
         bindsym --whole-window Mod4+button5 workspace next
@@ -237,7 +236,7 @@ in
         exec autotiling --limit 2
         exec firefox
         exec swaync
-        #exec discordcanary
+        exec discordcanary
         exec autocutsel
         #exec dbus-sway-environment
         #exec configure-gtk
@@ -426,10 +425,12 @@ in
     enable = true;
     events = [
       { event = "before-sleep"; command = "${pkgs.gtklock}/bin/gtklock"; }
-      { event = "lock"; command = "lock"; }
+      #{ event = "lock"; command = "lock"; }
+      #{ event = "after-resume"; command = "${pkgs.gtklock}/bin/gklock"; }
     ];
     timeouts = [
-      { timeout = 360; command = "${pkgs.gtklock}/bin/gtklock"; }
+      { timeout = 300; command = "${pkgs.gtklock}/bin/gtklock"; }
+      { timeout = 600; command = "${pkgs.wlopm}/bin/wlopm --off \*"; resumeCommand = "${pkgs.wlopm}/bin/wlopm --on \*"; } #TODO fix \* not working for outputs
     ];
   };
 }

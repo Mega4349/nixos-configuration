@@ -73,7 +73,7 @@
         ".config/VencordDesktop"
         
         ".local/share/flatpak"
-        ".local/danser"
+        ".local/share/danser"
         ".local/share/Steam"
         ".local/share/osu"
         ".local/share/nvim"
@@ -90,7 +90,7 @@
         ".stepmania-5.1"
       ];
       files = [
-        "history" #zsh command history
+        ".zsh_history" #zsh command history
         #".config/mimeapps.list"
       ];
     };

@@ -10,7 +10,7 @@
       gpu-api = "vulkan";
       gpu-context = "wayland";
       #vo = "gpu-next,gpu,dmabuf-wayland";
-      ao = "pipewire,pulse";
+      ao = "pulse"; #"pipewire,pulse";
       scale = "ewa_lanczos";
       dscale = "ewa_robidoux";
       cscale = "mitchell";
