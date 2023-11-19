@@ -1,6 +1,6 @@
-{ pkgs, inputs, config, ... }:
+{ lib, osConfig, pkgs, inputs, config, ... }:
 
-{
+lib.mkIf (osConfig.networking.hostName == "nixos-desktop") {
   home.packages = let 
     games = inputs.nix-gaming.packages.${"x86_64-linux"};
   in [
@@ -19,21 +19,8 @@
     pkgs.mono
     games.wine-osu
 
-    games.osu-stable#.override rec {
-      #wine = config.packages.wine-osu;
-      #wine-discord-ipc-bridge = games.wine-discord-ipc-bridge.override {inherit wine;};
-    #}
+    games.osu-stable
   ];
 
   xdg.configFile."pipewire".source = ./config/pipewire;
-  
-  #home.packages = let
-  #  gamePkgs = inputs.nix-gaming.packages.${pkgs.system};
-  #in [
-  #  gamePkgs.wine-osu
-  #  gamePkgs.osu-stable.override rec {
-  #    wine = wine-osu;
-  #    wine-discord-ipc-bridge = gamePkgs.wine-discord-ipc-bridge.override {inherit wine;}; # or override this one as well
-  #  }
-  #];
 }

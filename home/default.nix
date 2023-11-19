@@ -33,9 +33,9 @@
   home = {
     packages = [ 
       inputs.nx.packages."${pkgs.system}".nx-fetch
-      #(pkgs.callPackage ./pkgs/bass {})
       pkgs.danser
       pkgs.neofetch
+      pkgs.watershot
     ];
     
     username = "mega";

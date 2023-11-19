@@ -1,18 +1,20 @@
-{ ... }:
+{ osConfig, ... }:
 
 {
   programs.waybar = {
     enable = true;
     
-    #systemd.enable = true;
-
     settings = [{
       "layer" = "bottom";
       "position" = "left";
 
       modules-left = [ "sway/workspaces" "sway/mode" "hyprland/workspaces" ];
       modules-center = [ "clock" ];
-      modules-right = [ "pulseaudio" "network" "sway/language" "tray" ]; #"hyprland/language" "tray" ];
+      modules-right = [ ] ++ 
+      (if osConfig.networking.hostName == "nixos-laptop" then 
+      [ "pulseaudio" "network" "battery" "backlight" "sway/language" "tray" ]
+      else [ "pulseaudio" "network`" "sway/language" "tray" ]);
+      #TODO add notifications module
       
       "hyprland/workspaces" = {
         "format" = "{icon}";
@@ -35,9 +37,6 @@
 
       "sway/workspaces" = {
         "format" = "{icon}";
-        #"on-click" = "activate";
-        #"on-scroll-up" = "hyprctl dispatch workspace e-1";
-        #"on-scroll-down" = "hyprctl dispatch workspace e+1";
         "format-icons" = { 
           "1" = "一"; 
           "2" = "二"; 
@@ -78,6 +77,19 @@
         "tooltip" = true;
         "tooltip-format" = "Ethernet: {ifname} \nWiFi: {essid}";
         "on-click" = "wezterm start --class floating nmtui connect";
+      };
+      "battery" = {
+        "format" = "{icon}";
+        "format-charging" = "";
+        "format-icons" = [ "" "" "" "" "" ];
+        "tooltip" = true;
+        "tooltip-format" = "{capacity}%";
+      };
+       "backlight" = {
+        "format" = "{icon}";
+        "format-icons" = [ "" "" "" "" "" "" "" "" "" ];
+        "tooltip" = true;
+        "tooltip-format" = "{percent}%";
       };
       "cpu" = {
         "interval" = 3;
@@ -200,6 +212,16 @@ window#waybar.hidden {
   color: #A4ABCF;
 }
 
+#backlight {
+  font-size: 18px;
+  margin-right: 2px;
+}
+
+#battery {
+  font-size: 16px;
+  margin-right: 7px;
+}
+
 #cpu {
   font-size: 16px;
   background-color: transparent;
@@ -215,7 +237,7 @@ window#waybar.hidden {
 #network {
   margin-top: 5px;
   margin-bottom: 5px;
-  margin-left: 3px;
+  margin-left: 6px;
   color: #A4ABCF;
 }
 
@@ -230,7 +252,7 @@ window#waybar.hidden {
 }
 
 #pulseaudio.muted {
-  margin-right: 6px;
+  margin-right: 4px;
   margin-top: 5px;
   margin-bottom: 5px;
   color: #A4ABCF;

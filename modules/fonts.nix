@@ -14,7 +14,7 @@
       ubuntu_font_family
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       jetbrains-mono
-      nerdfonts
+      #nerdfonts
       roboto-mono
     ];
     fontconfig.defaultFonts = {

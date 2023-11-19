@@ -43,6 +43,7 @@
 
   # Set hostname
   networking = {
+    wireless.enable = false;
     hostName = "nixos-desktop";
   };
 }

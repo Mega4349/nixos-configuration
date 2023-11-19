@@ -52,6 +52,7 @@ in
     xfce.thunar
     pavucontrol
     wlopm
+    imagemagick
   ];
 
   home.sessionVariables = {
@@ -248,6 +249,8 @@ in
         assign [app_id="transmission-gtk"] 5
 
         # set floating
+        for_window [app_id="float"] floating enable
+
         for_window [app_id="blueman-manager"] floating enable, resize set width 40 ppt height 30 ppt
         for_window [app_id="OpenTabletDriver.UX.Gtk"] floating enable, resize set width 60 height 55
         for_window [app_id="pavucontrol" ] floating enable, resize set width 40 ppt height 30 ppt

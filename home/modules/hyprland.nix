@@ -5,8 +5,13 @@
 
   home.packages = with pkgs; [
     xdg-desktop-portal-hyprland
-    grimblast
+    #grimblast
     hyprpaper
+    hyprpicker
+    #inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+    slurp 
+    grim
+    jaq
   ];
 
   wayland.windowManager.hyprland = {

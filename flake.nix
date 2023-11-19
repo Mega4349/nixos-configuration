@@ -53,7 +53,16 @@
     #};
 
     #hyprland.url = "github:hyprwm/Hyprland";
-  
+ 
+    #watershot = {
+    #  url = "github:Kirottu/watershot/28017372552e5bbb2d3c41ce8289d5556d49bf74";
+    #};
+
+    #hyprland-contrib = {
+    #  url = "github:hyprwm/contrib";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
+
     nx = {
       url = "sourcehut:~sntx/nx";
       inputs.nixpkgs.follows = "nixpkgs";
