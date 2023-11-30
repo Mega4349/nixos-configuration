@@ -22,24 +22,34 @@
     ../../modules/virtualisation.nix #add stuff
   ];
 
-  programs.honkers-railway-launcher.enable = true;
-
-  environment.persistence."/nix/persist" = {
-    hideMounts = true;
-    directories = [
-      "/etc/NetworkManager/system-connections"
-      #"/var/log"
-      "/var/lib/libvirtd"
-      "/var/lib/libvirt"
-      "/var/cache/libvirt"
+  environment = {
+    systemPackages = [
+      pkgs.lact
     ];
-    files = [
-      #"/etc/machine-id"
-    ];
+    persistence."/nix/persist" = {
+      hideMounts = true;
+      directories = [
+        "/etc/NetworkManager/system-connections"
+        "/etc/lact"
+        #"/var/log"
+        "/var/lib/flatpak"
+        "/var/lib/libvirtd"
+        "/var/lib/libvirt"
+        "/var/cache/libvirt"
+      ];
+      files = [
+        #"/etc/machine-id"
+      ];
+    };
   };
 
-  programs.dconf.enable = true;
-  programs.fuse.userAllowOther = true;
+  systemd.services.lactd.enable = true;
+
+  programs = {
+    dconf.enable = true;
+    fuse.userAllowOther = true;
+    honkers-railway-launcher.enable = true;
+  };
 
   # Set hostname
   networking = {

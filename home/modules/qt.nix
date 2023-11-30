@@ -4,6 +4,6 @@
   qt = {
     enable = true;
     platformTheme = "gtk";
-    style.package = pkgs.flat-remix-gtk;
+    style.package = pkgs.tokyo-night-gtk;
   };
 }

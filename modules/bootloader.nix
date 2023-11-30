@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, config, ... }:
  
 {
   boot.loader = {
@@ -14,4 +14,7 @@
       useOSProber = true;
     };
   };
+  #lib.mkIf (config.network.hostName == "nixos-desktop") {
+  #  boot.loader.grub.useOSProber = true;
+  #};
 }

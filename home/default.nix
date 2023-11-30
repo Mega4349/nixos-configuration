@@ -10,17 +10,19 @@
     #./modules/danser.nix
     ./modules/filemanagers.nix # fix thunar configurations
     ./modules/filemanagers.nix
-    ./modules/flatpaks.nix
+    #./modules/flatpaks.nix
     ./modules/discord.nix
     ./modules/games.nix #add aagl
     ./modules/gtk.nix
-    ./modules/hyprland.nix
+    #./modules/hyprland.nix
     ./modules/media.nix
     ./modules/ncmpcpp.nix #fix mpd not starting
     ./modules/editors.nix
     #./modules/packages.nix #combine with productive, add pavucontrol
     ./modules/productive.nix
     ./modules/qt.nix #may not be needed with stylix
+    ./modules/qtile.nix
+    #./modules/river.nix
     ./modules/sway.nix
     ./modules/waybar.nix #make vertical waybar
     ./modules/terminal.nix #wezterm or kitty
@@ -36,6 +38,9 @@
       pkgs.danser
       pkgs.neofetch
       pkgs.watershot
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal
     ];
     
     username = "mega";
@@ -56,12 +61,14 @@
         ".cache"
         ".mozilla"
         ".thunderbird"
-
+        
+        ".config/deluge"
         ".config/discordcanary"
         ".config/blender"
         ".config/obs-studio"
         ".config/dconf"
         ".config/danser"
+        ".config/heroic"
         ".config/musikcube"
         ".config/transmission"
         ".config/OpenTabletDriver"

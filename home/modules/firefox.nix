@@ -35,7 +35,7 @@
         ff2mpv
         #firefox-translators
         github-file-icons
-        #greasemonkey 
+        greasemonkey 
         #i-dont-care-about-cookies
         image-search-options
         improved-tube

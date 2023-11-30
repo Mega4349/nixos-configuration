@@ -26,6 +26,7 @@
     pciutils
     psmisc
     btop
+    htop
     jq
     libva-utils
 

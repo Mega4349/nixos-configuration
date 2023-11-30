@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 let 
   dbus-sway-environment = pkgs.writeTextFile {
@@ -24,7 +24,58 @@ let
     in ''
       export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
       gnome_schema=org.gnome.desktop.interface
-      gsettings set $gnome_schema gtk-theme 'Flat-Remix-GTK-Blue-Dark'
+      gsettings set $gnome_schema gtk-theme 'Tokyonight-Dark-BL'
+    '';
+  };
+
+  shadowScript = pkgs.writeTextFile {
+    name = "shadowScript";
+    destination = "/bin/shadowScript";
+    executable = true;
+
+    text = ''
+      convert -page +30+30 grimshot.png -alpha set \
+          \( +clone -background black -shadow 80x20+0+0 \) +swap \
+          -background none -mosaic screenshot.png
+    '';
+  };
+
+  cleanUpScript = pkgs.writeTextFile {
+    name = "cleanUpScript";
+    destination = "/bin/cleanUpScript";
+    executable = true;
+
+    text = '' 
+      rm grimshot.png rounded.png
+    '';
+  };
+
+  copyImageScript = pkgs.writeTextFile {
+    name = "copyImageScript";
+    destination = "/bin/copyImageScript";
+    executable = true;
+
+    text = ''
+      wl-copy -t image/png < screenshot.png
+    '';
+  };
+
+  roundedShadowScript = pkgs.writeTextFile {
+    name = "roundedShadowScipt";
+    destination = "/bin/roundedShadowScript";
+    executable = true;
+
+    text = ''
+      convert grimshot.png \
+      \( +clone  -alpha extract \
+        -draw 'fill black polygon 0,0 0,10 10,0 fill white circle 10,10 10,0' \
+        \( +clone -flip \) -compose Multiply -composite \
+        \( +clone -flop \) -compose Multiply -composite \
+      \) -alpha off -compose CopyOpacity -composite  rounded.png
+
+      convert -page +15+15 rounded.png -alpha set \
+          \( +clone -background black -shadow 80x6+0+0 \) +swap \
+          -background none -mosaic screenshot.png
     '';
   };
 
@@ -34,10 +85,14 @@ in
   home.packages = with pkgs; [
     dbus-sway-environment
     configure-gtk
-    flat-remix-gtk
+    shadowScript
+    roundedShadowScript
+    cleanUpScript
+    copyImageScript
+    #flat-remix-gtk
     xdg-utils
     wayland
-    swaybg
+    swww
     waybar
     swaynotificationcenter
     autotiling
@@ -53,12 +108,14 @@ in
     pavucontrol
     wlopm
     imagemagick
+    #inputs.swaymonad.defaultPackage.x86_64-linux
+    qpwgraph
   ];
 
   home.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
     #XDG_SESSION_DESKTOP = "sway";
-    #XDG_CURRENT_DESKTOP = "sway";
+    XDG_CURRENT_DESKTOP = "sway";
 
     QT_QPA_PLATFORM="wayland;xcb";
     #QT_QPA_PLATFORMTHEME = "qt6ct";
@@ -77,6 +134,7 @@ in
 
     extraSessionCommands = ''
       export XDG_CURRENT_DESKTOP=sway
+      export XDG_SESSION_TYPE=wayland
     '';
 
     config = {
@@ -139,9 +197,9 @@ in
   
         "${mod}+Shift+e" = "exec wlogout -p layer-shell -b 5 -T 400 -B 400"; #TODO, not hardcoded pixel values, don't wanna figure it out now though...
 
-        "${mod}+s" =      	"exec grimshot --notify copy area";
+        "${mod}+s" =      	"exec grimshot --notify save area grimshot.png && roundedShadowScript && copyImageScript && cleanUpScript";
         "${mod}+Shift+s" = 	"exec grimshot --notify save screen - | swappy -f -";
-        "${mod}+a" =    	"exec grimshot --notify copy active";
+        "${mod}+a" =    	"exec grimshot --notify save active grimshot.png && shadowScript && copyImageScript && cleanUpScript";
 
         "${mod}+n" = "exec swaync-client -t -sw";
       
@@ -218,7 +276,8 @@ in
       extraConfig = ''
         bindsym Mod4+0 workspace number 10 #Hopefully fixes sway starting on workspace 10
 
-        output * bg ~/Pictures/Wallpapers/trees.jpg fill
+        exec swww init && swww img ~/Pictures/Wallpapers/trees.jpg
+
         bindsym --whole-window Mod4+button4 workspace prev
         bindsym --whole-window Mod4+button5 workspace next
         corner_radius 0
@@ -235,11 +294,14 @@ in
 
         # Execute on startup
         exec autotiling --limit 2
+        #exec swaymonad --default-layout 3_col
         exec firefox
         exec swaync
         exec discordcanary
+        exec deluge
         exec autocutsel
-        #exec dbus-sway-environment
+        exec dbus-sway-environment
+        exec steam
         #exec configure-gtk
 
         # Assign windows to workspaces
@@ -247,6 +309,7 @@ in
         assign [app_id="discord"] 3 
         assign [class="steam"] 4
         assign [app_id="transmission-gtk"] 5
+        assign [app_id="deluge"] 5
 
         # set floating
         for_window [app_id="float"] floating enable
@@ -422,6 +485,17 @@ in
     '';
 
     "wlogout/images".source = ./config/wlogout/images;
+
+    #"xdg-desktop-portal-luminous/config.toml".text = ''
+    #  color_scheme = "dark" # can also be "light"
+    #  accent_color = "#7aa2f7"
+    #'';
+
+    #"xdg-desktop-portal/sway-portals.conf".text = ''
+    #  [preferred]
+    #  default=wlr;gtk
+    #  org.freedesktop.impl.portal.FileChooser=gtk
+    #'';
   };
 
   services.swayidle = {

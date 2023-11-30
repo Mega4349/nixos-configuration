@@ -51,7 +51,7 @@
         gcc # c/c++ compiler, required by nvim-treesitter!
         llvmPackages.clang-unwrapped # c/c++ tools with clang-tools such as clangd
         gdb
-        lldb
+        #lldb
 
         #-- python
         nodePackages.pyright # python language server

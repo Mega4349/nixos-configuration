@@ -5,7 +5,9 @@ lib.mkIf (osConfig.networking.hostName == "nixos-desktop") {
     games = inputs.nix-gaming.packages.${"x86_64-linux"};
   in [
     pkgs.prismlauncher
-     
+    
+    pkgs.heroic
+
     pkgs.stepmania
 
     games.osu-lazer-bin

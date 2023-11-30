@@ -1,8 +1,8 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, system, ... }:
 
 {
   imports = [
-    inputs.nix-gaming.nixosModules.pipewireLowLatency
+    #inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
  
   #Only meant for ALSA configurations, set to false for pipewire
@@ -18,12 +18,14 @@
       pulse.enable = true;
       #jack.enable = true;
       wireplumber.enable = true;
-      lowLatency = {
-        enable = true;
-        quantum = 32;
-        rate = 48000;
-      };
+      #lowLatency = {
+      #  enable = true;
+      #  quantum = 32;
+      #  rate = 48000;
+      #};
     };
+    
+    #hardware.openrgb.enable = true; 
 
     xserver = {
       desktopManager.xterm.enable = false;
@@ -57,6 +59,15 @@
         TimeoutStopSec = 10;
       };
     };
+    services.lactd = {
+      enable = true; 
+      description = "AMDGPU Control Daemon";
+      after = [ "multi-user.target" ];
+      wantedBy = [ "graphical-session.target" ];
+      serviceConfig = {
+        execStart = "${pkgs.lact}/bin/lact daemon";
+      };
+    };
   };
   
   networking = {
@@ -79,11 +90,15 @@
     rtkit.enable = true;
   };
 
-  environment.systemPackages = [ pkgs.polkit_gnome ]; 
+  environment.systemPackages = [ pkgs.polkit_gnome pkgs.lact ]; 
   
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+    config = {
+      common.default = [ "gtk" ];
+      sway.default = [ "wlr" "gtk" ];
+    };
   };
 }

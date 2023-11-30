@@ -10,7 +10,7 @@
       gpu-api = "vulkan";
       gpu-context = "wayland";
       #vo = "gpu-next,gpu,dmabuf-wayland";
-      ao = "pulse"; #"pipewire,pulse";
+      ao = "pipewire"; #,pulse";
       scale = "ewa_lanczos";
       dscale = "ewa_robidoux";
       cscale = "mitchell";
@@ -30,6 +30,7 @@
   home.packages = with pkgs; [
     imv
     transmission-gtk
+    deluge
     gimp
     avidemux
     #deadbeef-with-plugins

@@ -24,4 +24,12 @@
       defaultCursor = "Bibata-Original-Ice";
     };
   };
+
+  xdg.configFile."gtk-3.0/gtk.css".text = '' 
+    /*.nemo-places-sidebar .view { */ 
+    .nemo-window .sidebar .view {
+    background-color: @theme_bg_color;
+    color: @theme_fg_color;
+    }
+  '';
 } 

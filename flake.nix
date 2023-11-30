@@ -34,7 +34,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flatpak.url = "github:GermanBread/declarative-flatpak/stable";
+    #flatpak.url = "github:GermanBread/declarative-flatpak/stable";
 
     # Game stuff
     aagl = {
@@ -52,27 +52,29 @@
       #url = "github:n3oney/anyrun-nixos-options";
     #};
 
-    #hyprland.url = "github:hyprwm/Hyprland";
- 
     #watershot = {
     #  url = "github:Kirottu/watershot/28017372552e5bbb2d3c41ce8289d5556d49bf74";
-    #};
-
-    #hyprland-contrib = {
-    #  url = "github:hyprwm/contrib";
-    #  inputs.nixpkgs.follows = "nixpkgs";
     #};
 
     nx = {
       url = "sourcehut:~sntx/nx";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    #luminous = {
+    #  url = "github:waycrate/xdg-desktop-portal-luminous";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
-    #pipewire-screenaudio.url = "github:IceDBorn/pipewire-screenaudio";
+    swaymonad = {
+      url = "github:nicolasavru/swaymonad";
+      inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
+    };
   };
 
   # Nix configurations, including binary cahces so you don't need to build things 
   nixConfig = {
+    acceptFlakeConfig = true;
     allowUnfree = true;
     buildersUseSubstituters = true;
     experimental-features = [ "flakes" "nix-command" ];
@@ -91,7 +93,7 @@
     ];
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, sops-nix, nur, stylix, nix-gaming, flatpak, aagl, anyrun, nx, nixvim, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, sops-nix, nur, stylix, nix-gaming, aagl, anyrun, nx, swaymonad, nixvim, ... }: 
   let
     mkSystem = modules: nixpkgs.lib.nixosSystem {
       inherit modules;
