@@ -198,7 +198,7 @@ in
         "${mod}+Shift+e" = "exec wlogout -p layer-shell -b 5 -T 400 -B 400"; #TODO, not hardcoded pixel values, don't wanna figure it out now though...
 
         "${mod}+s" =      	"exec grimshot --notify save area grimshot.png && roundedShadowScript && copyImageScript && cleanUpScript";
-        "${mod}+Shift+s" = 	"exec grimshot --notify save screen - | swappy -f -";
+        "${mod}+Shift+s" = 	"exec grimshot --notify --crusor save screen - | swappy -f -";
         "${mod}+a" =    	"exec grimshot --notify save active grimshot.png && shadowScript && copyImageScript && cleanUpScript";
 
         "${mod}+n" = "exec swaync-client -t -sw";
