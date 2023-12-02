@@ -55,6 +55,12 @@
       neededForBoot = true;
     };
 
+    fileSystems."/home/mega/.steamlibrary" = {
+      device = "/dev/mapper/main";
+      fsType = "btrfs";
+      options = [ "subvol=steam" "compress=zstd" ];
+    };
+
   #fileSystems."/var/log" =
   #  { device = "/nix/persist/var/log";
   #    fsType = "none";

@@ -11,7 +11,7 @@
       efiSupport = true;
       device = "nodev";
       enableCryptodisk = true;
-      useOSProber = true;
+      #useOSProber = true;
     };
   };
   #lib.mkIf (config.network.hostName == "nixos-desktop") {

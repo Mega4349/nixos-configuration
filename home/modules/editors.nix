@@ -1,45 +1,98 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
-  programs.helix = {
-    enable = true;
-  };
-
+  imports = [ 
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
 
   xdg.configFile = {
-    # astronvim's config
-    "nvim".source = ./config/nvim;
-
-    # my custom astronvim config, astronvim will load it after base config
-    # https://github.com/AstroNvim/AstroNvim/blob/v3.32.0/lua/astronvim/bootstrap.lua#L15-L16
-    #"nvim/lua".source = ./config/astronvim/lua;
-    #"nvim/lua/user".source = ./config/astronvim/lua/user;
+    #"nvim".source = ./config/nvim;
   };
 
-  #nixpkgs.config = {
-  #  programs.npm.npmrc = ''
-  #    prefix = ''${HOME}/.npm-global
-  #  '';
-  #};
-
-  programs = {
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-
-      viAlias = false;
-      vimAlias = false;
-
-      #withPython3 = true;
-      #withNodeJs = true;
-      #extraPackages = with pkgs; [];
-
-      # currently we use lazy.nvim as neovim's package manager, so comment this one.
-      # plugins = with pkgs.vimPlugins; [
-      #   # search all the plugins using https://search.nixos.org/packages
-      # ];
+  programs.nixvim = {
+    enable = true;
+    options = {
+      number = true;
+      shiftwidth = 2;
     };
+    colorschemes.tokyonight = {
+      enable = true;
+      style = "night";
+      transparent = true;
+    };
+    viAlias = true;
+    vimAlias = true;
+    globals = {
+      mapleader = " ";
+      maplocalleader = " ";
+    };
+    plugins = {
+      neo-tree = {
+        enable = true;
+	filesystem.filteredItems = {
+	  hideDotfiles = false;
+	  hideGitignored = false;
+	};
+	window.width = 28;
+      };
+      lualine = {
+	enable = true;
+      };
+    };
+    keymaps = [
+      {
+        mode = "n";
+	key = "<leader>e";
+	action = "<cmd>Neotree toggle<cr>";
+      }
+    ];
+    extraConfigVim = ''
+      highlight NeoTreeNormal guibg=none
+      highlight NeoTreeNormal ctermbg=none
+      highlight NeoTreeNormalNC guibg=none
+      highlight NeoTreeNormalNC ctermbg=none
+    '';
+    enableMan = false;
   };
+
+  #programs.neovim = {
+  #  enable = true;
+  #  defaultEditor = true;
+
+  #  viAlias = true;
+  #  vimAlias = true;
+  #  vimdiffAlias = true;
+
+    #withPython3 = true;
+    #withNodeJs = true;
+    #extraPackages = with pkgs; [];
+
+    #plugins = with pkgs.vimPlugins; [
+      # search all the plugins using https://search.nixos.org/packages
+      # git stuff
+      #vim-fugitive
+      #vim-rhubarb
+      
+      # tabstop shiftwidth
+      #vim-sleuth
+
+      #{
+      #  plugin = indent-blankline-nvim;
+      #  type = "lua";
+      #  config = ''opts = {
+      #    indent = { char = "▏" },
+      #    scope = { show_start = false, show_end = false },
+      #    exclude = {
+      #      buftypes = {
+      #        "nofile",
+      #        "terminal",
+      #      },
+      #    },
+      #  }'';
+      #}
+    #];
+  #};
+  
   home = {
     packages = with pkgs;
       [
@@ -65,7 +118,7 @@
         rustfmt
 
         #-- zig
-        zls
+        #zls
 
         #-- nix
         nil

@@ -33,14 +33,10 @@
   programs.home-manager.enable = true;
 
   home = {
-    packages = [ 
-      inputs.nx.packages."${pkgs.system}".nx-fetch
-      pkgs.danser
-      pkgs.neofetch
-      pkgs.watershot
-      pkgs.xdg-desktop-portal-wlr
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal
+    packages = with pkgs; [ 
+      danser
+      neofetch
+      #watershot
     ];
     
     username = "mega";

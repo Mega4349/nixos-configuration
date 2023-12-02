@@ -29,13 +29,6 @@
     # Game stuff and pipewire low latency module
     nix-gaming.url = "github:fufexan/nix-gaming";
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    #flatpak.url = "github:GermanBread/declarative-flatpak/stable";
-
     # Game stuff
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
@@ -47,29 +40,19 @@
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #anyrun-nixos-options = {
       #url = "github:n3oney/anyrun-nixos-options";
     #};
 
-    #watershot = {
-    #  url = "github:Kirottu/watershot/28017372552e5bbb2d3c41ce8289d5556d49bf74";
-    #};
-
-    nx = {
-      url = "sourcehut:~sntx/nx";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    
     #luminous = {
     #  url = "github:waycrate/xdg-desktop-portal-luminous";
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
-
-    swaymonad = {
-      url = "github:nicolasavru/swaymonad";
-      inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
-    };
   };
 
   # Nix configurations, including binary cahces so you don't need to build things 
@@ -93,7 +76,7 @@
     ];
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, sops-nix, nur, stylix, nix-gaming, aagl, anyrun, nx, swaymonad, nixvim, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, sops-nix, nur, nix-gaming, aagl, anyrun, nixvim, ... }: 
   let
     mkSystem = modules: nixpkgs.lib.nixosSystem {
       inherit modules;

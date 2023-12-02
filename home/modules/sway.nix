@@ -109,7 +109,8 @@ in
     wlopm
     imagemagick
     #inputs.swaymonad.defaultPackage.x86_64-linux
-    qpwgraph
+    #qpwgraph
+    pamixer
   ];
 
   home.sessionVariables = {
@@ -260,9 +261,9 @@ in
         "${mod}+r" = "mode \"resize\"";
      
         # Audio
-        "XF86AudioRaiseVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'";
-        "XF86AudioLowerVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'";
-        "XF86AudioMute" = "exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'";
+        "XF86AudioRaiseVolume" = "exec 'pamixer -i 5'";
+        "XF86AudioLowerVolume" = "exec 'pamixer -d 5'";
+        "XF86AudioMute" = "exec 'pamixer -t'";
         
         # Brightness
         "XF86MonBrightnessDown" = "exec light -U 10";

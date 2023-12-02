@@ -71,8 +71,8 @@
       "network" = {
         "format-disconnected" = "󰯡 ";
         "format-ethernet" = "󰀂 ";
-        "format-linked" = "󰖪 ";
-        "format-wifi" = "󰖩 ";
+        "format-linked" = "󰤮 ";
+        "format-wifi" = " ";
         "interval" = 1;
         "tooltip" = true;
         "tooltip-format" = "Ethernet: {ifname} \nWiFi: {essid}";

@@ -55,7 +55,7 @@ stylix_base_config = {
         --"Noto Color Emoji",
     --},
     font_size = 12,
-    window_background_opacity = 0.800000,
+    window_background_opacity = 1.000000,
     window_frame = {
         active_titlebar_bg = "#444b6a",
         active_titlebar_fg = "#a9b1d6",
