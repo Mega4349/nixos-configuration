@@ -10,6 +10,7 @@
     #./modules/danser.nix
     ./modules/filemanagers.nix # fix thunar configurations
     ./modules/filemanagers.nix
+    #./modules/foot.nix
     #./modules/flatpaks.nix
     ./modules/discord.nix
     ./modules/games.nix #add aagl
@@ -97,7 +98,6 @@
         #".config/mimeapps.list"
       ];
     };
- 
     stateVersion = "23.05";
   };
 
@@ -122,7 +122,7 @@
           ];
         });
       })
-   
+
       #https://github.com/NixOS/nixpkgs/issues/239424
       (final: prev: {
         avidemux = prev.avidemux.overrideAttrs (oldAttrs: {

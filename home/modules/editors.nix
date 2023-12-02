@@ -5,15 +5,14 @@
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
-  xdg.configFile = {
-    #"nvim".source = ./config/nvim;
-  };
+  #xdg.configFile."nvim".source = ./config/nvim;
 
   programs.nixvim = {
     enable = true;
     options = {
       number = true;
       shiftwidth = 2;
+      tabstop = 2;
     };
     colorschemes.tokyonight = {
       enable = true;
@@ -27,23 +26,85 @@
       maplocalleader = " ";
     };
     plugins = {
-      neo-tree = {
+      alpha = {
         enable = true;
-	filesystem.filteredItems = {
-	  hideDotfiles = false;
-	  hideGitignored = false;
-	};
-	window.width = 28;
+        layout = [
+          {
+            type = "padding";
+            val = 10;
+          }
+          {
+            type = "text";
+            val = [
+              "                                             				"  
+              "      ████ ██████           █████      ██			"
+              "     ███████████             █████ 				"
+              "     █████████ ███████████████████ ███   ███████████	"
+              "    █████████  ███    █████████████ █████ ██████████████	"
+              "   █████████ ██████████ █████████ █████ █████ ████ █████	"
+              " ███████████ ███    ███ █████████ █████ █████ ████ █████	"
+              "██████  █████████████████████ ████ █████ █████ ████ ██████	"
+            ];
+          }
+          {
+            type = "padding";
+            val = 4;
+          }
+          {
+            type = "group";
+            val = [
+              #{
+								#shortcut = "SPC r";
+                #desc = "  Last Session";
+                #command = "";#[[:lua require\(\"persistence\"\).load() <cr>]]";
+              #}
+              {
+                shortcut = "SPC n";
+                desc = "  New file";
+                command = "<CMD>ene <CR>";
+              }
+              {
+                shortcut = "SPC e";
+                desc = "  Neo-tree Filetree";
+                command = "<CMD>Neotree toggle<CR>";
+              }
+              {
+                shortcut = "SPC q";
+                desc = "󰗼  Quit Neovim";
+                command = ":qa<CR>";
+              }
+            ];
+          }
+        ];
+      };
+      persistence = {
+        enable = true;
+      };
+      indent-blankline = {
+        enable = true;
+      };
+      lsp.enable = true;
+      neo-tree = {
+        enable = true; 
+        filesystem.filteredItems = {
+          hideDotfiles = false;
+          hideGitignored = false;
+        };
+        window.width = 28;
+	closeIfLastWindow = true;
       };
       lualine = {
-	enable = true;
+        enable = true;
+      };
+      presence-nvim = {
+        enable = true;
       };
     };
     keymaps = [
       {
         mode = "n";
-	key = "<leader>e";
-	action = "<cmd>Neotree toggle<cr>";
+        key = "<leader>e";
+        action = "<cmd>Neotree toggle<cr>";
       }
     ];
     extraConfigVim = ''
@@ -52,47 +113,12 @@
       highlight NeoTreeNormalNC guibg=none
       highlight NeoTreeNormalNC ctermbg=none
     '';
+    #extraConfigLua = ''
+    #  vim.api.nvim_set_keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], {})
+    #'';
     enableMan = false;
   };
 
-  #programs.neovim = {
-  #  enable = true;
-  #  defaultEditor = true;
-
-  #  viAlias = true;
-  #  vimAlias = true;
-  #  vimdiffAlias = true;
-
-    #withPython3 = true;
-    #withNodeJs = true;
-    #extraPackages = with pkgs; [];
-
-    #plugins = with pkgs.vimPlugins; [
-      # search all the plugins using https://search.nixos.org/packages
-      # git stuff
-      #vim-fugitive
-      #vim-rhubarb
-      
-      # tabstop shiftwidth
-      #vim-sleuth
-
-      #{
-      #  plugin = indent-blankline-nvim;
-      #  type = "lua";
-      #  config = ''opts = {
-      #    indent = { char = "▏" },
-      #    scope = { show_start = false, show_end = false },
-      #    exclude = {
-      #      buftypes = {
-      #        "nofile",
-      #        "terminal",
-      #      },
-      #    },
-      #  }'';
-      #}
-    #];
-  #};
-  
   home = {
     packages = with pkgs;
       [
