@@ -8,18 +8,23 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot = {
+		initrd = {
+		luks.devices."main".device = "/dev/disk/by-uuid/c13530c1-43c9-4556-bcd0-c52a8e85d14a";
+			availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
+  		kernelModules = [ ];
+		};
+  	kernelModules = [ "kvm-intel" ];
+  	extraModulePackages = [ ];
+  	kernelPackages = pkgs.linuxPackages_latest;
+  	supportedFilesystems = [ "ntfs" ];
+	};
 
-  fileSystems."/" =
-    { device = "none";
-      fsType = "tmpfs";
-      options = [ "defaults" "size=5G" "mode=755" ];
-    };
+  fileSystems."/" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [ "defaults" "size=5G" "mode=755" ];
+  };
 
   fileSystems."/home/mega" = {
     device = "none";
@@ -27,39 +32,37 @@
     options = [ "size=5G" "mode=777" ];
   };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/CC2C-9EF2";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/CC2C-9EF2";
+    fsType = "vfat";
+  };
 
-  fileSystems."/nix" =
-    { device = "/dev/mapper/main";
-      fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd" ];
-      neededForBoot = true;
-    };
+  fileSystems."/nix" = {
+    device = "/dev/mapper/main";
+    fsType = "btrfs";
+    options = [ "subvol=nix" "compress=zstd" ];
+    neededForBoot = true;
+  };
 
-  boot.initrd.luks.devices."main".device = "/dev/disk/by-uuid/c13530c1-43c9-4556-bcd0-c52a8e85d14a";
+  fileSystems."/nix/persist" = {
+    device = "/dev/mapper/main";
+    fsType = "btrfs";
+    options = [ "subvol=persist" "compress=zstd" ];
+    neededForBoot = true;
+  };
 
-  fileSystems."/nix/persist" =
-    { device = "/dev/mapper/main";
-      fsType = "btrfs";
-      options = [ "subvol=persist" "compress=zstd" ];
-      neededForBoot = true;
-    };
+  fileSystems."/nix/persist/home" = {
+    device = "/dev/mapper/main";
+    fsType = "btrfs";
+    options = [ "subvol=home" "compress=zstd" ];
+    neededForBoot = true;
+  };
 
-  fileSystems."/nix/persist/home" =
-    { device = "/dev/mapper/main";
-      fsType = "btrfs";
-      options = [ "subvol=home" "compress=zstd" ];
-      neededForBoot = true;
-    };
-
-    fileSystems."/home/mega/.steamlibrary" = {
-      device = "/dev/mapper/main";
-      fsType = "btrfs";
-      options = [ "subvol=steam" "compress=zstd" ];
-    };
+  fileSystems."/home/mega/.steamlibrary" = {
+    device = "/dev/mapper/main";
+    fsType = "btrfs";
+    options = [ "subvol=steam" "compress=zstd" ];
+  };
 
   #fileSystems."/var/log" =
   #  { device = "/nix/persist/var/log";
@@ -69,11 +72,11 @@
 
   environment.etc."machine-id".source = "/nix/persist/etc/machine-id";
 
-  fileSystems."/home/mega/nixos-configuration" =
-    { device = "/nix/persist/etc/nixos";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+  fileSystems."/home/mega/nixos-configuration" = {
+    device = "/nix/persist/etc/nixos";
+    fsType = "none";
+    options = [ "bind" ];
+  };
 
   zramSwap = {
     enable = true;

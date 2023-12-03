@@ -38,6 +38,7 @@
       danser
       neofetch
       #watershot
+			inputs.nix-gaming.packages.${pkgs.system}.proton-ge
     ];
     
     username = "mega";

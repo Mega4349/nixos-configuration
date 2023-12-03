@@ -15,6 +15,8 @@
     };
     # Gamemode to run games better
     gamemode.enable = true;
+
+		nano.enable = false;
   };
 
   environment.systemPackages = with pkgs; [
@@ -32,6 +34,8 @@
 
     wineWowPackages.staging
     mono
+
+		steamtinkerlaunch
 
     jmtpfs
 

@@ -33,15 +33,18 @@ in
   xdg.mimeApps = {
     enable = true;
     defaultApplications = let
-      pdf_reader = [ "zathura.desktop" ];
-      browser = [ "firefox.desktop" ];
-      video_player = [ "mpv.desktop" ];
-      image_viewer = [ "imv-dir.desktop" ];
+      pdf_reader = [ "zathura.desktop;" ];
+      browser = [ "firefox.desktop;" ];
+      video_player = [ "mpv.desktop;" ];
+      image_viewer = [ "imv-dir.desktop;" ];
     in {
       "application/pdf" = pdf_reader;
       "audio/*" = video_player;
       "video/*" = video_player;
       "image/*" = image_viewer;
+			"image/jpeg" = image_viewer;
+			"image/png" = image_viewer;
+			"image/gif" = image_viewer;
     };
 
     #associations.removed = let browser = [ "chromium.desktop" ];
@@ -52,6 +55,13 @@ in
     "org/cinnamon/desktop/applications/terminal" = {
       exec = "wezterm_cwd";
     };
+		"org/nemo/preferences" = {
+			click-double-parent-folder = true;
+			click-policy = "single";
+			show-hidden-files = true;
+			size-prefixes = "base-2";
+			thumbnail-limit = "68719476735";
+		};
   };
 
   xdg.configFile = {
@@ -60,7 +70,7 @@ in
       source = ./config/ranger/scope.sh;
       executable = true;
     };
-    #add plugins aswell
+		"ranger/plugins".source = ./config/ranger/plugins;
 
     #TODO move to separate file
     "Vencord/settings/settings.json".source = ./config/Vencord/settings/settings.json;

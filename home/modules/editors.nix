@@ -4,11 +4,12 @@
   imports = [ 
     inputs.nixvim.homeManagerModules.nixvim
   ];
-
+  
   #xdg.configFile."nvim".source = ./config/nvim;
 
   programs.nixvim = {
     enable = true;
+		defaultEditor = true;
     options = {
       number = true;
       shiftwidth = 2;
@@ -77,11 +78,13 @@
           }
         ];
       };
-      persistence = {
-        enable = true;
-      };
+      #persistence = {
+      #  enable = true;
+      #};
+			nvim-autopairs.enable = true;
       indent-blankline = {
         enable = true;
+				indent.char = "▏";
       };
       lsp.enable = true;
       neo-tree = {

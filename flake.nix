@@ -45,14 +45,6 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #anyrun-nixos-options = {
-      #url = "github:n3oney/anyrun-nixos-options";
-    #};
-
-    #luminous = {
-    #  url = "github:waycrate/xdg-desktop-portal-luminous";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
   };
 
   # Nix configurations, including binary cahces so you don't need to build things 

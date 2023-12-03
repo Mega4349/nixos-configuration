@@ -12,9 +12,8 @@
       modules-center = [ "clock" ];
       modules-right = [ ] ++ 
       (if osConfig.networking.hostName == "nixos-laptop" then 
-      [ "pulseaudio" "network" "battery" "backlight" "sway/language" "tray" ]
-      else [ "pulseaudio" "network`" "sway/language" "tray" ]);
-      #TODO add notifications module
+      [ "idle_inhibitor" "pulseaudio" "network" "battery" "backlight" "custom/notification" "sway/language" "tray" ]
+      else [ "idle_inhibitor" "pulseaudio" "network`" "custom/notification" "sway/language" "tray" ]);
       
       "hyprland/workspaces" = {
         "format" = "{icon}";
@@ -56,7 +55,14 @@
         "tooltip" = true;
         "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
       };
-
+			
+			"idle_inhibitor" = {
+				"format" = "{icon}";
+				"format-icons" = {
+					"activated" = "󰅶 ";
+					"deactivated" = "󰾪 ";
+					}; 
+				};
       "pulseaudio" = {
         "scroll-step" = 1;
         "format" = "{icon}";
@@ -101,6 +107,26 @@
         "format" = "\n";
         "tooltip-format" = "{percentage}%";
       };
+			"custom/notification" = {
+    		"tooltip" = false;
+    		"format" = "{icon}";
+    		"format-icons" = {
+      		"notification" = "<span color='#f7768e'></span>";
+      		"none" = "";
+      		"dnd-notification" = "<span color='#ff7768e'></span>";
+      		"dnd-none" = "";
+      		"inhibited-notification" = "<span color='#f7768e'></span>";
+      		"inhibited-none" = "";
+      		"dnd-inhibited-notification" = "<span color='#f7768e'></span>";
+      		"dnd-inhibited-none"= "";
+    		};
+    		"return-type" = "json";
+    		"exec-if" = "which swaync-client";
+    		"exec" = "swaync-client -swb";
+    		"on-click" = "swaync-client -t -sw";
+    		"on-click-right" = "swaync-client -d -sw";
+    		"escape" = true;
+  		};
       "sway/language" = {
         "format" = "{short}";
       };
@@ -114,187 +140,186 @@
     }];
 
     style = ''
-/** {
-    all: initial;
-}*/
+			window#waybar {
+			 background: transparent;
+			}
 
-window#waybar {
-  background: transparent;
-}
+			window > box {
+			  margin-top: 8px;
+			  margin-left: 8px;
+			  margin-bottom: 8px;
+			  color: #a4abcf;
+			  border: 2px solid;
+			  background: #16161e;
+			  transition-property: color;
+			  transition-duration: 0s;
+			}
 
-window > box {
-  margin-top: 8px;
-  margin-left: 8px;
-  margin-bottom: 8px;
-  color: #a4abcf;
-  border: 2px solid;
-  background: #16161e;
-  transition-property: color;
-  transition-duration: 0s;
-}
+			window#waybar.hidden {
+			  opacity: 0.2;
+			}
 
-window#waybar.hidden {
-  opacity: 0.2;
-}
+			#workspaces button {
+			  min-width: 0;
+			}
 
-#workspaces button {
-   min-width: 0;
-}
+			#workspaces button {
+			  border: none;
+			  border-radius: 0px;
+			  padding: 5 10 5 10px;
+			  margin: 2 2 2 2px;
+			  color: #A4ABCF;
+			}
 
-#workspaces button {
-  /*font-size: 16px;*/ 
-  border: none;
-  border-radius: 0px;
-  padding: 5 10 5 10px;
-  margin: 2 2 2 2px;
-  color: #A4ABCF;
-}
+			#workspaces button.focused {
+			  /*font-size: 16px;*/
+			  background: none;
+			  border: 2px solid;
+			  border-radius: 0px;
+			  margin: 0 0 0 0px;
+			  color: #A4ABCF;
+			}
 
-#workspaces button.focused {
-  /*font-size: 16px;*/
-  background: none;
-  border: 2px solid;
-  border-radius: 0px;
-  margin: 0 0 0 0px;
-  color: #A4ABCF;
-}
+			#workspaces button.active {
+			  /*font-size: 16px;*/
+			  background: none;
+			  border: 2px solid;
+			  border-radius: 0px;
+			  padding: 5 0 5 0px;
+			  color: #A4ABCF;
+			}
 
-#workspaces button.active {
-  /*font-size: 16px;*/
-  background: none;
-  border: 2px solid;
-  border-radius: 0px;
-  padding: 5 0 5 0px;
-  color: #A4ABCF;
-}
+			#workspaces button.urgent {
+			  background: none;
+			}
 
-#workspaces button.urgent {
-  background: none;
-}
+			#workspaces button:hover {
+			  box-shadow: none;
+			  text-shadow: inherit;
+			  background: none;
+			  border: 1px solid;
+			  margin: 1 1 1 1px;
+			  transition-duration: 0.3s;
+			  border-radius: 0px;
+			  padding: 5 0 5 0px;
+			  color: #A4ABCF;
+			}
 
-#workspaces button:hover {
-  box-shadow: none;
-  text-shadow: inherit;
-  background: none;
-  border: 1px solid;
-  margin: 1 1 1 1px;
-  transition-duration: 0.3s;
-  border-radius: 0px;
-  padding: 5 0 5 0px;
-  color: #A4ABCF;
-}
+			#mode {
+			  /* border-bottom: 3px solid #ffffff;*/
+			}
 
-#mode {
-  /* border-bottom: 3px solid #ffffff;*/
-}
+			#clock,
+			#battery,
+			#cpu,
+			#memory,
+			#backlight,
+			#network,
+			#pulseaudio,
+			#tray,
+			#idle_inhibitor,
+			#custom-notification,
+			#language,
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#backlight,
-#network,
-#pulseaudio,
-#tray,
-#idle_inhibitor,
-#custom-notification,
-#language,
+			#window,
+			#workspaces {
+			  background: none;
+			  padding: 0 0 0 0px;
+			}
 
-#window,
-#workspaces {
-  background: none;
-  padding: 0 0 0 0px;
-}
+			#clock {
+			  font-size: 16px;
+			  background-color: transparent;
+			  color: #A4ABCF;
+			}
 
-#clock {
-  font-size: 16px;
-  background-color: transparent;
-  color: #A4ABCF;
-}
+			#backlight {
+			  font-size: 18px;
+			  margin-right: 3px;
+				margin-top: 2px;
+				margin-bottom: 2px;
+			}
 
-#backlight {
-  font-size: 18px;
-  margin-right: 2px;
-}
+			#battery {
+			  font-size: 16px;
+			  margin-right: 9px;
+				margin-top: 0px;
+				margin-bottom: 0px;
+			}
 
-#battery {
-  font-size: 16px;
-  margin-right: 7px;
-}
+			#cpu {
+			  font-size: 16px;
+			  background-color: transparent;
+			  color: #A4ABCF;
+			}
 
-#cpu {
-  font-size: 16px;
-  background-color: transparent;
-  color: #A4ABCF;
-}
+			#memory {
+				font-size: 16px;
+				background-color: transparent;
+			  color: #A4ABCF;
+			}
 
-#memory {
-  font-size: 16px;
-  background-color: transparent;
-  color: #A4ABCF;
-}
+			#network {
+			  margin-top: 5px;
+			  margin-bottom: 5px;
+			  margin-left: 2px;
+			  color: #A4ABCF;
+			}
 
-#network {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 6px;
-  color: #A4ABCF;
-}
+			#network.disconnected {
+			}
 
-#network.disconnected {
-}
+			#pulseaudio {
+			  margin-right: 5px;
+			  margin-top: 4px;
+			  margin-bottom: 4px;
+			  color: #A4ABCF;
+			}
 
-#pulseaudio {
-  margin-right: 6px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  color: #A4ABCF;
-}
+			#pulseaudio.muted {
+			  margin-left: 5px;
+			  margin-top: 4px;
+			  margin-bottom: 4px;
+			  color: #A4ABCF;
+			}
 
-#pulseaudio.muted {
-  margin-right: 4px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  color: #A4ABCF;
-}
+			#tray {
+			  margin-top: 5px;
+			  margin-bottom: 8px;
+			}
 
-#tray {
-  margin-top: 5px;
-  margin-bottom: 8px;
-}
+			#tray > .passive {
+			  -gtk-icon-effect: dim;
+			}
 
-#tray > .passive {
-  -gtk-icon-effect: dim;
-}
+			#tray > .needs-attention {
+			  -gtk-icon-effect: highlight;
+			}
 
-#tray > .needs-attention {
-  -gtk-icon-effect: highlight;
-}
+			#idle_inhibitor {
+				font-size: 16px;
+				margin-left: 5px;
+				margin-top: 4px;
+				margin-bottom: 4px;
+			}
 
-#idle_inhibitor {
-}
+			#idle_inhibitor.activated {
+			}
 
-#idle_inhibitor.activated {
-}
+			#custom-notification {
+			  font-size: 16px;
+				margin-right: 1px;
+				margin-top: 4px;
+				margin-bottom:4px;
+			}
 
-#language {
-  font-family: RobotoMono Nerd Font;
-  font-size: 16px;
-  /* padding: 5 0px;*/
-  color: #A4ABCF;
-}
-
-#custom-notification {
-  font-family: RobotoMono Nerd Font;
-  font-size: 16px;
-  color: #A4ABCF;
-}
-
-#language {
-  font-size: 16px;
-  background: none;
-  color: #A4ABCF;
-}
+			#language {
+			  font-size: 16px;
+				margin-top: 0px;
+				margin-bottom: 2px;
+			  background: none;
+			  color: #A4ABCF;
+			}
     '';
   };
 }
