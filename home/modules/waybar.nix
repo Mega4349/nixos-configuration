@@ -145,9 +145,9 @@
 			}
 
 			window > box {
-			  margin-top: 8px;
-			  margin-left: 8px;
-			  margin-bottom: 8px;
+			  margin-top: 10px;
+			  margin-left: 10px;
+			  margin-bottom: 10px;
 			  color: #a4abcf;
 			  border: 2px solid;
 			  background: #16161e;
@@ -247,6 +247,10 @@
 				margin-bottom: 0px;
 			}
 
+			#battery.charging {
+				margin-left: 3px;
+			}
+
 			#cpu {
 			  font-size: 16px;
 			  background-color: transparent;
@@ -267,6 +271,7 @@
 			}
 
 			#network.disconnected {
+				margin-left: 7px;
 			}
 
 			#pulseaudio {
@@ -277,7 +282,8 @@
 			}
 
 			#pulseaudio.muted {
-			  margin-left: 5px;
+			  font-size: 16px;
+				margin-left: 8px;
 			  margin-top: 4px;
 			  margin-bottom: 4px;
 			  color: #A4ABCF;
