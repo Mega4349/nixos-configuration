@@ -54,13 +54,8 @@
           {
             type = "group";
             val = [
-              #{
-								#shortcut = "SPC r";
-                #desc = "  Last Session";
-                #command = "";#[[:lua require\(\"persistence\"\).load() <cr>]]";
-              #}
               {
-                shortcut = "SPC n";
+              	shortcut = "SPC n";
                 desc = "  New file";
                 command = "<CMD>ene <CR>";
               }
@@ -78,13 +73,14 @@
           }
         ];
       };
-      #persistence = {
-      #  enable = true;
-      #};
+			telescope.enable = true;
+			toggleterm.enable = true;
+			treesitter.enable = true;
 			nvim-autopairs.enable = true;
       indent-blankline = {
         enable = true;
 				indent.char = "▏";
+				#scope.enabled = false;
       };
       lsp.enable = true;
       neo-tree = {
@@ -94,7 +90,7 @@
           hideGitignored = false;
         };
         window.width = 28;
-	closeIfLastWindow = true;
+				closeIfLastWindow = true;
       };
       lualine = {
         enable = true;
@@ -109,6 +105,11 @@
         key = "<leader>e";
         action = "<cmd>Neotree toggle<cr>";
       }
+			{
+				mode = "n";
+				key = "<leader>t";
+				action = "<cmd>ToggleTerm<cr>";
+			}
     ];
     extraConfigVim = ''
       highlight NeoTreeNormal guibg=none
@@ -116,9 +117,6 @@
       highlight NeoTreeNormalNC guibg=none
       highlight NeoTreeNormalNC ctermbg=none
     '';
-    #extraConfigLua = ''
-    #  vim.api.nvim_set_keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], {})
-    #'';
     enableMan = false;
   };
 
