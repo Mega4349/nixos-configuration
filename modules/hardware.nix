@@ -12,7 +12,6 @@
       enable = true;
       daemon.enable = true; 
     };
-    openrazer.enable = true;
   };
 
   environment = {
@@ -24,8 +23,6 @@
     '';
  
     systemPackages = with pkgs; [
-      openrazer-daemon
-      razergenie #GUI for configuring razer devices
       wootility #Wooting keyboard customization software
       via
     ];

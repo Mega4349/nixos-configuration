@@ -155,15 +155,15 @@ in
           xkb_layout = "us,se,canary";
           xkb_options = "grp:alt_caps_toggle";
         };
-        pointer = {
+        "1133:16531:Logitech_PRO_X" = {
           accel_profile = "flat";
-          pointer_accel = "-0.5";
+          pointer_accel = "-0.15";
         }; 
         "1102:4618:ALP0013:00_044E:120A_Touchpad" = {
           tap = "enabled";
           natural_scroll = "enabled";
           accel_profile = "flat";
-          pointer_accel = "-0.15";
+          pointer_accel = "-0.5";
           dwt = "disable";
         };
       }; 

@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.zsh = {
@@ -9,6 +9,7 @@
     shellAliases = {
       cl = "clear";
       "cd.." = "cd ..";
+			ls = "eza -l -x --icons --git --group-directories-first";
     };
     oh-my-zsh = {
       enable = true;
@@ -16,4 +17,6 @@
       theme = "robbyrussell";
     };
   };
+	home.packages = with pkgs; [ eza ];
+
 }
