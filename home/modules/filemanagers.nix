@@ -17,7 +17,7 @@ in
 
 {
   home.packages = with pkgs; [
-    ranger
+    ranger-sixel
     ffmpegthumbnailer
     #poppler
     evince

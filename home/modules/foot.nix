@@ -6,7 +6,8 @@
   	  enable = true;
   	  settings = {
     	  main = {
-      	  #font = "JetBrainsMono:size=9";
+      	  shell = "tmux";
+					font = "JetBrainsMono:size=9";
     			pad= "10x10";
       	};
 	      cursor = {
@@ -40,37 +41,53 @@
   	};
 		tmux = {
 			enable = true;
+			package = pkgs.tmux-sixel;
 			clock24 = true;
 			extraConfig = ''
 				bind-key -n C-Tab next-window
-bind-key -n C-BTab previous-window
+				bind-key -n C-S-Tab previous-window
+
+				#close and open tabs
+				bind-key -n C-t new-window
+				bind-key -n C-w kill-window
 
 				set -g status-right-length 150
+				unbind C-b
+				set -g prefix C-Space
 
-# Replace the location of the script.
-cmus_status="#(~/Development/tokyo-night-tmux/src/cmus-tmux-statusbar.sh)"
-git_status="#(~/Development/tokyo-night-tmux/src/git-status.sh #{pane_current_path})"
+				set -g mouse on
 
-#+--- Bars LEFT ---+
-# Session name
-set -g status-left "#[fg=black,bg=#41a6b5,bold] #S #[fg=blue,bg=default,nobold,noitalics,nounderscore]"
-#+--- Windows ---+
-# Focus
-set -g window-status-current-format "#[fg=white,bg=#1F2335]   #I #W  #{?window_last_flag,,} "
-# Unfocused
-set -g window-status-format "#[fg=brightwhite,bg=#1a1b26,nobold,noitalics,nounderscore]   #I #W #F  "
+				unbind % # Split vertically
+				unbind '"' # Split horizontally
 
+				bind v split-window -h -c "#{pane_current_path}"
+				bind h split-window -v -c "#{pane_current_path}"
 
-#+--- Panes ---+
-set -g pane-border-style "fg=#3b4261"
-set -g pane-active-border-style "fg=#7aa2f7"
+				# Replace the location of the script.
+				#cmus_status="#(~/Development/tokyo-night-tmux/src/cmus-tmux-statusbar.sh)"
+				#git_status="#(~/Development/tokyo-night-tmux/src/git-status.sh #{pane_current_path})"
 
-# Status bar background
-set -g status-bg "#1a1b26"
+				#+--- Bars LEFT ---+
+				# Session name
+				set -g status-left "#[fg=black,bg=#41a6b5,bold] #S #[fg=blue,bg=default,nobold,noitalics,nounderscore]"
+				#+--- Windows ---+
+				# Focus
+				set -g window-status-current-format "#[fg=white,bg=#1F2335]   #I #W  #{?window_last_flag,,} "
+				# Unfocused
+				set -g window-status-format "#[fg=brightwhite,bg=#1a1b26,nobold,noitalics,nounderscore]   #I #W #F  "
 
-#+--- Bars RIGHT ---+
-set -g status-right "$cmus_status#[fg=white,bg=#24283B]  %Y-%m-%d #[]❬ %H:%M $git_status"
-set -g window-status-separator ""
+				#set-option -g status-position top
+
+				#+--- Panes ---+
+				set -g pane-border-style "fg=#3b4261"
+				set -g pane-active-border-style "fg=#7aa2f7"
+
+				# Status bar background
+				set -g status-bg "#1a1b26"
+
+				#+--- Bars RIGHT ---+
+				set -g status-right "$cmus_status#[fg=white,bg=#24283B]  %Y-%m-%d #[]❬ %H:%M $git_status"
+				set -g window-status-separator ""
 			'';
 		};
 	};

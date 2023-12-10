@@ -1,4 +1,4 @@
-{ pkgs, inputs, system, ... }:
+{ pkgs, inputs, system, fetchFromGitHub, ... }:
 
 {
   imports = [
@@ -149,6 +149,31 @@
       (self: super: {
         danser = self.callPackage ./pkgs/danser {};
       })
+
+			(final: prev: {
+  		  ranger-sixel = prev.ranger.overrideAttrs (oldAttrs: {
+      		patches = (oldAttrs.patches or [ ]) ++ [
+        		(prev.fetchpatch {
+          		url = "https://github.com/3ap/ranger/commit/ef9ec1f0e0786e2935c233e4321684514c2c6553.patch";
+          		sha256 = "sha256-MJbIBuFeOvYnF6KntWJ2ODQ4KAcbnFEQ1axt1iQGkWY=";
+        		})
+      		];
+    		});
+  		})
+
+			(self: super: {
+				tmux-sixel = self.tmux.overrideAttrs (super: {
+					configureFlags = (super.configureFlags or []) ++
+					  ["--enable-sixel"];
+					src = pkgs.fetchFromGitHub {
+  		  		owner = "tmux"; 
+    				repo="tmux"; 
+    				rev = "bdf8e614af34ba1eaa8243d3a818c8546cb21812"; 
+    				hash = "sha256-ZMlpSOmZTykJPR/eqeJ1wr1sCvgj6UwfAXdpavy4hvQ="; 
+  				};
+					patches = [];
+				});
+			})
     ];
   };
 }
