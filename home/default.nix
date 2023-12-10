@@ -1,4 +1,4 @@
-{ pkgs, inputs, system, fetchFromGitHub, ... }:
+{ pkgs, inputs, system, ... }:
 
 {
   imports = [
@@ -27,7 +27,7 @@
     ./modules/sway.nix
     ./modules/waybar.nix #make vertical waybar
     ./modules/terminal.nix #wezterm or kitty
-    ./modules/zsh.nix
+    ./modules/shell.nix
     #./pkgs
   ];
 
