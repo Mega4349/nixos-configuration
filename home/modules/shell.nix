@@ -32,5 +32,5 @@
       { name = "grc"; src = pkgs.fishPlugins.grc.src; }
 		];
 	};
-	xdg.configFile."fish".source = ./config/fish;
+	#xdg.configFile."fish".source = ./config/fish;
 }
