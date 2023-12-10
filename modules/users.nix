@@ -7,12 +7,15 @@
   
   i18n.defaultLocale = "en_US.UTF-8";
 
-  programs.zsh.enable = true;
+  programs = { 
+		zsh.enable = true;
+		fish.enable = true;
+	};
 
   # Define a user account. Don't forget to set a password
   users = {
     mutableUsers = false;
-      defaultUserShell = pkgs.zsh;
+      defaultUserShell = pkgs.fish;
 
     users = {
       root = {
@@ -43,12 +46,6 @@
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
     users.mega = import ../home;
-    #sharedModules = [{ stylix.targets = {
-    #  sway.enable = false;
-    #  waybar.enable = false;
-    #  hyprland.enable = false;
-    #};
-    #}];
   };
 
   system.stateVersion = "23.05";

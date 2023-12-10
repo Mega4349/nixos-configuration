@@ -93,7 +93,27 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
-  services.fstrim.enable = lib.mkDefault true;
+  services = {
+		fstrim.enable = lib.mkDefault true;
+		
+		tlp = {
+    	enable = true;
+    	settings = {
+      	CPU_BOOST_ON_AC = 1;
+      	CPU_BOOST_ON_BAT = 0;
+      	CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      	CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+		  };
+  	};
+  	# Disable GNOMEs power management
+  	power-profiles-daemon.enable = false;
+  	# Enable thermald (only necessary if on Intel CPUs)
+  	thermald.enable = true;
+	};
+	
+	# Enable powertop
+  powerManagement.powertop.enable = true;
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware = {

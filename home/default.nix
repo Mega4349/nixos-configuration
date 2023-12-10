@@ -10,7 +10,7 @@
     #./modules/danser.nix
     ./modules/filemanagers.nix # fix thunar configurations
     ./modules/filemanagers.nix
-    #./modules/foot.nix
+    ./modules/foot.nix
     #./modules/flatpaks.nix
     ./modules/discord.nix
     ./modules/games.nix #add aagl
@@ -107,6 +107,13 @@
     indicator = true;
   };
 
+	programs.git = {
+    enable = true;
+		package = pkgs.gitFull;
+    userName  = "Mega4349";
+    userEmail = "elliot.mortberg@gmail.com";
+  };
+
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -139,7 +146,7 @@
         });
       })
 
-      (self: supser: {
+      (self: super: {
         danser = self.callPackage ./pkgs/danser {};
       })
     ];
