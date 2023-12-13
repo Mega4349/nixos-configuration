@@ -23,14 +23,14 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
 
-			alias cl= "clear"
-			alias "cd.." = "cd .."
-			alias ls = "eza --icons --git --group-directories-first"
+			alias cl="clear"
+			alias "cd.." "cd .."
+			alias ls "eza --icons --git --group-directories-first"
     '';
     plugins = [
       # Enable a plugin (here grc for colorized command output) from nixpkgs
       { name = "grc"; src = pkgs.fishPlugins.grc.src; }
 		];
 	};
-	#xdg.configFile."fish".source = ./config/fish;
+	xdg.configFile."fish/functions".source = ./config/fish/functions;
 }

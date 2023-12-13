@@ -101,7 +101,7 @@ in
     gtklock
     wlogout
     swappy
-    autocutsel
+    copyq
     wl-gammactl
     wl-clipboard
     xfce.thunar
@@ -186,7 +186,7 @@ in
 
       keybindings = let 
         mod = "Mod4";
-        term = "wezterm";
+        term = "footclient";
         menu = "anyrun";
         filemanager = "nemo";
       in {
@@ -304,10 +304,11 @@ in
         exec swaync
         exec discordcanary
         exec deluge
-        exec autocutsel
+        exec copyq
         exec dbus-sway-environment
         exec steam
         #exec configure-gtk
+				exec foot --server
 
         # Assign windows to workspaces
         assign [app_id="firefox"] 2

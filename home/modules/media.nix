@@ -7,9 +7,9 @@
       profile = "gpu-hq";
       volume = "70";
       hwdec = "auto";
-      gpu-api = "vulkan";
+      #gpu-api = "vulkan";
       gpu-context = "wayland";
-      #vo = "gpu-next,gpu,dmabuf-wayland";
+      vo = "gpu-next,gpu,dmabuf-wayland";
       ao = "pipewire"; #,pulse";
       scale = "ewa_lanczos";
       dscale = "ewa_robidoux";

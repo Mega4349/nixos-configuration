@@ -14,16 +14,19 @@
     };
   };
   
-  home.pointerCursor = {
-    name = "Bibata-Original-Ice";
-    package = pkgs.bibata-cursors;
-    size = 24;
-    gtk.enable = true;
-    x11 = {
-      enable = true;
-      defaultCursor = "Bibata-Original-Ice";
-    };
-  };
+  home = {
+		packages = with pkgs; [ gtk-engine-murrine gtk_engines ];
+		pointerCursor = {
+    	name = "Bibata-Original-Ice";
+    	package = pkgs.bibata-cursors;
+    	size = 24;
+    	gtk.enable = true;
+    	x11 = {
+      	enable = true;
+      	defaultCursor = "Bibata-Original-Ice";
+    	};
+  	};
+	};
 
   xdg.configFile."gtk-3.0/gtk.css".text = '' 
     /*.nemo-places-sidebar .view { */ 

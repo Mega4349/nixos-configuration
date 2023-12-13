@@ -16,7 +16,8 @@
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       jetbrains-mono
       #nerdfonts
-      roboto-mono
+      #roboto-mono
+			fira
     ];
     fontconfig.defaultFonts = {
       serif = [ "Noto Serif" "Source Han Serif" ];

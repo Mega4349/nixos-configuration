@@ -77,6 +77,7 @@
         ".config/neofetch"
         ".config/VencordDesktop"
         
+				".local/share/fish"
         ".local/share/flatpak"
         ".local/share/danser"
         ".local/share/Steam"
