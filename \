@@ -39,6 +39,8 @@
     };
   };
 
+  systemd.services.lactd.enable = true;
+
   programs = {
     dconf.enable = true;
     fuse.userAllowOther = true;

@@ -26,7 +26,7 @@ in
     xfce.thunar-archive-plugin
     xfce.thunar-volman
     cinnamon.nemo
-
+		mpv
     wezterm_cwd
   ];
 
@@ -40,6 +40,7 @@ in
     in {
       "application/pdf" = pdf_reader;
       "audio/*" = video_player;
+			"audio/ogg" = video_player;
       "video/*" = video_player;
 			"video/mp4" = video_player;
 			"video/mkv" = video_player;

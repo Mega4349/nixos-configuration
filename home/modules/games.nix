@@ -10,7 +10,7 @@ lib.mkIf (osConfig.networking.hostName == "nixos-desktop") {
 
     pkgs.stepmania
 
-    games.osu-lazer-bin
+    #games.osu-lazer-bin
 
     #games.proton-ge
 

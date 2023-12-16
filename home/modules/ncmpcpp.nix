@@ -8,14 +8,14 @@
       dbFile = "~/.local/share/mpd/database";
       extraConfig = ''
         #port "6600" 
- 
+				
         auto_update "yes"
 
         audio_output {
           type "pipewire"
           name "MPD"
         }
-  
+				
         audio_output {
           type "fifo"
           name "ncmpcpp vizualizer"
@@ -27,22 +27,26 @@
     };
     mpd-discord-rpc = {
       enable = true;
-      #settings = {
-      #  hosts = [ "localhost:6600" ];
-      #  format = {
-      #  details = "$title";
-      #  state = "On $album by $artist";
-      #  large_image = "notes";
-      #  large_text = "$album";
-      #  small_image = "notes";
-      #  small_text = "$artist";
-      #  timestamp = "elapsed";
-      #  };
-      #};
+      settings = {
+        hosts = [ "localhost:6600" ];
+        format = {
+        details = "$title";
+        state = "On $album by $artist";
+        large_image = "notes";
+        large_text = "$album";
+        small_image = "notes";
+        small_text = "$artist";
+        timestamp = "elapsed";
+        };
+      };
     };
   };
 
-  home.packages = [ pkgs.mpc-cli ];
+  home.packages = with pkgs; [ 
+		mpc-cli 
+		mpd-discord-rpc
+		mpdscribble
+  ];
 
   programs.ncmpcpp = {
     enable = true;
@@ -84,9 +88,9 @@
 
       ## Classic Interface ##
       song_status_format = " $6%a $7⟫⟫ $3%t $7⟫⟫ $4%b ";
- 
-      ## Visualizer ##
-      #visualizer_fifo_path
+			
+			## Visualizer ##
+			#visualizer_fifo_path
       visualizer_data_source = "/tmp/mpd.fifo";
       visualizer_output_name = "my_fifo";
       #visualizer_sync_interval = "60";

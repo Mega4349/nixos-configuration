@@ -23,9 +23,6 @@
     # Nix User Repository(used for firefox extensions)
     nur.url = "github:nix-community/NUR";
 
-    # Stylix for theming
-    stylix.url = "github:danth/stylix";
-
     # Game stuff and pipewire low latency module
     nix-gaming.url = "github:fufexan/nix-gaming";
 
@@ -41,6 +38,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
+		anyrun-nixos-options = {
+			url = "github:n3oney/anyrun-nixos-options";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -73,7 +75,6 @@
     mkSystem = modules: nixpkgs.lib.nixosSystem {
       inherit modules;
       system = "x86_64-linux";
-      #config.allowUnfree = true;
       specialArgs = { inherit inputs; };
     };
 

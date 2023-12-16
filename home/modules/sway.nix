@@ -108,8 +108,6 @@ in
     pavucontrol
     wlopm
     imagemagick
-    #inputs.swaymonad.defaultPackage.x86_64-linux
-    #qpwgraph
     pamixer
   ];
 
@@ -247,7 +245,7 @@ in
         "${mod}+Shift+8" = "move container to workspace number 8";
         "${mod}+Shift+9" = "move container to workspace number 9";
         "${mod}+Shift+0" = "move container to workspace number 10";
-       
+      
         # Layout
         "${mod}+b" = "splith";
         "${mod}+v" = "splitv";
@@ -263,7 +261,7 @@ in
         "${mod}+Shift+space" = "floating toggle";
       
         "${mod}+r" = "mode \"resize\"";
-     
+    
         # Audio
         "XF86AudioRaiseVolume" = "exec 'pamixer -i 5'";
         "XF86AudioLowerVolume" = "exec 'pamixer -d 5'";
@@ -277,7 +275,7 @@ in
       floating.modifier = "Mod4";
 
       };
-    
+    	
       extraConfig = ''
         bindsym Mod4+0 workspace number 10 #Hopefully fixes sway starting on workspace 10
 
@@ -309,6 +307,7 @@ in
         exec steam
         #exec configure-gtk
 				exec foot --server
+				exec mpdscribble
 
         # Assign windows to workspaces
         assign [app_id="firefox"] 2
