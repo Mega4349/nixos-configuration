@@ -5,7 +5,7 @@
     enable = true;
     config = {
       profile = "gpu-hq";
-      volume = "70";
+      volume = "80";
       hwdec = "auto";
       #gpu-api = "vulkan";
       gpu-context = "wayland";

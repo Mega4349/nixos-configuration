@@ -7,7 +7,7 @@
   	  settings = {
     	  main = {
       	  shell = "tmux";
-					font = "JetBrainsMono:size=9";
+					font = "Maple Mono:size=9";
     			pad= "10x10";
       	};
 	      cursor = {

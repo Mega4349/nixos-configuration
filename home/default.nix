@@ -181,7 +181,7 @@
       (self: super: {
         mpv = super.mpv.override {
           scripts = with self.mpvScripts; 
-            [ mpris sponsorblock thumbnail webtorrent-mpv-hook ];
+            [ sponsorblock ]; #mpris thumbnail webtorrent-mpv-hook ];
         };
       })
     ];

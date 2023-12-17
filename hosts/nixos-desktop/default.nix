@@ -10,7 +10,7 @@
     #import modules from the modules directory
     ../../modules/bootloader.nix
     ../../modules/fonts.nix
-    ../../modules/greet.nix
+    ../../modules/greetd.nix
     ../../modules/hardware.nix #partially move to this file, some things will stay consistent
     #../../modules/kernel.nix
     ../../modules/nix.nix
@@ -32,6 +32,7 @@
         "/var/lib/libvirtd"
         "/var/lib/libvirt"
         "/var/cache/libvirt"
+				"/var/cache/regreet"
       ];
       files = [
         #"/etc/machine-id"

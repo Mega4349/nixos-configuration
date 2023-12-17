@@ -15,6 +15,7 @@
       ubuntu_font_family
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       jetbrains-mono
+			maple-mono
       #nerdfonts
       #roboto-mono
 			fira
