@@ -49,13 +49,12 @@
         stylus
         tab-counter-plus
         theater-mode-for-youtube
-        #translate-web-pages
+        translate-web-pages
         unpaywall
         youtube-shorts-block
       	video-downloadhelper
       	darkreader
       	text-contrast-for-dark-themes
-        #inputs.pipewire-screenaudio.packages.${pkgs.system}.default
       ];
     };
   };

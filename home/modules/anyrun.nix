@@ -1,3 +1,4 @@
+        #inputs.pipewire-screenaudio.packages.${pkgs.system}.default
 { inputs, pkgs, osConfig, ...}:
 
 {

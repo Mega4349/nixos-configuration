@@ -31,7 +31,7 @@
         hosts = [ "localhost:6600" ];
         format = {
         details = "$title";
-        state = "On $album by $artist";
+        state = "By $artist on $album";
         large_image = "notes";
         large_text = "$album";
         small_image = "notes";

@@ -34,7 +34,6 @@
     gimp
     avidemux
     #deadbeef-with-plugins
-    miniplayer
     musikcube
     yt-dlp
     ani-cli

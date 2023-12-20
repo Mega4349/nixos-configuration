@@ -35,7 +35,8 @@
 
   home = {
     packages = with pkgs; [ 
-      danser
+      (callPackage ./pkgs/danser {})
+			(callPackage ./pkgs/spotify-adblock {})
       neofetch
       #watershot
 			inputs.nix-gaming.packages.${pkgs.system}.proton-ge
@@ -146,10 +147,6 @@
             chmod +x $out/bin/avidemux3_cli
           '';
         });
-      })
-
-      (self: super: {
-        danser = self.callPackage ./pkgs/danser {};
       })
 
 			(final: prev: {
