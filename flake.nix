@@ -47,6 +47,11 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+		spicetify-nix ={ 
+			url = "github:the-argus/spicetify-nix";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
   };
 
   # Nix configurations, including binary cahces so you don't need to build things 
@@ -70,7 +75,7 @@
     ];
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, sops-nix, nur, nix-gaming, aagl, anyrun, nixvim, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, sops-nix, nur, nix-gaming, aagl, anyrun, nixvim, spicetify-nix, ... }: 
   let
     mkSystem = modules: nixpkgs.lib.nixosSystem {
       inherit modules;

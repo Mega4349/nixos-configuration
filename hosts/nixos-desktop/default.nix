@@ -28,7 +28,6 @@
       directories = [
         "/etc/NetworkManager/system-connections"
         #"/var/log"
-        "/var/lib/flatpak"
         "/var/lib/libvirtd"
         "/var/lib/libvirt"
         "/var/cache/libvirt"

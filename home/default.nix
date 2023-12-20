@@ -19,6 +19,7 @@
     ./modules/media.nix
     ./modules/ncmpcpp.nix #fix mpd not starting
     ./modules/editors.nix
+		./modules/spotify.nix
     #./modules/packages.nix #combine with productive, add pavucontrol
     ./modules/productive.nix
     ./modules/qt.nix #may not be needed with stylix
@@ -37,8 +38,6 @@
     packages = with pkgs; [ 
       (callPackage ./pkgs/danser {})
 			(callPackage ./pkgs/spotify-adblock {})
-      neofetch
-      #watershot
 			inputs.nix-gaming.packages.${pkgs.system}.proton-ge
     ];
     
@@ -79,7 +78,6 @@
         ".config/VencordDesktop"
         
 				".local/share/fish"
-        ".local/share/flatpak"
         ".local/share/danser"
         ".local/share/Steam"
         ".local/share/osu"

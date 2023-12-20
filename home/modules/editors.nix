@@ -26,6 +26,9 @@
       mapleader = " ";
       maplocalleader = " ";
     };
+		extraPlugins = with pkgs.vimPlugins; [
+    	nvim-window-picker
+		];
     plugins = {
       alpha = {
         enable = true;
@@ -84,7 +87,26 @@
 				indent.char = "▏";
 				#scope.enabled = false;
       };
-      lsp.enable = true;
+      lsp = {
+				enable = true;
+				servers = {
+          rust-analyzer = {
+						enable = true;
+						installRustc = true;
+						installCargo = true;
+					};
+          pylsp.enable = true;
+          nixd.enable = true;
+          clangd.enable = true;
+          html.enable = true;
+          jsonls.enable = true;
+          lua-ls.enable = true;
+          zls.enable = true;
+          cssls.enable = true;
+          cmake.enable = true;
+          bashls.enable = true; 
+        };
+			};
       neo-tree = {
         enable = true; 
         filesystem.filteredItems = {
@@ -100,6 +122,36 @@
       presence-nvim = {
         enable = true;
       };
+			nvim-cmp.enable = true;
+			cmp-nvim-lsp.enable = true;
+      cmp_luasnip.enable = true;
+      cmp-nvim-lua.enable = true;
+      cmp-omni.enable = true;
+      cmp-pandoc-nvim.enable = true;
+      cmp-pandoc-references.enable = true;
+      cmp-path.enable = true;
+      cmp-rg.enable = true;
+      cmp-snippy.enable = true;
+      cmp-spell.enable = true;
+      cmp-tabnine.enable = true;
+      cmp-tmux.enable = true;
+      cmp-treesitter.enable = true;
+
+      cmp-vim-lsp.enable = true;
+      cmp-vimwiki-tags.enable = true;
+      cmp-vsnip.enable = true;
+      cmp-zsh.enable = true;
+			nvim-cmp.snippet.expand = "luasnip";
+      nvim-cmp.mappingPresets = ["insert"];
+      nvim-cmp.sources = [
+	    {name = "nvim_lsp";}
+	    {name = "luasnip"; }
+        {name = "buffer"; }
+        {name = "path"; }
+      ];
+      nvim-cmp.mapping = {
+        "<Tab>" = "cmp.mapping.confirm({ select = true })";
+      };
     };
     keymaps = [
       {
@@ -113,6 +165,44 @@
 				action = "<cmd>ToggleTerm<cr>";
 			}
     ];
+		extraConfigLua = ''
+			require 'window-picker'.setup({
+    		hint = 'floating-big-letter',
+    		selection_chars = 'FJDKSLA;CMRUEIWOQP',
+    		picker_config = {
+        	statusline_winbar_picker = {
+            selection_display = function(char, windowid)
+              return '%=' .. char .. '%='
+            end,
+            use_winbar = 'never', -- "always" | "never" | "smart"
+        	},
+        	floating_big_letter = {
+            font = 'ansi-shadow', -- ansi-shadow |
+        	},
+    		},
+    		show_prompt = true,
+    		prompt_message = 'Pick window: ',
+    		filter_func = nil,
+    		filter_rules = {
+        	autoselect_one = true,
+        	include_current_win = false,
+        	bo = {
+            filetype = { 'notify' },
+            buftype = { 'terminal' },
+        	},
+        	wo = {},
+        	file_path_contains = {},
+        	file_name_contains = {},
+    		},
+			})
+				
+			function focus_window()
+    		local window = require('window-picker').pick_window()
+    		vim.api.nvim_set_current_win(window)
+			end
+
+			vim.keymap.set('n', '<leader><leader>s', focus_window)
+		'';
     extraConfigVim = ''
       highlight NeoTreeNormal guibg=none
       highlight NeoTreeNormal ctermbg=none

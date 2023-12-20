@@ -174,14 +174,6 @@ in
         hide_cursor = "3000";
       };
 
-      #startup = [
-      #  { command = "autotiling"; }
-      #  { command = "swaync"; }
-      #  { command = "firefox"; }
-      #  { command = "discord-canary"; }
-      #  { command = "autocutsel"; }
-      #];
-
       keybindings = let 
         mod = "Mod4";
         term = "footclient";
@@ -196,20 +188,18 @@ in
 
         "${mod}+Shift+c" = "reload";
 
-        #"${mod}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shirtcut. Do you really want to exit sway? This will end your wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
-  
-        "${mod}+Shift+e" = "exec wlogout -p layer-shell -b 5 -T 400 -B 400"; #TODO, not hardcoded pixel values, don't wanna figure it out now though...
+        "${mod}+Shift+e" = "exec wlogout -p layer-shell -b 5 -T 400 -B 400"; #TODO, not hardcoded pixel values
 
         "${mod}+s" =      	"exec grimshot --notify save area grimshot.png && roundedShadowScript && copyImageScript && cleanUpScript";
         "${mod}+Shift+s" = 	"exec grimshot --notify --cursor save screen - | swappy -f -";
         "${mod}+a" =    	"exec grimshot --notify save active grimshot.png && shadowScript && copyImageScript && cleanUpScript";
 
         "${mod}+n" = "exec swaync-client -t -sw";
-      
+    		 
         "${mod}+Mod1+Escape" = "exec gtklock";
 
         "${mod}+o" = "sticky toggle";
-      
+      	
         # Use $mod+[up|down|left|right] to move focus around
         "${mod}+Left" = "focus left";
         "${mod}+Down" = "focus down";
@@ -279,7 +269,7 @@ in
       extraConfig = ''
         bindsym Mod4+0 workspace number 10 #Hopefully fixes sway starting on workspace 10
 
-        exec swww init && swww img ~/Pictures/Wallpapers/trees.jpg
+        exec swww init && swww img ~/nixos-configuration/modules/files/trees.jpg
 
         bindsym --whole-window Mod4+button4 workspace prev
         bindsym --whole-window Mod4+button5 workspace next
@@ -297,7 +287,6 @@ in
 
         # Execute on startup
         exec autotiling --limit 2
-        #exec swaymonad --default-layout 3_col
         exec firefox
         exec swaync
         exec discordcanary
@@ -305,7 +294,6 @@ in
         exec copyq
         exec dbus-sway-environment
         exec steam
-        #exec configure-gtk
 				exec foot --server
 				exec mpdscribble
 
