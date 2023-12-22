@@ -4,8 +4,6 @@
   imports = [ 
     inputs.nixvim.homeManagerModules.nixvim
   ];
-  
-  #xdg.configFile."nvim".source = ./config/nvim;
 
   programs.nixvim = {
     enable = true;
@@ -78,6 +76,8 @@
           }
         ];
       };
+			auto-save.enable = true;
+			notify.enable = true;
 			telescope.enable = true;
 			toggleterm.enable = true;
 			treesitter.enable = true;
@@ -152,6 +152,7 @@
       nvim-cmp.mapping = {
         "<Tab>" = "cmp.mapping.confirm({ select = true })";
       };
+			markdown-preview.enable = true;
     };
     keymaps = [
       {

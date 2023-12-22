@@ -19,7 +19,6 @@ in
   home.packages = with pkgs; [
     ranger-sixel
     ffmpegthumbnailer
-    #poppler
     evince
     xfce.tumbler
     xfce.thunar
@@ -47,9 +46,6 @@ in
 			"image/png" = image_viewer;
 			"image/gif" = image_viewer;
     };
-
-    #associations.removed = let browser = [ "chromium.desktop" ];
-    #in { "application/pdf" = browser; };
   };
 
   dconf.settings = {
@@ -78,9 +74,6 @@ in
     "Vencord/settings/quickCss.css".source = ./config/Vencord/settings/quickCss.css; 
 
     "swaync".source = ./config/swaync;
-
-    #thunar configuration
-    #"xfce4/xfconf/xfce-perchannel-xml/thunar.xml".source = ./config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml;
 
     # btop
     "btop/btop.conf".source = ./config/btop/btop.conf;

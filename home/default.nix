@@ -4,32 +4,30 @@
   imports = [
     inputs.impermanence.nixosModules.home-manager.impermanence
     inputs.anyrun.homeManagerModules.default
-    #./modules/eww.nix #use eww only for logout menu, maybe
+		../pkgs
     ./modules/firefox.nix
     ./modules/anyrun.nix
-    #./modules/danser.nix
-    ./modules/filemanagers.nix # fix thunar configurations
+    ./modules/filemanagers.nix
     ./modules/filemanagers.nix
     ./modules/foot.nix
-    #./modules/flatpaks.nix
     ./modules/discord.nix
     ./modules/games.nix #add aagl
     ./modules/gtk.nix
     #./modules/hyprland.nix
     ./modules/media.nix
+		./modules/mpv.nix
     ./modules/ncmpcpp.nix #fix mpd not starting
     ./modules/editors.nix
-		./modules/spotify.nix
-    #./modules/packages.nix #combine with productive, add pavucontrol
+		#./modules/spotify.nix
     ./modules/productive.nix
-    ./modules/qt.nix #may not be needed with stylix
+    ./modules/qt.nix
     ./modules/qtile.nix
     #./modules/river.nix
     ./modules/sway.nix
     ./modules/waybar.nix #make vertical waybar
     ./modules/terminal.nix #wezterm or kitty
     ./modules/shell.nix
-    #./pkgs
+    ./modules/xdg.nix
   ];
 
   programs.home-manager.enable = true;
@@ -39,6 +37,7 @@
       (callPackage ./pkgs/danser {})
 			(callPackage ./pkgs/spotify-adblock {})
 			inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+			gpu-viewer
     ];
     
     username = "mega";

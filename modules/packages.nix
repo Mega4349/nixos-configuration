@@ -26,20 +26,27 @@
     curl
     unzip
     pciutils
+		glxinfo
+		vulkan-tools
     psmisc
     btop
     htop
     jq
+		tree
     libva-utils
 
     wineWowPackages.staging
     mono
+
+		cachix
 
 		steamtinkerlaunch
 
     jmtpfs
 
     amdgpu_top
+		
+		cachix
 
     appimage-run
 
@@ -47,19 +54,5 @@
     #pfetch
   ];
   
-  # Overlay to remove vsync from xwayland
-  #nixpkgs.overlays = [
-  #  (final: prev: {
-  #    xwayland = prev.xwayland.overrideAttrs (o: {
-  #      patches = (o.patches or [ ]) ++ [
-  #        ./files/xwayland-vsync.diff
-  #      ];
-  #    });
-  #  })
-  #]; 
-
-  # remove and build discover overlay and missioncenter from source instead
-  #services.flatpak.enable = true;
-
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }
