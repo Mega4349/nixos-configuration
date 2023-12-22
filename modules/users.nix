@@ -16,8 +16,7 @@
   users = {
     mutableUsers = false;
       defaultUserShell = pkgs.fish;
-
-    users = {
+		users = {
       root = {
         initialPassword = "1234"; # TODO use secrets instead
       };

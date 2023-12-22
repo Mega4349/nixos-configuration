@@ -15,41 +15,29 @@
     };
     # Gamemode to run games better
     gamemode.enable = true;
-
 		nano.enable = false;
   };
 
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    wget
-    curl
-    pciutils
-		glxinfo
-		vulkan-tools
-    psmisc
-    jq
-		tree
-    libva-utils
+  environment = {
+		systemPackages = with pkgs; [
+    	git
+    	vim
+    	wget
+    	curl
+			
+  		pciutils
+			glxinfo
+			vulkan-tools
+    	psmisc
+    	jq
+			tree
+    	libva-utils
 
-    wineWowPackages.staging
-    mono
+    	wineWowPackages.staging
+    	mono
 
-		cachix
-
-		steamtinkerlaunch
-
-    jmtpfs
-
-    amdgpu_top
-		
-		cachix
-
-    appimage-run
-
-    #fastfetch
-    #pfetch
-  ];
-  
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+			cachix
+  	];
+  	sessionVariables.NIXOS_OZONE_WL = "1";
+	};
 }

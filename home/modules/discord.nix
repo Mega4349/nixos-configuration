@@ -1,8 +1,6 @@
 { pkgs, inputs, ... }:
 
 {
-	imports = [ inputs.impermanence.nixosModules.home-manager.impermanence ];
-
   home = {
 		packages = [
     	(pkgs.discord-canary.override {
@@ -10,12 +8,10 @@
   		})
 			pkgs.vesktop
   	];
-		persistence."/nix/persist/home/mega" = {
-			allowOther = true;
-			directories = [
-				".config/discordcanary"
-			];
-		};
+		persistence."/nix/persist/home/mega".directories = [
+			".config/discordcanary"
+			".config/VencordDesktop"
+		];
 	};
 	
 	xdg.configFile = {

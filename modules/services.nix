@@ -1,4 +1,4 @@
-{ pkgs, inputs, system, lib, ... }:
+{ pkgs, system, lib, ... }:
 
 {
 	#Only meant for ALSA configurations, set to false for pipewire
@@ -10,9 +10,8 @@
 		  alsa = {
 		    enable = true;
 		    support32Bit = true;
-		};
+			};
 		  pulse.enable = true;
-		  #jack.enable = true;
 		  wireplumber.enable = true;
 		};
 		
@@ -28,7 +27,6 @@
 	    };
 	  };
 	  
-	  flatpak.enable = true;
 	  gvfs.enable = true; # For mounting and trash in thunar
 	  tumbler.enable = true; # Thumbnail support for images
 	  dbus.enable = true;

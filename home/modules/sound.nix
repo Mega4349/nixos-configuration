@@ -42,11 +42,24 @@
     };
   };
 
-  home.packages = with pkgs; [ 
-		mpc-cli 
-		mpd-discord-rpc
-		mpdscribble
-  ];
+  home = {
+		packages = with pkgs; [ 
+			mpc-cli 
+			mpd-discord-rpc
+			mpdscribble
+			musikcube
+  	];
+		persistence."/nix/persist/home/mega".directories = [
+			".mpdscribble"	
+			".local/share/mpd"
+			".local/share/wireplumber"
+		];
+	};
+
+	xdg.configFile = {
+		"pipewire".source = ./config/pipewire;
+		#"musikcube".source = ./config/musikcube;
+	};
 
   programs.ncmpcpp = {
     enable = true;

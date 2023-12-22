@@ -1,8 +1,8 @@
-        #inputs.pipewire-screenaudio.packages.${pkgs.system}.default
-{ inputs, pkgs, osConfig, ...}:
+{ pkgs, inputs, osConfig, ...}:
 
 {
-  #imports = [ inputs.anyrun.homeManagerModules.default ];  
+	imports = [ inputs.anyrun.homeManagerModules.default ];
+
   programs.anyrun = {
     enable = true;
     config = {

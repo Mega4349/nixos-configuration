@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     river
-    swww
-    way-displays
   ];
+
+	xdg.configFile."river".source = ../config/river;
 }

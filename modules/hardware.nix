@@ -21,11 +21,6 @@
       MatchName=OpenTabletDriver*
       AttrTabletSmoothing=0
     '';
- 
-    systemPackages = with pkgs; [
-      wootility #Wooting keyboard customization software
-      via
-    ];
   };
 
   #udev rules for wootility access to my keyboard, https://help.wooting.io/article/147-configuring-device-access-for-wootility-under-linux-udev-rules

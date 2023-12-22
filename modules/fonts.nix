@@ -1,4 +1,3 @@
-# TODO use other fonts than default
 { pkgs, ... }:
 
 {

@@ -1,4 +1,4 @@
-{pkgs, ... }:
+{ pkgs, ... }:
 
 {
 	nixpkgs.overlays = [
@@ -12,6 +12,7 @@
 
 	home.packages = with pkgs; [
 		yt-dlp
+		mpv
 	];
 
 	programs.mpv = {

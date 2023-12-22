@@ -30,6 +30,8 @@
     supportedFilesystems = [ "ntfs" ]; #For mounting windows disks
   };
 
+	environment.systemPackages = [ pkgs.appimage-run ];
+
   fileSystems."/" = {
       device = "none";
       fsType = "tmpfs";

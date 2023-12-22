@@ -57,11 +57,5 @@ in
 		};
   };
 
-  xdg.configFile = {
-    "ranger".source = ./config/ranger;
-
-    "swaync".source = ./config/swaync;
-
-    "obs-studio/themes".source = ./config/obs-studio/themes;
-  };
+  xdg.configFile."ranger".source = ./config/ranger;
 }

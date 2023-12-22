@@ -1,17 +1,13 @@
 { pkgs, inputs, ... }:
 
 {
- # imports = [ inputs.hyprland.homeManagerModules.default ];
+  # imports = [ inputs.hyprland.homeManagerModules.default ];
 
   home.packages = with pkgs; [
     xdg-desktop-portal-hyprland
-    #grimblast
+    grimblast
     hyprpaper
     hyprpicker
-    #inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-    slurp 
-    grim
-    jaq
   ];
 
   wayland.windowManager.hyprland = {
@@ -31,7 +27,7 @@
         kb_options = gpr:alt_caps_toggle
 
         follow_mouse = 1
-    
+        
         accel_profile = flat
         sensitivity = 0 
       }

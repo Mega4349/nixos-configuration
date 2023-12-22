@@ -13,23 +13,16 @@ let
   '';
 };
 
-  configure-gtk = pkgs.writeTextFile {
-  name = "configure-gtk";
-  destination = "/bin/configure-gtk";
-  executable = true;
-  text = let
-    schema = pkgs.gsettings-desktop-schemas;
-    datadir = "${schema}/share/gsettings-schemas/${schema.name}";
-  in ''
-    export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
-    gnome_schema=org.gnome.desktop.interface
-    gsettings set $gnome_schema gtk-theme 'Tokyonight-Dark-BL'
-    '';
-  };
-
   swayConfig = pkgs.writeText "greetd-sway-config" ''
     exec dbus-sway-environment
-    exec configure-gtk
+		seat seat0 xcursor_theme Bibata-Original-Ice 24
+
+		set $gnome-schema org.gnome.desktop.interface
+		exec_always {
+    	gsettings set $gnome-schema gtk-theme "Tokyonight-Dark-B"
+    	gsettings set $gnome-schema cursor-theme "Bibata-Original-Ice"
+		}
+
     # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
     exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l; swaymsg exit"
     bindsym Mod4+shift+e exec swaynag \
@@ -49,13 +42,13 @@ in
     };
   };
   
-  environment.systemPackages = [ dbus-sway-environment configure-gtk pkgs.tokyo-night-gtk ];
+  environment.systemPackages = [ dbus-sway-environment pkgs.tokyo-night-gtk ];
 
   security.pam.services.gtklock.text = lib.readFile "${pkgs.gtklock}/etc/pam.d/gtklock";
 
   environment.etc."greetd/environments".text = ''
     sway
-    qtile start -b wayland
+		fish
     zsh
     bash
   '';

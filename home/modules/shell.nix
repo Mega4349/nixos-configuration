@@ -1,8 +1,6 @@
 { pkgs, inputs, ... }:
 
 {
-  imports = [ inputs.impermanence.nixosModules.home-manager.impermanence ];
-
   programs = {
 		fish = {
     	enable = true;
@@ -16,6 +14,8 @@
     	plugins = [
       	# Enable a plugin (here grc for colorized command output) from nixpkgs
     	  { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+				{ name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
+				{ name = "colored-man-pages"; src = pkgs.fishPlugins.autopair.src; }
 			];
 		};
 		zsh = {
@@ -66,6 +66,8 @@
 		packages =  with pkgs; [
 			eza
 			fishPlugins.grc
+			fishPlugins.autopair
+			fishPlugins.colored-man-pages
 			grc
 		];
 		persistence."/nix/persist/home/mega" = {

@@ -1,8 +1,6 @@
 { pkgs, inputs, ... }:
 
 {
-	imports = [ inputs.impermanence.nixosModules.home-manager.impermanence ];
-	
 	nixpkgs.overlays = [
 		#https://github.com/NixOS/nixpkgs/issues/239424
     (final: prev: {
@@ -28,13 +26,18 @@
 			deluge-gtk
 			zathura
 			imv
+			gimp
 			avidemux
+			wootility
+			via
+			ani-cli
+			manga-cli
 		];
-		#persistence."/nix/persist/home/mega" = {
-		#	directories = [
-		#		".config/krita"
-		#		".config/blender"
-		#	];
-		#};
+		persistence."/nix/persist/home/mega".directories = [
+			".config/krita"
+			".config/blender"
+			".config/deluge"
+			".config/wootility-lekker"
+		];
 	};
 }

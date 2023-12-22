@@ -19,18 +19,4 @@
 			"image/gif" = image_viewer;
     };
   };
-
-  dconf.settings = {
-    "org/cinnamon/desktop/applications/terminal" = {
-      exec = "wezterm_cwd";
-    };
-		"org/nemo/preferences" = {
-			click-double-parent-folder = true;
-			click-policy = "single";
-			show-hidden-files = true;
-			size-prefixes = "base-2";
-			thumbnail-limit = "68719476735";
-		};
-  };
-
 }
