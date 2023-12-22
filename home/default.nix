@@ -6,26 +6,26 @@
 
 		../pkgs
 		./modules/wayland
-
-		./modules/firefox.nix
+    
+    ./modules/discord.nix
 		./modules/filemanagers.nix
-		./modules/filemanagers.nix
+    ./modules/firefox.nix
 		./modules/foot.nix
-		./modules/discord.nix
-		./modules/games.nix #add aagl
+		./modules/games.nix
 		./modules/git.nix
-		./modules/theme.nix
 		./modules/mpv.nix
-		./modules/sound.nix
+    ./modules/neovim.nix
 		./modules/nix.nix
-		./modules/neovim.nix
-		#./modules/spotify.nix
 		./modules/obs.nix
+    ./modules/packages.nix
+    ./modules/shell.nix
+    ./modules/sound.nix
+    #./modules/spotify.nix
+    ./modules/theme.nix
 		./modules/tmux.nix
 		./modules/utilities.nix
 		./modules/virtualisation.nix
 		#./modules/wezterm.nix
-		./modules/shell.nix
 		./modules/xdg.nix
   ];
 
