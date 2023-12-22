@@ -3,8 +3,10 @@
 {
   imports = [
 		inputs.impermanence.nixosModules.home-manager.impermanence
+
 		../pkgs
 		./modules/wayland
+
 		./modules/firefox.nix
 		./modules/filemanagers.nix
 		./modules/filemanagers.nix
