@@ -19,7 +19,7 @@ let
 
 		set $gnome-schema org.gnome.desktop.interface
 		exec_always {
-    	gsettings set $gnome-schema gtk-theme "Tokyonight-Dark-B"
+    	gsettings set $gnome-schema gtk-theme "Tokyonight-Dark-BL"
     	gsettings set $gnome-schema cursor-theme "Bibata-Original-Ice"
 		}
 
@@ -42,16 +42,20 @@ in
     };
   };
   
-  environment.systemPackages = [ dbus-sway-environment pkgs.tokyo-night-gtk ];
-
   security.pam.services.gtklock.text = lib.readFile "${pkgs.gtklock}/etc/pam.d/gtklock";
 
-  environment.etc."greetd/environments".text = ''
-    sway
-		fish
-    zsh
-    bash
-  '';
+  environment = {
+    etc."greetd/environments".text = ''
+      sway
+		  fish
+      zsh
+      bash
+    '';
+    systemPackages = [ 
+      dbus-sway-environment 
+      pkgs.tokyo-night-gtk 
+    ];
+  };
 }
 
 
