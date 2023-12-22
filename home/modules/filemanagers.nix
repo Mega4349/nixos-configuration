@@ -16,6 +16,19 @@ let
 in
 
 {
+	nixpkgs.overlays = [
+		(final: prev: {
+  	  ranger-sixel = prev.ranger.overrideAttrs (oldAttrs: {
+      	patches = (oldAttrs.patches or [ ]) ++ [
+      		(prev.fetchpatch {
+          	url = "https://github.com/3ap/ranger/commit/ef9ec1f0e0786e2935c233e4321684514c2c6553.patch";
+        		sha256 = "sha256-MJbIBuFeOvYnF6KntWJ2ODQ4KAcbnFEQ1axt1iQGkWY=";
+        	})
+    		];
+  		});
+  	})
+	];
+
   home.packages = with pkgs; [
     ranger-sixel
     ffmpegthumbnailer
@@ -29,26 +42,7 @@ in
     wezterm_cwd
   ];
 
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = let
-      pdf_reader = [ "zathura.desktop;" ];
-      browser = [ "firefox.desktop;" ];
-      video_player = [ "mpv.desktop;" ];
-      image_viewer = [ "imv-dir.desktop;" ];
-    in {
-      "application/pdf" = pdf_reader;
-      "audio/mp3" = video_player;
-			"audio/ogg" = video_player;
-			"video/mp4" = video_player;
-			"video/mkv" = video_player;
-			"image/jpeg" = image_viewer;
-			"image/png" = image_viewer;
-			"image/gif" = image_viewer;
-    };
-  };
-
-  dconf.settings = {
+	dconf.settings = {
     "org/cinnamon/desktop/applications/terminal" = {
       exec = "wezterm_cwd";
     };
@@ -62,16 +56,7 @@ in
   };
 
   xdg.configFile = {
-    "ranger/rc.conf".source = ./config/ranger/rc.conf;
-    "ranger/scope.sh" = {
-      source = ./config/ranger/scope.sh;
-      executable = true;
-    };
-		"ranger/plugins".source = ./config/ranger/plugins;
-
-    #TODO move to separate file
-    "Vencord/settings/settings.json".source = ./config/Vencord/settings/settings.json;
-    "Vencord/settings/quickCss.css".source = ./config/Vencord/settings/quickCss.css; 
+    "ranger".source = ./config/ranger;
 
     "swaync".source = ./config/swaync;
 
