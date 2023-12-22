@@ -24,13 +24,10 @@
     vim
     wget
     curl
-    unzip
     pciutils
 		glxinfo
 		vulkan-tools
     psmisc
-    btop
-    htop
     jq
 		tree
     libva-utils

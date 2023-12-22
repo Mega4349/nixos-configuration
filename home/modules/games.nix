@@ -23,6 +23,16 @@ lib.mkIf (osConfig.networking.hostName == "nixos-desktop") {
 
     games.osu-stable
   ];
+	
+	nixpkgs.overlays = [
+    (final: prev: {
+      xwayland = prev.xwayland.overrideAttrs (o: {
+        patches = (o.patches or []) ++ [
+          ../../modules/files/xwayland-vsync.diff
+        ];
+      });
+    })
+  ];
 
   xdg.configFile."pipewire".source = ./config/pipewire;
 }

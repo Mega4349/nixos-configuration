@@ -11,6 +11,5 @@
     yt-dlp
     ani-cli
     manga-cli
-    zathura
   ];
 }

@@ -32,14 +32,16 @@ in
   home.packages = with pkgs; [
     ranger-sixel
     ffmpegthumbnailer
-    evince
+		ffmpeg
     xfce.tumbler
-    xfce.thunar
     xfce.thunar-archive-plugin
     xfce.thunar-volman
     cinnamon.nemo
 		mpv
     wezterm_cwd
+		unrar
+		unzip
+		xarchiver
   ];
 
 	dconf.settings = {
@@ -60,10 +62,6 @@ in
 
     "swaync".source = ./config/swaync;
 
-    # btop
-    "btop/btop.conf".source = ./config/btop/btop.conf;
-
-    # obs themes
     "obs-studio/themes".source = ./config/obs-studio/themes;
   };
 }

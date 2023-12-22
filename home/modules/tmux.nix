@@ -68,6 +68,4 @@
 				set -g window-status-separator ""
 			'';
 		};
-	};
-
 }

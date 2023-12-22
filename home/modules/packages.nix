@@ -1,12 +1,15 @@
-{ inputs, flatpaks, ... }:
+{ pkgs, inputs, ... }:
 
 {
-  #services.flatpak = {
-  #  enableModule = true;
-  #  remotes = { "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo"; };
-  #  packages = [
-  #    "flathub:app/io.github.trigg.discover_overlay//stable"
-  #    "flathub:app/io.missioncenter.MissionCenter//stable"
-  #  ];
-  #};
+	home.packages = with pkgs; [
+		btop
+		htop
+		neofetch
+	];
+	
+	xdg.configFile = {
+		"btop".source = ./config/btop;
+
+		"neofetch".source = ./config/neofetch;
+	};
 }

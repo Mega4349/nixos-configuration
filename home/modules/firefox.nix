@@ -1,11 +1,22 @@
 { pkgs, inputs, ... }:
 
 {
-  home.packages = with pkgs; [
-		thunderbird
-	];
+	imports = [ inputs.impermanence.nixosModules.home-manager.impermanence ];
+
+  home = {
+		packages = with pkgs; [
+			thunderbird
+		];
+		persistence."/nix/persist/home/mega" = {
+			allowOther = true;
+			directories = [
+				".mozilla"
+				".thunderbird"
+			];
+		};
+	};
 	
-	nixpkgs.overlays = inputs.nur.overlay;
+	nixpkgs.overlays = [ inputs.nur.overlay ];
 
   programs.firefox = {
     enable = true;

@@ -1,6 +1,19 @@
 {pkgs, ... }:
 
 {
+	nixpkgs.overlays = [
+		(self: super: {
+      mpv = super.mpv.override {
+        scripts = with self.mpvScripts; 
+        [ sponsorblock ]; #mpris thumbnail webtorrent-mpv-hook ];
+      };
+    })
+	];
+
+	home.packages = with pkgs; [
+		yt-dlp
+	];
+
 	programs.mpv = {
     enable = true;
     config = {
