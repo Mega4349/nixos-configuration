@@ -42,17 +42,16 @@
 		  amdgpu_top
 		  jmtpfs
 		];
-
-	xdg.configFile = {
-		"btop".source = ./config/btop;
-		"neofetch".source = ./config/neofetch;
-	};
-
-		persistence."/nix/persist/home/mega".directories = [
+  	persistence."/nix/persist/home/mega".directories = [
 			".config/krita"
 			".config/blender"
 			".config/deluge"
 			".config/wootility-lekker"
 		];
+  };
+
+	xdg.configFile = {
+		"btop".source = ./config/btop;
+		"neofetch".source = ./config/neofetch;
 	};
 }
