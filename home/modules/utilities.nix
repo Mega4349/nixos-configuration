@@ -32,7 +32,22 @@
 			via
 			ani-cli
 			manga-cli
+      mission-center
+      btop
+		  htop
+		  neofetch
+		  fastfetch
+		  pfetch
+		  gpu-viewer
+		  amdgpu_top
+		  jmtpfs
 		];
+
+	xdg.configFile = {
+		"btop".source = ./config/btop;
+		"neofetch".source = ./config/neofetch;
+	};
+
 		persistence."/nix/persist/home/mega".directories = [
 			".config/krita"
 			".config/blender"
