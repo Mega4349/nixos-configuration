@@ -105,7 +105,7 @@ in
         "${mod}+a" =    	"exec grimshot --notify save active grimshot.png && shadowScript && copyImageScript && cleanUpScript";
 
         "${mod}+n" = "exec swaync-client -t -sw";
-    		 
+    		
         "${mod}+Mod1+Escape" = "exec gtklock";
 
         "${mod}+o" = "sticky toggle";
@@ -133,7 +133,7 @@ in
         "${mod}+8" = "workspace number 8";
         "${mod}+9" = "workspace number 9";
         #"${mod}+0" = "workspace number 10";
-      
+        
         # Move focused container to workspace
         "${mod}+Shift+1" = "move container to workspace number 1";
         "${mod}+Shift+2" = "move container to workspace number 2";
@@ -145,7 +145,7 @@ in
         "${mod}+Shift+8" = "move container to workspace number 8";
         "${mod}+Shift+9" = "move container to workspace number 9";
         "${mod}+Shift+0" = "move container to workspace number 10";
-      
+        
         # Layout
         "${mod}+b" = "splith";
         "${mod}+v" = "splitv";
@@ -159,9 +159,9 @@ in
 
         # Toggle the current focused window bettween tiling and floating mode
         "${mod}+Shift+space" = "floating toggle";
-      
+        
         "${mod}+r" = "mode \"resize\"";
-    
+        
         # Audio
         "XF86AudioRaiseVolume" = "exec 'pamixer -i 5'";
         "XF86AudioLowerVolume" = "exec 'pamixer -d 5'";
@@ -171,135 +171,90 @@ in
         "XF86MonBrightnessDown" = "exec light -U 10";
         "XF86MonBrightnessUp" = "exec light -A 10";
       };
-
-      floating.modifier = "Mod4";
-
-      };
+    floating.modifier = "Mod4";
+    };
     	
-      extraConfig = ''
-        bindsym Mod4+0 workspace number 10 #Hopefully fixes sway starting on workspace 10
+    extraConfig = ''
+      bindsym Mod4+0 workspace number 10 #Hopefully fixes sway starting on workspace 10
 
-        exec swww init && swww img ~/nixos-configuration/modules/files/trees.jpg
+      exec swww init && swww img ~/nixos-configuration/modules/files/trees.jpg
 
-        bindsym --whole-window Mod4+button4 workspace prev
-        bindsym --whole-window Mod4+button5 workspace next
-        corner_radius 0
-        blur enable
-        blur_xray enable
-        blur_passes 2
-        blur_radius 4
-        shadows enable
-        default_border pixel 2
-        default_floating_border pixel 2
-        scratchpad_minimize disable
-        bindgesture swipe:right workspace prev
-        bindgesture swipe:left workspace next
+      bindsym --whole-window Mod4+button4 workspace prev
+      bindsym --whole-window Mod4+button5 workspace next
+      corner_radius 0
+      blur enable
+      blur_xray enable
+      blur_passes 2
+      blur_radius 4
+      shadows enable
+      default_border pixel 2
+      default_floating_border pixel 2
+      scratchpad_minimize disable
+      bindgesture swipe:right workspace prev
+      bindgesture swipe:left workspace next
 
-        # Execute on startup
-        exec autotiling --limit 2
-        exec firefox
-        exec swaync
-        exec discordcanary
-        exec deluge
-        exec copyq
-        exec dbus-sway-environment
-        exec steam
-				exec foot --server
-				exec mpdscribble
+      # Execute on startup
+      exec autotiling --limit 2
+      exec firefox
+      exec swaync
+      exec vencorddesktop #discordcanary
+      exec deluge
+      exec copyq
+      exec dbus-sway-environment
+      exec steam
+			exec foot --server
+			exec mpdscribble
 
-        # Assign windows to workspaces
-        assign [app_id="firefox"] 2
-        assign [app_id="discord"] 3 
-        assign [class="steam"] 4
-        assign [app_id="transmission-gtk"] 5
-        assign [app_id="deluge"] 5
+      # Assign windows to workspaces
+      assign [app_id="firefox"] 2
+      assign [app_id="VencordDesktop"] 3
+      assign [app_id="discord"] 3 
+      assign [class="steam"] 4
+      assign [app_id="transmission-gtk"] 5
+      assign [app_id="deluge"] 5
 
-        # set floating
-        for_window [app_id="float"] floating enable
+      # set floating
+      for_window [app_id="float"] floating enable
 
-        for_window [app_id="blueman-manager"] floating enable, resize set width 40 ppt height 30 ppt
-        for_window [app_id="OpenTabletDriver.UX.Gtk"] floating enable, resize set width 60 height 55
-        for_window [app_id="pavucontrol" ] floating enable, resize set width 40 ppt height 30 ppt
-        for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
-        for_window [app_id="nwg-look"] floating enable, resize set width 40 ppt height 50 ppt
-        for_window [window_role="pop-up"] floating enable
-        for_window [window_role="bubble"] floating enable
-        for_window [window_role="task_dialog"] floating enable
-        for_window [window_role="Preferences"] floating enable
-        for_window [window_type="dialog"] floating enable
-        for_window [window_type="menu"] floating enable
-        for_window [window_role="About"] floating enable
-        for_window [title="File Operation Progress"] floating enable, sticky enable, resize set width 40 ppt height 30 ppt
-        for_window [title="Confirm to replace files"] floating enable
-        for_window [app_id="firefox" title="^Library$"] floating enable, sticky enable, resize set width 40 ppt height 30 ppt
-        for_window [app_id="floating_shell_portrait"] floating enable, sticky enable, resize set width 30 ppt height 40 ppt
-        for_window [title="Picture-in-Picture"] floating enable, sticky enable, border pixel 2
-        for_window [title="Save File"] floating enable
+      for_window [app_id="blueman-manager"] floating enable, resize set width 40 ppt height 30 ppt
+      for_window [app_id="OpenTabletDriver.UX.Gtk"] floating enable, resize set width 60 ppt height 55 ppt
+      for_window [app_id="pavucontrol" ] floating enable, resize set width 40 ppt height 30 ppt
+      for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
+      for_window [app_id="nwg-look"] floating enable, resize set width 40 ppt height 50 ppt
+      for_window [window_role="pop-up"] floating enable
+      for_window [window_role="bubble"] floating enable
+      for_window [window_role="task_dialog"] floating enable
+      for_window [window_role="Preferences"] floating enable
+      for_window [window_type="dialog"] floating enable
+      for_window [window_type="menu"] floating enable
+      for_window [window_role="About"] floating enable
+      for_window [title="File Operation Progress"] floating enable, sticky enable, resize set width 40 ppt height 30 ppt
+      for_window [title="Confirm to replace files"] floating enable
+      for_window [app_id="firefox" title="^Library$"] floating enable, sticky enable, resize set width 40 ppt height 30 ppt
+      for_window [app_id="floating_shell_portrait"] floating enable, sticky enable, resize set width 30 ppt height 40 ppt
+      for_window [title="Picture-in-Picture"] floating enable, sticky enable, border pixel 2
+      for_window [title="Save File"] floating enable
 
-        for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
+      for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
 
-        for_window [class="steam_app_72850"] fullscreen enable
+      for_window [class="steam_app_72850"] fullscreen enable
 
-        # Inhibit idle
-        for_window [app_id="firefox"] inhibit_idle fullscreen
-        for_window [app_id="Chromium"] inhibit_idle fullscreen
- 
-        for_window [class=".*"]  border pixel 2
-        for_window [app_id=".*"] border pixel 2
- 
-        # class                 border  bground text    indicator child_border
-        client.focused          #7AA2F7 #7AA2F7 #F8F8F2 #7AA2F7   #7AA2F7
-        client.focused_inactive #1a1b26 #1a1b26 #F8F8F2 #1a1b26   #1a1b26
-        client.unfocused        #1a1b26 #1a1b26 #F8F8F2 #1a1b26   #1a1b26
-        client.urgent           #FF5555 #FF5555 #F8F8F2 #FF5555   #FF5555
-        client.placeholder      #1a1b26 #1a1b26 #F8F8F2 #1a1b26   #1a1b26
-        client.background       #1a1b26     
+      # Inhibit idle
+      for_window [app_id="firefox"] inhibit_idle fullscreen
+      for_window [app_id="Chromium"] inhibit_idle fullscreen
 
-        layer_effects "waybar" shadows enable;
-      '';
-  };
+      for_window [class=".*"]  border pixel 2
+      for_window [app_id=".*"] border pixel 2
 
-  xdg.configFile = {
-    "gtklock/style.css".text = ''
-      window {
-        background: rgba(0, 0, 0, .5);
-      }
+      # class                 border  bground text    indicator child_border
+      client.focused          #7AA2F7 #7AA2F7 #F8F8F2 #7AA2F7   #7AA2F7
+      client.focused_inactive #1a1b26 #1a1b26 #F8F8F2 #1a1b26   #1a1b26
+      client.unfocused        #1a1b26 #1a1b26 #F8F8F2 #1a1b26   #1a1b26
+      client.urgent           #FF5555 #FF5555 #F8F8F2 #FF5555   #FF5555
+      client.placeholder      #1a1b26 #1a1b26 #F8F8F2 #1a1b26   #1a1b26
+      client.background       #1a1b26     
 
-      grid > label {
-        color: transparent;
-        margin: -20rem;
-      }
-
-      button {
-        all: unset;
-        color: transparent;
-        margin: -20rem;
-      }
-
-      #clock-label {
-        font-size: 6rem;
-        margin-bottom: 4rem;
-        text-shadow: 0px 2px 10px rgba(0, 0, 0, .1);
-      }
-
-      entry {
-        border-radius: 0px;
-        margin: 6rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
-      }
+      layer_effects "waybar" shadows enable;
     '';
-  };
-
-  services.swayidle = {
-    enable = true;
-    events = [
-      { event = "before-sleep"; command = "${pkgs.gtklock}/bin/gtklock"; }
-      #{ event = "lock"; command = "lock"; }
-      #{ event = "after-resume"; command = "${pkgs.gtklock}/bin/gklock"; }
-    ];
-    timeouts = [
-      { timeout = 300; command = "${pkgs.gtklock}/bin/gtklock"; }
-      { timeout = 600; command = "${pkgs.wlopm}/bin/wlopm --off \*"; resumeCommand = "${pkgs.wlopm}/bin/wlopm --on \*"; } #TODO fix \* not working for outputs
-    ];
   };
 }

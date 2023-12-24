@@ -13,7 +13,7 @@
       modules-right = [ ] ++ 
       (if osConfig.networking.hostName == "nixos-laptop" then 
       [ "idle_inhibitor" "pulseaudio" "network" "battery" "backlight" "custom/notification" "sway/language" "tray" ]
-      else [ "idle_inhibitor" "pulseaudio" "network`" "custom/notification" "sway/language" "tray" ]);
+      else [ "idle_inhibitor" "pulseaudio" "network" "custom/notification" "sway/language" "tray" ]);
       
       "hyprland/workspaces" = {
         "format" = "{icon}";
@@ -82,7 +82,7 @@
         "interval" = 1;
         "tooltip" = true;
         "tooltip-format" = "Ethernet: {ifname} \nWiFi: {essid}";
-        "on-click" = "wezterm start --class floating nmtui connect";
+        "on-click" = "foot --window-size-chars=80x24 --app-id float nmtui connect"; #"wezterm start --class floating nmtui connect";
       };
       "battery" = {
         "format" = "{icon}";
@@ -158,7 +158,7 @@
 			window#waybar.hidden {
 			  opacity: 0.2;
 			}
-
+      
 			#workspaces button {
 			  min-width: 0;
 			}
@@ -264,9 +264,9 @@
 			}
 
 			#network {
-			  margin-top: 5px;
-			  margin-bottom: 5px;
-			  margin-left: 2px;
+			  margin-top: 2px;
+			  margin-bottom: 3px;
+			  margin-left: 5px;
 			  color: #A4ABCF;
 			}
 

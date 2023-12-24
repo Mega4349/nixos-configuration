@@ -27,7 +27,6 @@
 					regular5="bb9af7";
 					regular6="7dcfff";
 					regular7="a9b1d6";
-
 					bright0="414868";
 					bright1="f7768e";
 					bright2="9ece6a";
