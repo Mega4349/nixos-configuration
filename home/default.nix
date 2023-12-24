@@ -17,7 +17,7 @@
     ./modules/neovim.nix
 		./modules/nix.nix
 		./modules/obs.nix
-    ./modules/packages.nix
+    ./modules/osu-stable.nix
     ./modules/shell.nix
     ./modules/sound.nix
     #./modules/spotify.nix

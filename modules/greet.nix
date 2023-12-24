@@ -2,17 +2,36 @@
 
 let 
   dbus-sway-environment = pkgs.writeTextFile {
-  name = "dbus-sway-environment";
-  destination = "/bin/dbus-sway-environment";
-  executable = true;
+    name = "dbus-sway-environment";
+    destination = "/bin/dbus-sway-environment";
+    executable = true;
 
-  text = ''
-    dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-    systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
-    systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+    text = ''
+      dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+      systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+      systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+    '';
+  };
+
+  cssStyle = pkgs.writeText "style.css" ''
+    window {
+      background-image: url("file:///home/mega/nixos-configuration/modules/files/trees.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    box * {
+      background-color: rgba(50, 50, 50, 0.9);
+      border-radius: 10px;
+      padding: 50px;
+    }
+    
+    button {
+      color: #7AA2F7;
+    }
   '';
-};
-
+in 
+let 
   swayConfig = pkgs.writeText "greetd-sway-config" ''
     exec dbus-sway-environment
 		seat seat0 xcursor_theme Bibata-Original-Ice 24
@@ -24,7 +43,7 @@ let
 		}
 
     # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
-    exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l; swaymsg exit"
+    exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -s ${cssStyle}; swaymsg exit"
     bindsym Mod4+shift+e exec swaynag \
       -t warning \
       -m 'What do you want to do?' \
@@ -53,7 +72,6 @@ in
     '';
     systemPackages = [ 
       dbus-sway-environment 
-      pkgs.tokyo-night-gtk 
     ];
   };
 }
