@@ -80,7 +80,10 @@
   #    options = [ "bind" ];
   #  };
 
-  environment.etc."machine-id".source = "/nix/persist/etc/machine-id";
+  environment.etc = {
+    "machine-id".source = "/nix/persist/etc/machine-id";
+    "hashedPasswordFile".source = "/nix/persist/etc/hashedPasswordFile";
+  };
 
   fileSystems."/home/mega/nixos-configuration" = {
     device = "/nix/persist/etc/nixos";

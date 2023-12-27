@@ -3,7 +3,6 @@
 {
   imports = [
     inputs.impermanence.nixosModules.impermanence
-    inputs.nur.nixosModules.nur
     #inputs.aagl.nixosModules.default
 
     ./hardware-configuration.nix
@@ -21,6 +20,7 @@
     hideMounts = true;
     directories = [
       "/etc/NetworkManager/system-connections"
+      "/etc/ssh"
     ];
   };
 

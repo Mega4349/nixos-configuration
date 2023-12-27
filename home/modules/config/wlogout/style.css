@@ -1,7 +1,8 @@
 window {
   font-size: 12pt;
   color: #cdd6f4; 
-  background-color: rgba(30, 30, 46, 0.5);
+  background-image: url("file:///home/mega/nixos-configuration/modules/files/trees-blur.jpg");
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 button {

@@ -20,6 +20,7 @@
 			fira
     ];
     fontconfig.defaultFonts = {
+      monospace = [ "Maple Mono" ];
       serif = [ "Noto Serif" "Source Han Serif" ];
       sansSerif = [ "Noto Sans" "Source Han Sans" ];
     };

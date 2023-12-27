@@ -40,6 +40,7 @@
 		  pfetch
 		  gpu-viewer
 		  amdgpu_top
+      nvtop-intel
 		  jmtpfs
 		];
   	persistence."/nix/persist/home/mega".directories = [

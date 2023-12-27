@@ -7,6 +7,7 @@
     in [
       pkgs.prismlauncher
   	  pkgs.heroic
+      pkgs.bottles
       pkgs.stepmania
   	  games.osu-lazer-bin
 		  pkgs.steamtinkerlaunch
@@ -14,6 +15,7 @@
 	  persistence."/nix/persist/home/mega".directories = [
 		  ".local/share/Steam"
 		  ".local/share/osu"
+      ".local/share/bottles"
 		  ".config/heroic"
 		  ".config/OpenTabletDriver"
 		  ".local/share/honkers-railway-launcher"

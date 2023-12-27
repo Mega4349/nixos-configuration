@@ -20,7 +20,7 @@ let
       background-position: center;
     }
 
-    box * {
+    /*box * {
       background-color: rgba(50, 50, 50, 0.9);
       border-radius: 10px;
       padding: 50px;
@@ -28,7 +28,7 @@ let
     
     button {
       color: #7AA2F7;
-    }
+    }*/
   '';
 in 
 let 
@@ -61,7 +61,10 @@ in
     };
   };
   
-  security.pam.services.gtklock.text = lib.readFile "${pkgs.gtklock}/etc/pam.d/gtklock";
+  security.pam.services = {
+    gtklock.text = lib.readFile "${pkgs.gtklock}/etc/pam.d/gtklock";
+    swaylock = {};
+  };
 
   environment = {
     etc."greetd/environments".text = ''

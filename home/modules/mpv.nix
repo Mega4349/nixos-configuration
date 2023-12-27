@@ -1,27 +1,23 @@
 { pkgs, ... }:
 
 {
-	nixpkgs.overlays = [
-		(self: super: {
-      mpv = super.mpv.override {
-        scripts = with self.mpvScripts; 
-        [ sponsorblock ]; #mpris thumbnail webtorrent-mpv-hook ];
-      };
-    })
-	];
-
 	home.packages = with pkgs; [
 		yt-dlp
-		mpv
 	];
 
 	programs.mpv = {
     enable = true;
+    #scripts = with pkgs.mpvScripts; [
+    #  sponsorblock
+    #  webtorrent-mpv-hook
+    #  quality-menu
+    #  thumbfast
+    #];
     config = {
       profile = "gpu-hq";
       volume = "80";
       hwdec = "auto";
-      #gpu-api = "vulkan";
+      #gpu-api = "vulkan";mis
       gpu-context = "wayland";
       vo = "gpu-next,gpu,dmabuf-wayland";
       ao = "pipewire"; #,pulse";

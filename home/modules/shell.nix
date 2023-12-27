@@ -4,9 +4,13 @@
   programs = {
 		fish = {
     	enable = true;
+      # sudo alias to fix kitty fish integration
     	interactiveShellInit = ''
       	set fish_greeting # Disable greeting
-
+        
+        set -U fish_features qmark-noglob
+        
+        alias sudo="doas"
 				alias cl="clear"
 				alias "cd.." "cd .."
 				alias ls "eza --icons --git --group-directories-first"

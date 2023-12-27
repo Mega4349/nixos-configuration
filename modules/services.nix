@@ -5,6 +5,9 @@
 	sound.enable = false;
 
 	services = {
+    openssh.enable = true;
+    hardware.bolt.enable = true;
+
 		pipewire = {
 		  enable = true;
 		  alsa = {
@@ -33,19 +36,34 @@
 	};
 
 	systemd = {
-	  user.services.polkit-gnome-authentication-agent-1 = {
-	    description = "polkit-gnome-authentication-agent-1";
-	    wantedBy = [ "graphical-session.target" ];
-	    wants = [ "graphical-session.target" ];
-	    after = [ "graphical-session.target" ];
-	    serviceConfig = {
-	      Type = "simple";
-	      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-	      Restart = "on-failure";
-	      RestartSec = 1;
-	      TimeoutStopSec = 10;
+	  user.services = {
+      polkit-gnome-authentication-agent-1 = {
+	      description = "polkit-gnome-authentication-agent-1";
+	      wantedBy = [ "graphical-session.target" ];
+	      wants = [ "graphical-session.target" ];
+	      after = [ "graphical-session.target" ];
+	      serviceConfig = {
+	        Type = "simple";
+	        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+	        Restart = "on-failure";
+	        RestartSec = 1;
+	        TimeoutStopSec = 10;
+	      };
 	    };
-	  };
+      mpdscribble = {
+        description = "last.fm scrobbler for MPD";
+        wantedBy = [ "graphical-session.target" ];
+        wants = [ "graphical-session.target" ];
+        after = [ "graphical-session.target" ];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.mpdscribble}/bin/mpdscribble";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
+      };
+    };
 	};
 
 	networking = {
@@ -64,6 +82,8 @@
 		polkit_gnome 
 		slurp
 		swaynotificationcenter
+    mpd-discord-rpc
+    mpdscribble
 	]; 
 	
 	xdg.portal = {

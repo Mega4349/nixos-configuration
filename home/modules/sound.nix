@@ -28,7 +28,7 @@
     mpd-discord-rpc = {
       enable = true;
       settings = {
-        hosts = [ "localhost:6600" ];
+        #hosts = [ "localhost:6600" ];
         format = {
         details = "$title";
         state = "By $artist on $album";
@@ -51,8 +51,9 @@
   	];
 		persistence."/nix/persist/home/mega".directories = [
 			".mpdscribble"	
+      ".config/discord-rpc"
 			".local/share/mpd"
-			".local/share/wireplumber"
+			".local/state/wireplumber"
 		];
 	};
 

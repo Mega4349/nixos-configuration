@@ -248,7 +248,7 @@
 			}
 
 			#battery.charging {
-				margin-left: 3px;
+				margin-left: 5px;
 			}
 
 			#cpu {
@@ -266,7 +266,7 @@
 			#network {
 			  margin-top: 2px;
 			  margin-bottom: 3px;
-			  margin-left: 5px;
+			  margin-left: 3px;
 			  color: #A4ABCF;
 			}
 

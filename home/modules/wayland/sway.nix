@@ -33,6 +33,7 @@ in
 
     SDL_VIDEODRIVER = "wayland,x11";
     _JAVA_AWT_WM_NONPARENTING = 1;
+    NIXOS_OZONE_WL = 1;
   };
 
   wayland.windowManager.sway = {
@@ -86,7 +87,7 @@ in
 
       keybindings = let 
         mod = "Mod4";
-        term = "footclient";
+        term = "kitty --single-instance";
         menu = "anyrun";
         filemanager = "nemo";
       in {
@@ -106,7 +107,7 @@ in
 
         "${mod}+n" = "exec swaync-client -t -sw";
     		
-        "${mod}+Mod1+Escape" = "exec gtklock";
+        "${mod}+Mod1+Escape" = "exec swaylock";
 
         "${mod}+o" = "sticky toggle";
       	
@@ -199,11 +200,10 @@ in
       exec swaync
       exec vencorddesktop #discordcanary
       exec deluge
-      exec copyq
       exec dbus-sway-environment
       exec steam
-			exec foot --server
-			exec mpdscribble
+			#exec foot --server
+			#exec mpdscribble
 
       # Assign windows to workspaces
       assign [app_id="firefox"] 2

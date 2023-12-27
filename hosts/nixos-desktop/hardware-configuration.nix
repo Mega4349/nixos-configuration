@@ -52,34 +52,34 @@
   fileSystems."/nix" = { 
       device = "/dev/mapper/main";
       fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd-force" ];
+      options = [ "noatime" "subvol=nix" "compress=zstd" ];
       neededForBoot = true;
     };
 
   fileSystems."/nix/persist" = { 
       device = "/dev/mapper/main";
       fsType = "btrfs";
-      options = [ "subvol=persist" "compress=zstd-foce" ];
+      options = [ "subvol=persist" "compress=zstd" ];
       neededForBoot = true;
     };
 
   fileSystems."/nix/persist/home" = { 
       device = "/dev/mapper/main";
       fsType = "btrfs";
-      options = [ "subvol=home" "compress=zstd-foce" ];
+      options = [ "subvol=home" "compress=zstd" ];
       neededForBoot = true;
     };
 
   fileSystems."/home/mega/.osu" = {
     device = "/dev/mapper/main";
     fsType = "btrfs";
-    options = [ "subvol=osu" "compress=zstd-force" ];
+    options = [ "subvol=osu" "compress=zstd" ];
   };
 
   fileSystems."/home/mega/Games" = {
     device = "/dev/mapper/main";
     fsType = "btrfs";
-    options = [ "subvol=games" "compress=zstd-force" ];
+    options = [ "subvol=games" "compress=zstd" ];
   };
 
   fileSystems."/home/mega/.steamlibrary" = {

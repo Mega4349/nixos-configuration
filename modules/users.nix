@@ -1,17 +1,18 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 
 {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
-  # Set time zone
-  time.timeZone = "Europe/Stockholm";
+  imports = [
+    inputs.home-manager.nixosModules.home-manager 
+  ];
   
+  time.timeZone = "Europe/Stockholm";
   i18n.defaultLocale = "en_US.UTF-8";
 
   programs = { 
 		zsh.enable = true;
 		fish.enable = true;
 	};
-
+  
   # Define a user account. Don't forget to set a password
   users = {
     mutableUsers = false;
@@ -25,9 +26,17 @@
         description = "mega";
         extraGroups = [ "networkmanager" "wheel" "video" "libvirtd" "plugdev" ]; # Enable ‘sudo’ for the user. ## replaced with doas 
         initialPassword = "1234";
+
+        # $ mkpasswd
+        #hashedPasswordFile = "/etc/hashedPasswordFile";
       };
     };
   };
+  
+  
+  #environment.persistence."/nix/persist".files = [
+  #  "/etc/hashedPasswordFile"
+  #];
 
   security = {
     sudo.enable = false;

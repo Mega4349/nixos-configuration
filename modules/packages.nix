@@ -18,26 +18,24 @@
 		nano.enable = false;
   };
 
-  environment = {
-		systemPackages = with pkgs; [
-    	git
-    	vim
-    	wget
-    	curl
+  environment.systemPackages = with pkgs; [
+    git
+  	vim
+  	wget
+    curl
 			
-  		pciutils
-			glxinfo
-			vulkan-tools
-    	psmisc
-    	jq
-			tree
-    	libva-utils
+  	pciutils
+		glxinfo
+		vulkan-tools
+    psmisc
+  	jq
+		tree
+    libva-utils
 
-    	wineWowPackages.staging
-    	mono
+  	wineWowPackages.staging
+    mono
 
-			cachix
-  	];
-  	sessionVariables.NIXOS_OZONE_WL = "1";
-	};
+		cachix
+    sops
+  ];
 }

@@ -1,4 +1,4 @@
-{ pkgs, inputs, system, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -10,9 +10,10 @@
     ./modules/discord.nix
 		./modules/filemanagers.nix
     ./modules/firefox.nix
-		./modules/foot.nix
+		#./modules/foot.nix
 		./modules/games.nix
 		./modules/git.nix
+    ./modules/kitty.nix
 		./modules/mpv.nix
     ./modules/neovim.nix
 		./modules/nix.nix
@@ -22,7 +23,7 @@
     ./modules/sound.nix
     #./modules/spotify.nix
     ./modules/theme.nix
-		./modules/tmux.nix
+		#./modules/tmux.nix
 		./modules/utilities.nix
 		./modules/virtualisation.nix
 		#./modules/wezterm.nix
@@ -48,6 +49,10 @@
         "Projects"
 
         ".cache"
+
+        ".ssh"
+
+        ".config/sops"
         
         ".local/state/home-manager"
         ".local/state/nix"
