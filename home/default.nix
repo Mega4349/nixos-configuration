@@ -10,7 +10,6 @@
     ./modules/discord.nix
 		./modules/filemanagers.nix
     ./modules/firefox.nix
-		#./modules/foot.nix
 		./modules/games.nix
 		./modules/git.nix
     ./modules/kitty.nix
@@ -23,10 +22,8 @@
     ./modules/sound.nix
     #./modules/spotify.nix
     ./modules/theme.nix
-		#./modules/tmux.nix
 		./modules/utilities.nix
 		./modules/virtualisation.nix
-		#./modules/wezterm.nix
 		./modules/xdg.nix
   ];
 
