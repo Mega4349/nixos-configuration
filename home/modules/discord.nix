@@ -1,12 +1,12 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   home = {
-		packages = [
-    	(pkgs.discord-canary.override {
+		packages = with pkgs; [
+    	(discord-canary.override {
       	withVencord = true;
   		})
-			pkgs.vesktop
+			vesktop
   	];
 		persistence."/nix/persist/home/mega".directories = [
 			".config/discordcanary"

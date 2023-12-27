@@ -5,5 +5,6 @@ todo:<br>
 	swaync colors<br>
 	spicetify flake<br>
 	wine fonts<br>
-	script for installing flatpaks, discover overlay<br>
+	maybe script for installing flatpaks<br>
 	hardcoded paths for images<br>
+	use agenix for secrets<br>

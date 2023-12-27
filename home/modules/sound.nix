@@ -7,20 +7,20 @@
       musicDirectory = "~/Music";
       dbFile = "~/.local/share/mpd/database";
       extraConfig = ''
-        #port "6600" 
+        port "6600" 
 				
         auto_update "yes"
 
         audio_output {
-          type "pipewire"
-          name "MPD"
+          type     "pipewire"
+          name     "MPD"
         }
 				
         audio_output {
-          type "fifo"
-          name "ncmpcpp vizualizer"
-	        path "/tmp/mdp.fifo"
-	        format "44100:16:1"
+          type     "fifo"
+          name     "my_fifo"
+	        path     "/tmp/mpd.fifo"
+          format   "44100:16:2"
         }
       '';
       network.startWhenNeeded = true;
@@ -28,7 +28,6 @@
     mpd-discord-rpc = {
       enable = true;
       settings = {
-        #hosts = [ "localhost:6600" ];
         format = {
         details = "$title";
         state = "By $artist on $album";
@@ -47,7 +46,7 @@
 			mpc-cli 
 			mpd-discord-rpc
 			mpdscribble
-			musikcube
+			cava
   	];
 		persistence."/nix/persist/home/mega".directories = [
 			".mpdscribble"	
@@ -57,13 +56,11 @@
 		];
 	};
 
-	xdg.configFile = {
-		"pipewire".source = ./config/pipewire;
-		#"musikcube".source = ./config/musikcube;
-	};
+	xdg.configFile."pipewire".source = ./config/pipewire;
 
   programs.ncmpcpp = {
     enable = true;
+    package = pkgs.ncmpcpp.override { visualizerSupport = true; outputsSupport = true; taglibSupport = true; clockSupport = true; };
     settings = {
       autocenter_mode = "yes";
       follow_now_playing_lyrics = "yes";
@@ -104,13 +101,12 @@
       song_status_format = " $6%a $7⟫⟫ $3%t $7⟫⟫ $4%b ";
 			
 			## Visualizer ##
-			#visualizer_fifo_path
       visualizer_data_source = "/tmp/mpd.fifo";
       visualizer_output_name = "my_fifo";
-      #visualizer_sync_interval = "60";
-      #visualizer_type = "spectrum";
+      visualizer_type = "spectrum";
       visualizer_in_stereo = "yes";
       visualizer_look = "◆▋";
+      visualizer_fps = 60;
 
       ## Navigation ##
       cyclic_scrolling = "yes";

@@ -1,45 +1,30 @@
 { pkgs, ... }:
 
 let 
-  wezterm_cwd = pkgs.writeTextFile {
-    name = "wezterm_cwd";
-    destination = "/bin/wezterm_cwd";
+  kitty_cwd = pkgs.writeTextFile {
+    name = "kitty_cwd";
+    destination = "/bin/kitty_cwd";
     executable = true;
 
     text = ''
       #!/bin/sh
 
-      wezterm start --cwd "$PWD"
+      kitty --single-instance "$PWD"
     '';
   };
   
 in
 
 {
-  # Overlay for sixel image preview in ranger, used with foor + tmux in my config
-	#nixpkgs.overlays = [
-	#	(final: prev: {
-  #	  ranger-sixel = prev.ranger.overrideAttrs (oldAttrs: {
-  #    	patches = (oldAttrs.patches or [ ]) ++ [
-  #    		(prev.fetchpatch {
-  #        	url = "https://github.com/3ap/ranger/commit/ef9ec1f0e0786e2935c233e4321684514c2c6553.patch";
-  #      		sha256 = "sha256-MJbIBuFeOvYnF6KntWJ2ODQ4KAcbnFEQ1axt1iQGkWY=";
-  #      	})
-  #  		];
-  #		});
-  #	})
-	#];
-
   home.packages = with pkgs; [
-    ranger #-sixel
+    ranger
     ffmpegthumbnailer
 		ffmpeg
     xfce.tumbler
     xfce.thunar-archive-plugin
     xfce.thunar-volman
     cinnamon.nemo
-		mpv
-    wezterm_cwd
+    kitty_cwd
 		unrar
 		unzip
 		xarchiver
@@ -47,7 +32,7 @@ in
 
 	dconf.settings = {
     "org/cinnamon/desktop/applications/terminal" = {
-      exec = "wezterm_cwd";
+      exec = "kitty_cwd";
     };
 		"org/nemo/preferences" = {
 			click-double-parent-folder = true;
