@@ -14,5 +14,5 @@
 		".config/obs-studio"
 	];
 
-	xdg.configFile."obs/studio/themes".source = ./config/obs-studio/themes;
+	xdg.configFile."obs-studio/themes".source = ./config/obs-studio/themes;
 }
