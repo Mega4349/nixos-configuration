@@ -9,28 +9,14 @@ in
 
 	programs.spicetify = {
     enable = true;
-		colorScheme = "Night";
-
-		theme = {
-			name = "Tokyo";
-			src = tokyonightTheme;
-			requiredExtensions = [
-				{
-					filename = "user.css";
-					src = "${tokyonightTheme}";
-				}
-			];
-			injectCss = true;
-      replaceColors = true;
-      overwriteAssets = true;
-      sidebarConfig = true;
-		};
-
+    theme = spicePkgs.themes.catppuccin;
+    colorScheme = "mocha";
+    spotifyPackage = (pkgs.callPackage ../../pkgs/spotify-adblock {} );
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplay
 			playlistIcons
 			lastfm
-      shuffle # shuffle+ (special characters are sanitized out of ext names)
-     ];
+      shuffle
+    ];
   };
 }

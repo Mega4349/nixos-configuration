@@ -20,7 +20,7 @@
     ./modules/osu-stable.nix
     ./modules/shell.nix
     ./modules/sound.nix
-    #./modules/spotify.nix
+    ./modules/spotify.nix
     ./modules/theme.nix
 		./modules/utilities.nix
 		./modules/virtualisation.nix
