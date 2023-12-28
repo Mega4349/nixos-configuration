@@ -111,13 +111,13 @@
     		"tooltip" = false;
     		"format" = "{icon}";
     		"format-icons" = {
-      		"notification" = "<span color='#f7768e'></span>";
+      		"notification" = "<span color='#7aa2f7'></span>";
       		"none" = "";
-      		"dnd-notification" = "<span color='#ff7768e'></span>";
+      		"dnd-notification" = "<span color='#7aa2f7'></span>";
       		"dnd-none" = "";
-      		"inhibited-notification" = "<span color='#f7768e'></span>";
+      		"inhibited-notification" = "<span color='#7aa2f7'></span>";
       		"inhibited-none" = "";
-      		"dnd-inhibited-notification" = "<span color='#f7768e'></span>";
+      		"dnd-inhibited-notification" = "<span color='#7aa2f7'></span>";
       		"dnd-inhibited-none"= "";
     		};
     		"return-type" = "json";

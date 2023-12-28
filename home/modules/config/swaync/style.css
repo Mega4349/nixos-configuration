@@ -7,7 +7,7 @@
 @define-color noti-close-bg rgba(205, 214, 244, 0.9);
 @define-color noti-close-bg-hover rgba(205, 214, 244, 0.9);
 
-@define-color bg-selected rgb(203, 166, 247);
+@define-color bg-selected rgb(122, 162, 247);
 
 .notification-row {
   transition: all 100ms ease;
