@@ -82,7 +82,7 @@
         "interval" = 1;
         "tooltip" = true;
         "tooltip-format" = "Ethernet: {ifname} \nWiFi: {essid}";
-        "on-click" = "foot --window-size-chars=80x24 --app-id float nmtui connect"; #"wezterm start --class floating nmtui connect";
+        "on-click" = "kitty --single-instance -o initial_window_width=80 -o initial_window_height=24 --class float nmtui connect";
       };
       "battery" = {
         "format" = "{icon}";

@@ -18,6 +18,7 @@
       window_margin_width = 5;
 
       cursor_shape = "block";
+      shell_integration = "no-cursor";
       
       background = "#1a1b26";
       foreground = "#c0caf5";
