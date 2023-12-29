@@ -17,7 +17,7 @@
 
       window_margin_width = 5;
 
-      ursor_shape = "block";
+      cursor_shape = "block";
       
       background = "#1a1b26";
       foreground = "#c0caf5";

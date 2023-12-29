@@ -10,9 +10,14 @@
     ];
   };
 	
-  home.persistence."/nix/persist/home/mega".directories = [
-		".config/obs-studio"
-	];
+  home = {
+    persistence."/nix/persist/home/mega".directories = [
+		  ".config/obs-studio"
+	  ];
+    sessionVariables = {
+      OBS_VKCAPTURE=1; 
+    };
+  };
 
 	xdg.configFile."obs-studio/themes".source = ./config/obs-studio/themes;
 }

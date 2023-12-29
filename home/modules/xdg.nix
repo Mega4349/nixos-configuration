@@ -5,7 +5,7 @@
     mimeApps = {
       enable = true;
       defaultApplications = let
-        pdf_reader = [ "zathura.desktop;" ];
+        pdf_reader = [ "org.pwmt.zathura-pdf-mupdf.desktop;" ];
         browser = [ "firefox.desktop;" ];
         video_player = [ "mpv.desktop;" ];
         image_viewer = [ "imv-dir.desktop;" ];

@@ -1,16 +1,31 @@
-{ lib, osConfig, pkgs, inputs, config, ... }:
+{ pkgs, inputs, ... }:
 
+let
+  lazer-vulkan = pkgs.writeTextFile {
+    name = "lazer-vulkan";
+    destination = "/bin/lazer-vulkan";
+    executable = true;
+
+    text = ''
+      #!/usr/bin/env bash
+      sed -i 's/Renderer = .*/Renderer = Vulkan/' $HOME/.local/share/osu/framework.ini
+      osu-lazer
+    '';
+  };
+in
 {
   home = {
-    packages = let 
+    packages = with pkgs; let 
       games = inputs.nix-gaming.packages.${"x86_64-linux"};
     in [
-      pkgs.prismlauncher
-  	  pkgs.heroic
-      pkgs.bottles
-      pkgs.stepmania
+      gnused
+      lazer-vulkan
+      prismlauncher
+  	  heroic
+      bottles
+      stepmania
   	  games.osu-lazer-bin
-		  pkgs.steamtinkerlaunch
+		  steamtinkerlaunch
     ];
 	  persistence."/nix/persist/home/mega".directories = [
 		  ".local/share/Steam"
