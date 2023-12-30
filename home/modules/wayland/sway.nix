@@ -199,7 +199,6 @@ in
       exec firefox
       exec swaync
       exec vencorddesktop #discordcanary
-      exec deluge
       exec dbus-sway-environment
       exec steam
 			#exec foot --server

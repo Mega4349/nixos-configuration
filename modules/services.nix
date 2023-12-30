@@ -7,6 +7,10 @@
 	services = {
     openssh.enable = true;
     hardware.bolt.enable = true;
+    deluge = {
+      enable = true;
+      user = "mega";
+    };
 
 		pipewire = {
 		  enable = true;
@@ -60,7 +64,7 @@
           ExecStart = "${pkgs.mpdscribble}/bin/mpdscribble";
           Restart = "on-failure";
           RestartSec = 1;
-          TimeoutStopSec = 10;
+          TimeoutStopSec = 300;
         };
       };
     };

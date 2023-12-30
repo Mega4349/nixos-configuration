@@ -49,6 +49,7 @@
       nvtop-intel
 		  jmtpfs
       obsidian
+      qalculate-gtk
 		];
   	persistence."/nix/persist/home/mega".directories = [
 			".config/krita"

@@ -6,7 +6,8 @@
 
 		../pkgs
 		./modules/wayland
-    
+    ./modules/editors
+
     ./modules/discord.nix
 		./modules/filemanagers.nix
     ./modules/firefox.nix
@@ -14,7 +15,6 @@
 		./modules/git.nix
     ./modules/kitty.nix
 		./modules/mpv.nix
-    ./modules/neovim.nix
 		./modules/nix.nix
 		./modules/obs.nix
     ./modules/osu-stable.nix
