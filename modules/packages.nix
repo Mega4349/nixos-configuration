@@ -36,6 +36,5 @@
     mono
 
 		cachix
-    sops
   ];
 }
