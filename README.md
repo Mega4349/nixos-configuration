@@ -7,3 +7,4 @@ todo:<br>
 	hardcoded paths for images<br>
 	use agenix for secrets<br>
 	before-sleep swayidle event<br>
+	update spicetify flake when text theme works(text theme has tokyonight version)<br>
