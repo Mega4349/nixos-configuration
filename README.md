@@ -6,3 +6,4 @@ todo:<br>
 	maybe script for installing flatpaks<br>
 	hardcoded paths for images<br>
 	use agenix for secrets<br>
+	before-sleep swayidle event<br>
