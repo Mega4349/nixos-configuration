@@ -34,10 +34,22 @@ in
 		};
   };
 
-  xdg.configFile."gtk-3.0/gtk.css".text = '' 
-    .nemo-window .sidebar .view {
-    background-color: @theme_bg_color;
-    color: @theme_fg_color;
-    }
-  '';
+  xdg.configFile = {
+    "gtk-3.0/gtk.css".text = '' 
+      .nemo-window .sidebar .view {
+      background-color: @theme_bg_color;
+      color: @theme_fg_color;
+      }
+    '';
+    "gtk-3.0/bookmarks".text = ''
+      file:///home/mega/nixos-configuration nixos-configuration
+      file:///home/mega/Music Music
+      file:///home/mega/VMs VMs
+      file:///home/mega/Videos Videos
+      file:///home/mega/Projects Projects
+      file:///home/mega/Pictures Pictures
+      file:///home/mega/Downloads Downloads
+      file:///home/mega/Documents Documents
+    '';
+  };
 }
