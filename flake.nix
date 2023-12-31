@@ -20,10 +20,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Nix User Repository(used for firefox extensions)
+    # Nix User Repository, used for firefox extensions
     nur.url = "github:nix-community/NUR";
 
-    # Game stuff and pipewire low latency module
+    # Game stuff
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     # Game stuff
@@ -38,16 +38,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
+    # View nixos options in anyrun :)
 		anyrun-nixos-options = {
 			url = "github:n3oney/anyrun-nixos-options";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		
+    # Modules to configure neovim and plugins in nix, works fine in my simple config
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Spicetify to theme spotify
 		spicetify-nix ={ 
 			url = "github:the-argus/spicetify-nix";
 			inputs.nixpkgs.follows = "nixpkgs";

@@ -24,8 +24,5 @@
   };
 
   # Set hostname
-  networking = {
-    wireless.enable = false;
-    hostName = "nixos-laptop";
-  };
+  networking.hostName = "nixos-laptop";
 }

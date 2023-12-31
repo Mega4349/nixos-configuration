@@ -26,8 +26,5 @@
   programs.honkers-railway-launcher.enable = true;
 
   # Set hostname
-  networking = {
-    wireless.enable = false;
-    hostName = "nixos-desktop";
-  };
+  networking.hostName = "nixos-desktop";
 }

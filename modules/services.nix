@@ -59,6 +59,8 @@
 	networking = {
 	  # Enable NetworkManager for networking
 	  networkmanager.enable = true;
+    # Disable wpa_supplicant
+    wireless.enable = false;
 	  # Enable firewall
 	  firewall.enable = true;
 	};
