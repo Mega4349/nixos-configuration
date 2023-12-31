@@ -61,11 +61,6 @@ in
     };
   };
   
-  security.pam.services = {
-    gtklock.text = lib.readFile "${pkgs.gtklock}/etc/pam.d/gtklock";
-    swaylock = {};
-  };
-
   environment = {
     etc."greetd/environments".text = ''
       sway

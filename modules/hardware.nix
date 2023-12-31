@@ -2,7 +2,6 @@
 
 {
   hardware = {
-    pulseaudio.enable = false;
     opengl = {
       enable = true;
       driSupport = true;
@@ -13,6 +12,9 @@
       daemon.enable = true; 
     };
   };
+
+  # Thunderbolt service
+  services.hardware.bolt.enable = true;
 
   environment = {
     #Remove libinput default smoothing for opentabletdriver

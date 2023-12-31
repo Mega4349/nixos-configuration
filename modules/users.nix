@@ -1,18 +1,6 @@
-{ pkgs, inputs, config, ... }:
+{ pkgs, ... }:
 
 {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager 
-  ];
-  
-  time.timeZone = "Europe/Stockholm";
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  programs = { 
-		zsh.enable = true;
-		fish.enable = true;
-	};
-  
   # Define a user account. Don't forget to set a password
   users = {
     mutableUsers = false;
@@ -33,7 +21,11 @@
     };
   };
   
-  
+  programs = { 
+		zsh.enable = true;
+		fish.enable = true;
+	};
+
   #environment.persistence."/nix/persist".files = [
   #  "/etc/hashedPasswordFile"
   #];
@@ -49,12 +41,4 @@
       }]; 
     };
   };
-
-  home-manager = {
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
-    users.mega = import ../home;
-  };
-
-  system.stateVersion = "23.05";
 }

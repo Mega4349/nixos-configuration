@@ -5,6 +5,8 @@
     unrar 
     unzip
 
+    jmtpfs
+
 	  neofetch
     fastfetch
 		pfetch

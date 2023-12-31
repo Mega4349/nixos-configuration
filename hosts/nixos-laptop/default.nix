@@ -10,11 +10,7 @@
   ];
   
   # For controlling screen brightness
-  programs = {
-    light.enable = true;
-    dconf.enable = true;
-    fuse.userAllowOther = true;
-  };
+  programs.light.enable = true;
 
   environment.persistence."/nix/persist" = {
     hideMounts = true;

@@ -23,11 +23,7 @@
     };
   };
 
-  programs = {
-    dconf.enable = true;
-    fuse.userAllowOther = true;
-    honkers-railway-launcher.enable = true;
-  };
+  programs.honkers-railway-launcher.enable = true;
 
   # Set hostname
   networking = {

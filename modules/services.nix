@@ -1,27 +1,14 @@
 { pkgs, system, lib, ... }:
 
 {
-	#Only meant for ALSA configurations, set to false for pipewire
-	sound.enable = false;
-
 	services = {
     openssh.enable = true;
-    hardware.bolt.enable = true;
+    
     # Service for deluge torrent client 
     deluge = {
       enable = true;
       user = "mega";
     };
-
-		pipewire = {
-		  enable = true;
-		  alsa = {
-		    enable = true;
-		    support32Bit = true;
-			};
-		  pulse.enable = true;
-		  wireplumber.enable = true;
-		};
 		
 	  xserver = {
 			# Remap menu key to super
@@ -36,10 +23,6 @@
 	      };
 	    };
 	  };
-	  
-	  gvfs.enable = true; # For mounting and trash in thunar
-	  tumbler.enable = true; # Thumbnail support for images
-	  dbus.enable = true; # home-manager doesn't work on boot without dbus
 	};
 
 	systemd = {
@@ -80,11 +63,7 @@
 	  firewall.enable = true;
 	};
 	
-	security = {
-	  polkit.enable = true;
-    # for pipewire
-	  rtkit.enable = true;
-	};
+	security.polkit.enable = true;
 	
 	environment.systemPackages = with pkgs; [ 
 		polkit_gnome 

@@ -1,13 +1,11 @@
-{ inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
-  #imports = [ inputs.aagl.nixosModules.default ];
-
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "root" "mega" "@wheel" ]; # Trusted users can use binary cache
-      auto-optimise-store = true; # Optimizing the store 
+      auto-optimise-store = true; # Optimizing /nix/store 
       connect-timeout = 40000; # Increased timeout because my internet is bad sometimes
 			substituters = [
       	"https://nix-community.cachix.org/"
@@ -34,4 +32,13 @@
 		allowUnfree = true;
 		allowBroken = true;
 	};
+  
+  environment.systemPackages = with pkgs; [
+    cachix
+  ];
+
+  time.timeZone = "Europe/Stockholm";
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  system.stateVersion = "23.05";
 }

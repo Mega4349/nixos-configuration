@@ -4,12 +4,14 @@
 	imports = [
 		./bootloader.nix
 		./fonts.nix
-		./greet.nix
+		./greetd.nix
 		./hardware.nix
+    ./home.nix
 		./nix.nix
-		./packages.nix
 		./services.nix
+    ./sound.nix
 		./users.nix
+    ./utilities.nix
 		./virtualisation.nix
 	];
 }
