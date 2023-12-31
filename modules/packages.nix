@@ -6,6 +6,8 @@
   ];
 
   programs = {
+    # needs setuid binary which is provided by the nixos module
+    wshowkeys.enable = true;
     steam = {
       enable = true;
       remotePlay.openFirewall = true;

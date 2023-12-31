@@ -7,6 +7,7 @@
 	services = {
     openssh.enable = true;
     hardware.bolt.enable = true;
+    # Service for deluge torrent client 
     deluge = {
       enable = true;
       user = "mega";
@@ -23,10 +24,12 @@
 		};
 		
 	  xserver = {
+			# Remap menu key to super
+			displayManager.sessionCommands = "sleep 5 && ${pkgs.xorg.xmodmap}/bin/xmodmap -e 'keycode 135 = Super_R' &";
 	    desktopManager.xterm.enable = false;
 	    extraLayouts.canary = {
 	      description = "Canary keyboard layout";
-	      languages = ["eng"];
+	    	languages = ["eng"];
 	      symbolsFile = builtins.fetchurl {
 	        url = "https://raw.githubusercontent.com/Apsu/Canary/main/canary";
 	        sha256 = "sha256:1rv9hb9v1rwn2abds09kc5nrgypzzg6g0izynil8v8m16a99dznj";
@@ -36,7 +39,7 @@
 	  
 	  gvfs.enable = true; # For mounting and trash in thunar
 	  tumbler.enable = true; # Thumbnail support for images
-	  dbus.enable = true;
+	  dbus.enable = true; # home-manager doesn't work on boot without dbus
 	};
 
 	systemd = {
@@ -79,6 +82,7 @@
 	
 	security = {
 	  polkit.enable = true;
+    # for pipewire
 	  rtkit.enable = true;
 	};
 	
@@ -86,8 +90,8 @@
 		polkit_gnome 
 		slurp
 		swaynotificationcenter
-    mpd-discord-rpc
     mpdscribble
+		xorg.xmodmap
 	]; 
 	
 	xdg.portal = {
@@ -97,6 +101,7 @@
     	settings = {
       	screencast = {
       		max_fps = 60;
+					# notification inhibition in swaync when screensharing
 					exec_before = "${pkgs.swaynotificationcenter}/bin/swaync-client --inhibitor-add \"xdg-desktop-portal-wlr\"";
 					exec_after = "${pkgs.swaynotificationcenter}/bin/swaync-client --inhibitor-remove \"xdg-desktop-portal-wlr\"";
         	chooser_type = "simple";
@@ -104,7 +109,7 @@
       	};
     	};
   	};
-	  extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+	  extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 	  config = {
 	    common.default = [ "gtk" ];
 	    sway = { 

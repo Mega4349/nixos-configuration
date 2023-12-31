@@ -58,6 +58,9 @@
     copyq.enable = true;
     swayidle = {
       enable = true;
+      events = [
+        { event = "before-sleep"; command = "${pkgs.swaylock-effects}/bin/swaylock -f"; }
+      ];
       timeouts = [
         {
           timeout = 300;

@@ -7,18 +7,17 @@
 		../pkgs
 		./modules/wayland
     ./modules/editors
+    ./modules/terminal
 
     ./modules/discord.nix
 		./modules/filemanagers.nix
     ./modules/firefox.nix
 		./modules/games.nix
 		./modules/git.nix
-    ./modules/kitty.nix
 		./modules/mpv.nix
 		./modules/nix.nix
 		./modules/obs.nix
     ./modules/osu-stable.nix
-    ./modules/shell.nix
     ./modules/sound.nix
     ./modules/spotify.nix
     ./modules/theme.nix
@@ -49,8 +48,6 @@
 
         ".ssh"
 
-        ".config/sops"
-        
         ".local/state/home-manager"
         ".local/state/nix"
       ];
