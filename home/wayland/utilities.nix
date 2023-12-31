@@ -75,7 +75,7 @@
   };
 
 	xdg.configFile = {
-		"wlogout".source = ../config/wlogout;
-		"swaync".source = ../config/swaync;
+		"wlogout".source = ./config/wlogout;
+		"swaync".source = ./config/swaync;
 	};
 }

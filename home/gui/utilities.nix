@@ -36,21 +36,17 @@
 			avidemux
 			wootility
 			via
-			ani-cli
-			manga-cli
       mission-center
-      btop
-		  htop
-		  neofetch
-		  fastfetch
-		  pfetch
 		  gpu-viewer
-		  amdgpu_top
-      nvtop-intel
 		  jmtpfs
       obsidian
       qalculate-gtk
+
+      unrar
+  		unzip
+	  	xarchiver
 		];
+
   	persistence."/nix/persist/home/mega".directories = [
 			".config/krita"
 			".config/blender"
@@ -58,9 +54,4 @@
 			".config/wootility-lekker"
 		];
   };
-
-	xdg.configFile = {
-		"btop".source = ./config/btop;
-		"neofetch".source = ./config/neofetch;
-	};
 }

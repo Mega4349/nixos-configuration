@@ -15,7 +15,7 @@ in
     theme = spicePkgs.themes.catppuccin;
     colorScheme = "mocha";
 
-    spotifyPackage = (pkgs.callPackage ../../pkgs/spotify-adblock {} );
+    spotifyPackage = (pkgs.callPackage ./pkgs/spotify-adblock {} );
 
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplay
@@ -24,4 +24,8 @@ in
       shuffle
     ];
   };
+
+  home.persistence."/nix/persist/home/mega".directories = [
+    ".config/spotify"
+  ];
 }

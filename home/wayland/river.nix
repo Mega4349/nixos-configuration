@@ -5,5 +5,5 @@
     river
   ];
 
-	xdg.configFile."river".source = ../config/river;
+	xdg.configFile."river".source = ./config/river;
 }

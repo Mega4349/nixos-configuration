@@ -17,6 +17,9 @@
     sessionVariables = {
       OBS_VKCAPTURE=1; 
     };
+    packages = with pkgs; [
+      ffmpeg
+    ];
   };
 
 	xdg.configFile."obs-studio/themes".source = ./config/obs-studio/themes;

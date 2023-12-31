@@ -15,10 +15,10 @@
       hideMounts = true;
       directories = [
         "/etc/NetworkManager/system-connections"
+        "/etc/ssh"
         "/var/lib/libvirtd"
         "/var/lib/libvirt"
         "/var/cache/libvirt"
-				"/var/cache/regreet"
       ];
     };
   };

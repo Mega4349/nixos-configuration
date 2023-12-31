@@ -12,25 +12,16 @@ let
       kitty --single-instance "$PWD"
     '';
   };
-  
 in
-
 {
   home.packages = with pkgs; [
-    ranger
-    ffmpegthumbnailer
-		ffmpeg
-    xfce.tumbler
-    xfce.thunar-archive-plugin
-    xfce.thunar-volman
-    cinnamon.nemo
     kitty_cwd
-		unrar
-		unzip
-		xarchiver
+    cinnamon.nemo
+    #xfce.tumbler
+    #xfce.thunar-volman
   ];
 
-	dconf.settings = {
+  dconf.settings = {
     "org/cinnamon/desktop/applications/terminal" = {
       exec = "kitty_cwd";
     };
@@ -43,9 +34,10 @@ in
 		};
   };
 
-  xdg.configFile = {
-    "ranger/plugins".source = ./config/ranger/plugins;
-    "ranger/scope.sh".source = ./config/ranger/scope.sh;
-    "ranger/rc.conf".source = ./config/ranger/rc.conf;
-  };
+  xdg.configFile."gtk-3.0/gtk.css".text = '' 
+    .nemo-window .sidebar .view {
+    background-color: @theme_bg_color;
+    color: @theme_fg_color;
+    }
+  '';
 }
