@@ -12,21 +12,24 @@ let
       osu-lazer
     '';
   };
+
+  games = inputs.nix-gaming.packages.${"x86_64-linux"};
 in
 {
   home = {
-    packages = with pkgs; let 
-      games = inputs.nix-gaming.packages.${"x86_64-linux"};
-    in [
+    packages = with pkgs; [
       gnused
-      lazer-vulkan
+
       prismlauncher
   	  heroic
       bottles
       stepmania
+      steamtinkerlaunch
+
+      lazer-vulkan
   	  games.osu-lazer-bin
-		  steamtinkerlaunch
     ];
+
 	  persistence."/nix/persist/home/mega".directories = [
 		  ".local/share/Steam"
 		  ".local/share/osu"
