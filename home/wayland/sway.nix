@@ -215,7 +215,7 @@ in
       for_window [app_id="float"] floating enable
 
       for_window [app_id="blueman-manager"] floating enable, resize set width 40 ppt height 30 ppt
-      for_window [app_id="OpenTabletDriver.UX.Gtk"] floating enable, resize set width 60 ppt height 55 ppt
+      for_window [app_id="OpenTabletDriver.UX.Gtk"] floating enable, resize set width 60 ppt height 75 ppt
       for_window [app_id="pavucontrol" ] floating enable, resize set width 40 ppt height 30 ppt
       for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
       for_window [app_id="nwg-look"] floating enable, resize set width 40 ppt height 50 ppt
