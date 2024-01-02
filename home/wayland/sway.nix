@@ -33,7 +33,6 @@ in
 
     SDL_VIDEODRIVER = "wayland,x11";
     _JAVA_AWT_WM_NONPARENTING = 1;
-    NIXOS_OZONE_WL = 1;
   };
 
   wayland.windowManager.sway = {

@@ -12,6 +12,10 @@
     users.mega = import ../home;
   };
 
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+  
   programs = {
     dconf.enable = true; # needed to make home-manager happy
     fuse.userAllowOther = true;

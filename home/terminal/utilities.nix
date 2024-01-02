@@ -7,6 +7,8 @@
 
     jmtpfs
 
+    realesrgan-ncnn-vulkan
+    
 	  neofetch
     fastfetch
 		pfetch
