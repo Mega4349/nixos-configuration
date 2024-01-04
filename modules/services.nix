@@ -8,6 +8,8 @@
     deluge = {
       enable = true;
       user = "mega";
+      group = "users";
+      #dataDir = "/home/mega/.config/deluge";
     };
 		
 	  xserver = {
