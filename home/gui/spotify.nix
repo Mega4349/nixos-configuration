@@ -12,8 +12,8 @@ in
     enable = true;
     
     # too lazy to make tokyonight work, catppuccin mocha is close enough
-    theme = spicePkgs.themes.catppuccin;
-    colorScheme = "mocha";
+    theme = spicePkgs.themes.text;
+    colorScheme = "TokyoNight";
 
     spotifyPackage = (pkgs.callPackage ./pkgs/spotify-adblock {} );
 
