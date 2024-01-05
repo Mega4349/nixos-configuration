@@ -71,7 +71,7 @@ in
 					accel_profile = "flat";
 					pointer_accel = "-0.15";
 				};
-        "1102:4618:ALP0013:00_044E:120A_Touchpad" = {
+        "1267:12864:ELAN0412:01_04F3:3240_Touchpad" = {
           tap = "enabled";
           natural_scroll = "enabled";
           accel_profile = "flat";
