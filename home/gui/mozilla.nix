@@ -93,7 +93,7 @@
         };
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
-          betterttv
+          #betterttv
           clearurls
           don-t-fuck-with-paste
           duckduckgo-privacy-essentials
