@@ -8,72 +8,88 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "sdhci_pci" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-
-  fileSystems."/" =
-    { device = "none";
-      fsType = "tmpfs";
-      options = [ "defaults" "size=5G" "noatime" "mode=755" ];
+  boot = {
+		initrd = {
+		luks.devices."main".device = "/dev/disk/by-uuid/c13530c1-43c9-4556-bcd0-c52a8e85d14a";
+			availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
+  		kernelModules = [ ];
+		};
+  	kernelModules = [ "kvm-intel" ];
+  	extraModulePackages = [ ];
+  	kernelPackages = pkgs.linuxPackages_latest;
+		binfmt.registrations.appimage = {
+      wrapInterpreterInShell = false;
+      interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+      recognitionType = "magic";
+      offset = 0;
+      mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+      magicOrExtension = ''\x7fELF....AI\x02'';
     };
+  	supportedFilesystems = [ "ntfs" ];
+	};
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/a5006537-69a0-41b4-bb89-c05dd990d133";
-      fsType = "ext4";
-    };
+	environment.systemPackages = [ pkgs.appimage-run ];
 
-  fileSystems."/var/log" =
-    { device = "/nix/persist/var/log";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+  fileSystems."/" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [ "defaults" "size=5G" "mode=755" ];
+  };
 
-  fileSystems."/etc/NetworkManager/system-connections" =
-    { device = "/nix/persist/etc/NetworkManager/system-connections";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+  fileSystems."/home/mega" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [ "size=5G" "mode=777" ];
+  };
 
-  fileSystems."/etc/ssh" =
-    { device = "/nix/persist/etc/ssh";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/CC2C-9EF2";
+    fsType = "vfat";
+  };
 
-  fileSystems."/home/mega/nixos-configuration" =
-    { device = "/nix/persist/etc/nixos";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+  fileSystems."/nix" = {
+    device = "/dev/mapper/main";
+    fsType = "btrfs";
+    options = [ "subvol=nix" "compress=zstd" ];
+    neededForBoot = true;
+  };
 
-  fileSystems."/var/cache/libvirt" =
-    { device = "/nix/persist/var/cache/libvirt";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+  fileSystems."/nix/persist" = {
+    device = "/dev/mapper/main";
+    fsType = "btrfs";
+    options = [ "subvol=persist" "compress=zstd" ];
+    neededForBoot = true;
+  };
 
-  fileSystems."/var/lib/libvirt" =
-    { device = "/nix/persist/var/lib/libvirt";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+  fileSystems."/nix/persist/home" = {
+    device = "/dev/mapper/main";
+    fsType = "btrfs";
+    options = [ "subvol=home" "compress=zstd" ];
+    neededForBoot = true;
+  };
 
-  fileSystems."/var/lib/libvirtd" =
-    { device = "/nix/persist/var/lib/libvirtd";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+  fileSystems."/home/mega/.steamlibrary" = {
+    device = "/dev/mapper/main";
+    fsType = "btrfs";
+    options = [ "subvol=steam" "compress=zstd" ];
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/4383-3EFE";
-      fsType = "vfat";
-    };
+  #fileSystems."/var/log" =
+  #  { device = "/nix/persist/var/log";
+  #    fsType = "none";
+  #    options = [ "bind" ];
+  #  };
 
-  swapDevices = [ ];
+  environment.etc = {
+    "machine-id".source = "/nix/persist/etc/machine-id";
+    "hashedPasswordFile".source = "/nix/persist/etc/hashedPasswordFile";
+  };
 
-  environment.etc."machine-id".source = "/nix/persist/etc/machine-id";
+  fileSystems."/home/mega/nixos-configuration" = {
+    device = "/nix/persist/etc/nixos";
+    fsType = "none";
+    options = [ "bind" ];
+  };
 
   zramSwap = {
     enable = true;
@@ -82,33 +98,39 @@
     memoryPercent = 50;
   };
 
+  swapDevices = [ ];
+
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
   services = {
-    fstrim.enable = lib.mkDefault true;
+		fstrim.enable = lib.mkDefault true;
+		
+		tlp = {
+    	enable = true;
+    	settings = {
+      	CPU_BOOST_ON_AC = 1;
+      	CPU_BOOST_ON_BAT = 0;
+      	CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      	CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+		  };
+  	};
+  	# Disable GNOMEs power management
+  	power-profiles-daemon.enable = false;
+  	# Enable thermald (only necessary if on Intel CPUs)
+  	thermald.enable = true;
+	};
+	
+	# Enable powertop
+  powerManagement.powertop.enable = true;
 
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_BOOST_ON_AC = 1;
-        CPU_BOOST_ON_BAT = 0;
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      };
-    };
-    power-profiles-daemon.enable = false;
-    thermald.enable = true;
-  };
-
-  powerManagement = {
-    powertop.enable = true;
-    cpuFreqGovernor = lib.mkDefault "powersave";
-  };
-
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware = {
-    tuxedo-keyboard.enable = true;
-    tuxedo-rs = {
-      enable = true;
-      tailor-gui.enable = true;
-    };
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     opengl = {
       extraPackages = with pkgs; [
         intel-media-driver
@@ -116,20 +138,7 @@
         vaapiVdpau
         libvdpau-va-gl
       ];
-      extraPackages32 = with pkgs.pkgsi686Linux; [
-        vaapiIntel
-      ];
+      extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
     };
   };
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp0s20f0u1.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp45s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
