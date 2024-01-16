@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./emacs.nix
+    #./emacs.nix
     ./helix.nix
-    ./neovim.nix
-    ./obsidian.nix
+    #./neovim.nix
+    #./obsidian.nix
   ];
 }
