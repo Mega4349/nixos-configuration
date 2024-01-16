@@ -27,7 +27,9 @@
       blender-hip
 			
       deluge-gtk
-			
+
+			trackma-gtk
+									
       zathura
 			imv
 			gimp
@@ -46,11 +48,18 @@
 	  	xarchiver
 		];
 
-  	persistence."/nix/persist/home/mega".directories = [
-			".config/krita"
-			".config/blender"
-			".config/deluge"
-			".config/wootility-lekker"
-		];
+  	persistence."/nix/persist/home/mega" = {
+			directories = [
+				".config/blender"
+				".config/deluge"
+				".config/wootility-lekker"
+				".config/trackma"
+
+				".local/share/trackma"
+			];
+			files = [ # fricking kde apps and not having config directories
+				".config/kriarc"
+				".config/kritadisplayrc"
+			];
   };
 }
