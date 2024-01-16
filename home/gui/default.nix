@@ -9,7 +9,7 @@
     ./nemo.nix
     ./obs.nix
     ./osu-stable.nix
-    ./spotify.nix
+    #./spotify.nix
     ./utilities.nix
   ];
 }
