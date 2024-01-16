@@ -71,7 +71,7 @@ in
 					accel_profile = "flat";
 					pointer_accel = "-0.15";
 				};
-        "1267:12864:ELAN0412:01_04F3:3240_Touchpad" = {
+        "1102:4618:ALP0013:00_044E:120A_Touchpad" = {
           tap = "enabled";
           natural_scroll = "enabled";
           accel_profile = "flat";
@@ -102,7 +102,7 @@ in
 
         "${mod}+s" =      	"exec grimshot --notify save area grimshot.png && roundedShadowScript && copyImageScript && cleanUpScript";
         "${mod}+Shift+s" = 	"exec grimshot --notify --cursor save screen - | swappy -f -";
-        "${mod}+a" =    	"exec grimshot --notify save active grimshot.png && shadowScript && copyImageScript && cleanUpScript";
+        "${mod}+a" =    	"exec grimshot --notify --cursor save active grimshot.png && shadowScript && copyImageScript && cleanUpScript";
 
         "${mod}+n" = "exec swaync-client -t -sw";
     		
@@ -175,7 +175,8 @@ in
     };
     	
     extraConfig = ''
-      bindsym Mod4+0 workspace number 10 #Hopefully fixes sway starting on workspace 10
+      #Hopefully fixes sway starting on workspace 10
+      bindsym Mod4+0 workspace number 10 
 
       exec swww init && swww img ~/nixos-configuration/modules/files/trees.jpg
 
@@ -202,6 +203,7 @@ in
       exec steam
 			#exec foot --server
 			#exec mpdscribble
+      exec mpd-discord-rpc
 
       # Assign windows to workspaces
       assign [app_id="firefox"] 2
