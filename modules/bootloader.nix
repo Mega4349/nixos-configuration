@@ -2,15 +2,12 @@
  
 {
   boot.loader = {
-    systemd-boot.enable = false;
+    systemd-boot = {
+      enable = true;
+      editor = false;
+    };
     efi = {
       canTouchEfiVariables = true; 
-    };
-    grub = {
-      enable = true;
-      efiSupport = true;
-      device = "nodev";
-      enableCryptodisk = true;
     };
   };
 }
