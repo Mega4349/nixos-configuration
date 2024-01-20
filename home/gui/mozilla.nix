@@ -46,8 +46,8 @@
           
           /* Remove space around the address box*/
           #nav-bar toolbarspring {
-            min-width: 5px !important;
-            max-width: 10px !important;
+            min-width: 0px !important;
+            max-width: 0px !important;
           }
         '';
         settings = {
