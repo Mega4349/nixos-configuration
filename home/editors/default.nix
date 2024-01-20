@@ -8,5 +8,5 @@
     #./obsidian.nix
   ];
   
-  home.sessionVaribales.EDITOR = "hx";
+  home.sessionVariables.EDITOR = "hx";
 }
