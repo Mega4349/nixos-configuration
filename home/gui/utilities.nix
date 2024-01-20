@@ -61,5 +61,6 @@
 				".config/kriarc"
 				".config/kritadisplayrc"
 			];
-  };
+  	};
+	};
 }
