@@ -2,9 +2,8 @@
 
 {
 	imports = [
-		./bootloader.nix
+		./boot.nix
 		./fonts.nix
-		./greetd.nix
 		./hardware.nix
     ./home.nix
 		./nix.nix
