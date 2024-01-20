@@ -7,7 +7,6 @@
 
   programs.nixvim = {
     enable = true;
-		defaultEditor = true;
     options = {
       number = true;
       shiftwidth = 2;
