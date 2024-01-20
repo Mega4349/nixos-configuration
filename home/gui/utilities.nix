@@ -42,8 +42,10 @@
 		  gpu-viewer
       
       qalculate-gtk
-
-      unrar
+			
+			gparted
+      
+			unrar
   		unzip
 	  	xarchiver
 		];
