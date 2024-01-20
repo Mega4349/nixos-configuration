@@ -92,7 +92,8 @@
       	};
     	};
   	};
-	  extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+		# remove xdg-desktop-portal-gtk as it collides with portal from gnome
+	  #extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 	  config = {
 	    common.default = [ "gtk" ];
 	    sway = { 
