@@ -1,17 +1,27 @@
-{ lib, config, ... }:
+{ config, ... }:
  
 {
-  boot.loader = {
-    systemd-boot = {
-      enable = true;
-      editor = false;
-    };
-    efi = {
-      canTouchEfiVariables = true; 
+  boot = {
+    plymouth.enable = true;
+    loader = {
+      systemd-boot = {
+        enable = true;
+        editor = false;
+      };
+      efi = {
+        canTouchEfiVariables = true; 
+      };
     };
   };
-  services.xserver.displayManager.gdm = {
+  services.xserver = {
     enable = true;
-    wayland = true;
+    videoDrivers = [ "modesetting" ];
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
   };
+  environment.persistence."/nix/persist".directories = [
+    "/var/lib/AccountsService/users"
+  ];
 }
