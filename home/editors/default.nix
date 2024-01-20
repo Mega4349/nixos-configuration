@@ -7,4 +7,6 @@
     #./neovim.nix
     #./obsidian.nix
   ];
+  
+  home.sessionVaribales.EDITOR = "hx";
 }
