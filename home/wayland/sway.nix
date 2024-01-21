@@ -178,8 +178,6 @@ in
       #Hopefully fixes sway starting on workspace 10
       bindsym Mod4+0 workspace number 10 
 
-      exec swww init && swww img ~/nixos-configuration/modules/files/trees.jpg
-
       bindsym --whole-window Mod4+button4 workspace prev
       bindsym --whole-window Mod4+button5 workspace next
       corner_radius 0
@@ -195,6 +193,7 @@ in
       bindgesture swipe:left workspace next
 
       # Execute on startup
+      exec wpaperd
       exec light -S 30
       exec autotiling --limit 2
       exec firefox
