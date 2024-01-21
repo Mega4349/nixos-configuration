@@ -5,7 +5,7 @@
     ./fish.nix
     ./git.nix
     ./kitty.nix
-    ./ncmpcpp.nix
+    ./music.nix
     ./ranger.nix
     ./starship.nix
     ./utilities.nix
