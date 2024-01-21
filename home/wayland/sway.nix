@@ -253,8 +253,6 @@ in
       client.urgent           #FF5555 #FF5555 #F8F8F2 #FF5555   #FF5555
       client.placeholder      #1a1b26 #1a1b26 #F8F8F2 #1a1b26   #1a1b26
       client.background       #1a1b26     
-
-      layer_effects "waybar" shadows enable;
     '';
   };
 }
