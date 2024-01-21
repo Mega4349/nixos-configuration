@@ -195,6 +195,7 @@ in
       bindgesture swipe:left workspace next
 
       # Execute on startup
+      exec light -S 30
       exec autotiling --limit 2
       exec firefox
       exec swaync
