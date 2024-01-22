@@ -106,7 +106,7 @@ in
 
         "${mod}+n" = "exec swaync-client -t -sw";
     		
-        "${mod}+Mod1+Escape" = "exec swaylock";
+        "${mod}+Mod1+Escape" = "exec swaylock -f";
 
         "${mod}+o" = "sticky toggle";
       	
@@ -180,6 +180,7 @@ in
 
       bindsym --whole-window Mod4+button4 workspace prev
       bindsym --whole-window Mod4+button5 workspace next
+      
       corner_radius 0
       blur enable
       blur_xray enable
@@ -188,7 +189,9 @@ in
       shadows enable
       default_border pixel 2
       default_floating_border pixel 2
+      
       scratchpad_minimize disable
+      
       bindgesture swipe:right workspace prev
       bindgesture swipe:left workspace next
 
@@ -201,8 +204,7 @@ in
       exec vencorddesktop #discordcanary
       exec dbus-sway-environment
       exec steam
-			#exec foot --server
-			#exec mpdscribble
+			exec mpdscribble
       exec mpd-discord-rpc
 
       # Assign windows to workspaces
@@ -240,6 +242,10 @@ in
       for_window [class="steam_app_72850"] fullscreen enable
 
       # Inhibit idle
+      for_window [class="^.*"] inhibit_idle fullscreen
+      for_window [app_id="^.*"] inhibit_idle fullscreen
+      
+      for_window [app_id="mpv"] inhibit_idle fullscreen
       for_window [app_id="firefox"] inhibit_idle fullscreen
       for_window [app_id="Chromium"] inhibit_idle fullscreen
 
