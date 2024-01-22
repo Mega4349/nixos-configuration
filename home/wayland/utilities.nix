@@ -36,7 +36,7 @@
       enable = true;
       package = pkgs.swaylock-effects;
       settings = {
-        image = "/home/mega/nixos-configuration/modules/files/trees-blur.png";
+        screenshot = true;
         color = "000000ff";
         text-color = "9aa5ceff";
         indicator-x-position = 180;
@@ -56,11 +56,13 @@
         key-hl-color = "f7768eff";
         bs-hl-color = "f7768eff";
 
+        effect-blur = "8x8";
+
         clock = true;
         indicator = true;
 
         fade-in = 0.5;
-        grace = 0.5;
+        grace = 2;
       };
     };
   };
