@@ -63,7 +63,7 @@
     beets = {
       enable = true;
       settings = {
-        plugins = "edit fetchart lyrics web convert mpdupdate copyartifacts";
+        plugins = "edit fetchart lyrics web convert mpdupdate";
         directory = "${config.xdg.userDirs.music}";
         library = "${config.xdg.dataHome}/mpd/beetsDatabase";
         fetchart = {
@@ -116,7 +116,7 @@
         current_item_inactive_column_prefix = "$(cyan)$r";
 
         ## Alternative Interface ##
-        user_interface = "alternative";
+        user_interface = "classic";
         alternative_header_first_line_format = "$0$aqqu$/a {$6%a$9 - }{$3%t$9}|{$3%f$9} $0$atqq$/a$9";
         alternative_header_second_line_format = "{{$4%b$9}{ [$8%y$9]}}|{$4%D$9}";
 
