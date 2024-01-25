@@ -43,21 +43,19 @@
 			url = "github:n3oney/anyrun-nixos-options";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+    ags.url = "github:Aylur/ags";
+
+    matugen.url = "github:/InioX/Matugen";
 		
     # Modules to configure neovim and plugins in nix, works fine in my simple config
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Spicetify to theme spotify
-		spicetify-nix ={ 
-			url = "github:the-argus/spicetify-nix";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, agenix, nur, nix-gaming, aagl, anyrun, nixvim, spicetify-nix, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, agenix, nur, nix-gaming, aagl, anyrun, anyrun-nixos-options, ags, matugen, nixvim, ... }: 
   let
     mkSystem = modules: nixpkgs.lib.nixosSystem {
       inherit modules;
