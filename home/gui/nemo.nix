@@ -32,6 +32,20 @@ in
 			size-prefixes = "base-2";
 			thumbnail-limit = "68719476735";
 		};
+    "org/gtk/settings/file-chooser" = {
+      date-format = "regular";
+      location-mode = "path-bar";
+      show-hidden = false;
+      show-size-column = true;
+      show-type-column = true;
+      sidebar-width = 217;
+      sort-column = "type";
+      sort-directories-first = true;
+      sort-order = "ascending";
+      type-format = "category";
+      window-position = "(104, 104)";
+      window-size = "(1231, 902)";
+    };
   };
 
   xdg.configFile = {
