@@ -3,6 +3,7 @@
 {
 	imports = [
 		./anyrun.nix
+		./ags.nix
 		./waybar.nix
 		./utilities.nix
 		./scripts.nix
