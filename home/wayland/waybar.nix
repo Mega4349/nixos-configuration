@@ -82,7 +82,7 @@
         "interval" = 1;
         "tooltip" = true;
         "tooltip-format" = "Ethernet: {ifname} \nWiFi: {essid}";
-        "on-click" = "kitty --single-instance -o initial_window_width=80 -o initial_window_height=24 --class float nmtui connect";
+        "on-click" = "kitty -o initial_window_width=80 -o initial_window_height=24 --class float nmtui connect";
       };
       "battery" = {
         "format" = "{icon}";
