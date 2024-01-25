@@ -252,6 +252,11 @@ in
       for_window [class=".*"]  border pixel 2
       for_window [app_id=".*"] border pixel 2
 
+      for_window [app_id=".*"] corner_radius 0
+      for_window [class=".*"] corner_radius 0
+
+      for_window [app_id="io.github.seadve.Kooha"] corner_radius 12
+      
       # class                 border  bground text    indicator child_border
       client.focused          #7AA2F7 #7AA2F7 #F8F8F2 #7AA2F7   #7AA2F7
       client.focused_inactive #1a1b26 #1a1b26 #F8F8F2 #1a1b26   #1a1b26
