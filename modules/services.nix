@@ -13,8 +13,6 @@
     };
 		
 	  xserver = {
-			# Remap menu key to super
-			displayManager.sessionCommands = "sleep 5 && ${pkgs.xorg.xmodmap}/bin/xmodmap -e 'keycode 135 = Super_R' &";
 	    desktopManager.xterm.enable = false;
 	    extraLayouts.canary = {
 	      description = "Canary keyboard layout";
