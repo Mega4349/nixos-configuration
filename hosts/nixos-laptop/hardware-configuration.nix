@@ -33,13 +33,7 @@
   fileSystems."/" = {
     device = "none";
     fsType = "tmpfs";
-    options = [ "defaults" "size=5G" "mode=755" ];
-  };
-
-  fileSystems."/home/mega" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = [ "size=5G" "mode=777" ];
+    options = [ "defaults" "size=50%" "mode=755" ];
   };
 
   fileSystems."/boot" = {
@@ -91,6 +85,12 @@
     options = [ "bind" ];
   };
 
+#  fileSystems."/swap" = {
+#    device = "/dev/mapper/main";
+#    fsType = "btrfs";
+#    options = [ "subvol=swap" ];
+#  };
+
   zramSwap = {
     enable = true;
     algorithm = "zstd";
@@ -98,7 +98,11 @@
     memoryPercent = 50;
   };
 
-  swapDevices = [ ];
+#  swapDevices = [{
+#    device = "/swap/swapfile";
+#    priority = 10;
+#    size = 12*1024;
+#  }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -134,11 +138,16 @@
     opengl = {
       extraPackages = with pkgs; [
         intel-media-driver
+        intel-vaapi-driver
         vaapiIntel
         vaapiVdpau
         libvdpau-va-gl
+        libGL
       ];
-      extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
+      extraPackages32 = with pkgs.pkgsi686Linux; [ 
+        vaapiIntel 
+        intel-vaapi-driver
+      ];
     };
   };
 }
