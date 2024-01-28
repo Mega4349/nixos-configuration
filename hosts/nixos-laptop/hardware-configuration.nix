@@ -125,10 +125,13 @@
 	};
 	
 	# Enable powertop
-  powerManagement.powertop.enable = true;
+  powerManagement = {
+    powertop.enable = true;
+    cpuFreqGovernor = lib.mkDefault "powersave";
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     opengl = {
@@ -138,7 +141,9 @@
         vaapiVdpau
         libvdpau-va-gl
       ];
-      extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
+      extraPackages32 = with pkgs.pkgsi686Linux; [ 
+        vaapiIntel
+      ];
     };
   };
 }
