@@ -35,13 +35,7 @@
   fileSystems."/" = {
       device = "none";
       fsType = "tmpfs";
-      options = [ "defaults" "size=10G" "mode=755" ];
-    };
-
-  fileSystems."/home/mega" = { 
-      device = "none";
-      fsType = "tmpfs";
-      options = [ "size=10G" "mode=777" ];
+      options = [ "defaults" "size=50%" "mode=755" ];
     };
 
   fileSystems."/boot" = { 
@@ -115,17 +109,17 @@
   #  neededForBoot = false;
   #};
 
-  swapDevices = [ {
+  swapDevices = [{
     device = "/swap/swapfile";
     priority = 10;
     size = 20*1024;
-    } ];
+    }];
 
   zramSwap = {
     enable = true;
     algorithm = "zstd";
     priority = 100;
-    memoryPercent = 40;
+    memoryPercent = 50;
   };
 
   services.btrfs.autoScrub = {
@@ -155,6 +149,7 @@
         #amdvlk
         vaapiVdpau
         libva
+        libGL
       ];
       extraPackages32 = with pkgs; [
         #pkgsi686Linux.amdvlk
