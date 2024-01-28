@@ -16,24 +16,24 @@
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
     };
-    gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-    gedit # text editor
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    gnome-music
-    gnome-terminal
-    epiphany # web browser
-    geary # email reader
-    evince # document viewer
-    gnome-characters
-    totem # video player
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-  ]);
+    #gnome.excludePackages = (with pkgs; [
+    #  gnome-photos
+    #  gnome-tour
+    #  gedit # text editor
+    #]) ++ (with pkgs.gnome; [
+    #  cheese # webcam tool
+    #  gnome-music
+    #  gnome-terminal
+    #  epiphany # web browser
+    #  geary # email reader
+    #  evince # document viewer
+    #  gnome-characters
+    #  totem # video player
+    #  tali # poker game
+    #  iagno # go game
+    #  hitori # sudoku game
+    #  atomix # puzzle game
+    #]);
   };
   
   programs = {
@@ -55,7 +55,7 @@
   };
   
   services = {
-    xserver.desktopManager.gnome.enable = true;
+    #xserver.desktopManager.gnome.enable = true;
     gvfs.enable = true; # For mounting without root and trash 
 	  tumbler.enable = true; # Thumbnail support for images
 	  dbus.enable = true;
