@@ -3,7 +3,7 @@
 {
   imports = [
     ./helix.nix
-    #./obsidian.nix
+    ./obsidian.nix
   ];
   
   home.sessionVariables.EDITOR = "hx";
