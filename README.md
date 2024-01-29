@@ -7,3 +7,4 @@ todo:<br>
 	use agenix for secrets<br>
 	beets<br>
 	stop using light<br>
+	move sway-dbus script to scripts file<br>
