@@ -9,8 +9,10 @@
         browser = [ "firefox.desktop;" ];
         video_player = [ "mpv.desktop;" ];
         image_viewer = [ "imv-dir.desktop;" ];
+        archive_browser = [ "xarchiver.desktop;" ];
       in {
         "application/pdf" = pdf_reader;
+        "application/zip" = archive_browser;
         "audio/mp3" = video_player;
 			  "audio/ogg" = video_player;
 			  "video/mp4" = video_player;
