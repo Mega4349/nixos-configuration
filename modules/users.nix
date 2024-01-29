@@ -12,7 +12,7 @@
       mega = {
         isNormalUser = true;
         description = "mega";
-        extraGroups = [ "networkmanager" "wheel" "video" "libvirtd" "plugdev" ]; # Enable ‘sudo’ for the user. ## replaced with doas 
+        extraGroups = [ "networkmanager" "wheel" "video" "libvirtd" "plugdev" "kvm" ]; # Enable ‘sudo’ for the user. ## replaced with doas 
         initialPassword = "1234";
 
         # $ mkpasswd
