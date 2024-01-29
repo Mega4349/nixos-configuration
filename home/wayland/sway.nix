@@ -196,7 +196,6 @@ in
       bindgesture swipe:left workspace next
 
       # Execute on startup
-      exec wpaperd
       exec light -S 30
       exec autotiling --limit 2
       exec firefox
@@ -206,6 +205,7 @@ in
       exec steam
 			exec mpdscribble
       exec mpd-discord-rpc
+      exec swww-daemon && randomSwww ~/Pictures/Wallpapers
 
       # Assign windows to workspaces
       assign [app_id="firefox"] 2
