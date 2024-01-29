@@ -22,48 +22,37 @@
     ];
   };
     
-  programs = {
-    wpaperd = {
-      enable = true;
-      settings = {
-        default = {
-          path = "${config.xdg.userDirs.pictures}/Wallpapers";
-          duration = "5m";
-        };
-      };
-    };
-    swaylock = {
-      enable = true;
-      package = pkgs.swaylock-effects;
-      settings = {
-        screenshot = true;
-        color = "000000ff";
-        text-color = "9aa5ceff";
-        indicator-x-position = 180;
-        indicator-y-position = 900;
-        indicator-radius = 100;
-        indicator-thickness = 10;
-        timestr = "%H:%M";
-        datestr = "%a %d %b";
-        inside-color = "00000000";
-        ring-color = "ffffffff";
-        separator-color = "00000000";
-        inside-ver-color = "00000000";
-        inside-wrong-color = "f7768eff";
-        ring-ver-color = "7aa2f7ff";
-        ring-wrong-color = "f7768eff";
-        line-uses-inside = true;
-        key-hl-color = "f7768eff";
-        bs-hl-color = "f7768eff";
+  programs.swaylock = {
+    enable = true;
+    package = pkgs.swaylock-effects;
+    settings = {
+      screenshot = true;
+      color = "000000ff";
+      text-color = "9aa5ceff";
+      indicator-x-position = 180;
+      indicator-y-position = 900;
+      indicator-radius = 100;
+      indicator-thickness = 10;
+      timestr = "%H:%M";
+      datestr = "%a %d %b";
+      inside-color = "00000000";
+      ring-color = "ffffffff";
+      separator-color = "00000000";
+      inside-ver-color = "00000000";
+      inside-wrong-color = "f7768eff";
+      ring-ver-color = "7aa2f7ff";
+      ring-wrong-color = "f7768eff";
+      line-uses-inside = true;
+      key-hl-color = "f7768eff";
+      bs-hl-color = "f7768eff";
 
-        effect-blur = "8x8";
+      effect-blur = "8x8";
 
-        clock = true;
-        indicator = true;
+      clock = true;
+      indicator = true;
 
-        fade-in = 0.5;
-        grace = 2;
-      };
+      fade-in = 0.5;
+      grace = 2;
     };
   };
   
