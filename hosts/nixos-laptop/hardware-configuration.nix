@@ -85,11 +85,11 @@
     options = [ "bind" ];
   };
 
-#  fileSystems."/swap" = {
-#    device = "/dev/mapper/main";
-#    fsType = "btrfs";
-#    options = [ "subvol=swap" ];
-#  };
+  fileSystems."/swap" = {
+    device = "/dev/mapper/main";
+    fsType = "btrfs";
+    options = [ "subvol=swap" ];
+  };
 
   zramSwap = {
     enable = true;
@@ -98,11 +98,11 @@
     memoryPercent = 50;
   };
 
-#  swapDevices = [{
-#    device = "/swap/swapfile";
-#    priority = 10;
-#    size = 12*1024;
-#  }];
+  swapDevices = [{
+    device = "/swap/swapfile";
+    priority = 10;
+    size = 12*1024;
+  }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
