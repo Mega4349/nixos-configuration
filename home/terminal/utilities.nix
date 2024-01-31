@@ -7,7 +7,7 @@
 
     jmtpfs
 
-    realesrgan-ncnn-vulkan
+    #realesrgan-ncnn-vulkan
     
 	  neofetch
     fastfetch
