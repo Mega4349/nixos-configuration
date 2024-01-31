@@ -205,7 +205,8 @@ in
       exec steam
 			exec mpdscribble
       exec mpd-discord-rpc
-      exec swww-daemon && randomSwww ~/Pictures/Wallpapers
+      exec swww-daemon 
+      exec wait 1 && randomSwww ~/Pictures/Wallpapers
 
       # Assign windows to workspaces
       assign [app_id="firefox"] 2
