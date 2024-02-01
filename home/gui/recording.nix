@@ -47,10 +47,10 @@
     "io/github/seadve/Kooha" = {
       capture-mode = "monitor-window";
       profile-id = "mp4";
-      record-delay = "uint32 3";
+      record-delay = 3;
       record-speaker = true;
       show-pointer = true;
-      video-framerate = "uint32 60";
+      video-framerate = 60;
     };
   };
 }
