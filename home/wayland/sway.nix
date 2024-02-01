@@ -210,7 +210,7 @@ in
 
       # Assign windows to workspaces
       assign [app_id="firefox"] 2
-      assign [app_id="VencordDesktop"] 3
+      assign [app_id="vesktop"] 3
       assign [app_id="discord"] 3 
       assign [class="steam"] 4
       assign [app_id="transmission-gtk"] 5
