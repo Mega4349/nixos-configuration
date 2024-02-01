@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
   imports = [
@@ -37,7 +37,10 @@
   };
   
   programs = {
-    sway.enable = true;
+    sway = {
+      enable = true;
+      extraPackages = lib.mkForce [ ];
+    };
     dconf.enable = true; # needed to make home-manager happy
     fuse.userAllowOther = true;
     # program to show keypresses in wayland, needs setuid binary which is provided by the nixos module
