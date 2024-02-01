@@ -43,13 +43,9 @@
 			url = "github:n3oney/anyrun-nixos-options";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-
-    ags.url = "github:Aylur/ags";
-
-    matugen.url = "github:/InioX/Matugen";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, agenix, nur, nix-gaming, aagl, anyrun, anyrun-nixos-options, ags, matugen, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, agenix, nur, nix-gaming, aagl, anyrun, anyrun-nixos-options, ... }: 
   let
     mkSystem = modules: nixpkgs.lib.nixosSystem {
       inherit modules;
