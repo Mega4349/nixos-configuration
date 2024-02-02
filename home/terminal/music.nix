@@ -28,6 +28,7 @@
         port = 6600;
       };
     };
+    playerctld.enable = true;
     mpd-discord-rpc = {
       enable = true;
       settings = {
@@ -51,6 +52,8 @@
 			mpdscribble
 			cava
       opusTools
+      playerctl
+      mpd-mpris
   	];
 		persistence."/nix/persist/home/mega".directories = [
 			".mpdscribble"	

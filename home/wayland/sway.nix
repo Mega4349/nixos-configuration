@@ -204,6 +204,7 @@ in
       exec dbus-sway-environment
       exec steam
 			exec mpdscribble
+      exec mpd-mpris
       exec sleep 2 && mpd-discord-rpc
       exec swww-daemon 
       exec sleep 1 && randomSwww ~/Pictures/Wallpapers
