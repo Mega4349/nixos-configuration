@@ -4,7 +4,7 @@
   home.persistence."/nix/persist/home/mega" = {
     allowOther = true;
     directories = [
-      { directory = "Desktop"; method = "symlink"; }
+      #{ directory = "Desktop"; method = "symlink"; }
       { directory = "Downloads"; method = "symlink"; }
       { directory = "Pictures"; method = "symlink"; }
       { directory = "Music"; method = "symlink"; }
