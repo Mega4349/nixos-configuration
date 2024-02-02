@@ -28,7 +28,10 @@
   	supportedFilesystems = [ "ntfs" ];
 	};
 
-	environment.systemPackages = [ pkgs.appimage-run ];
+	environment.systemPackages = with pkgs; [ 
+    appimage-run 
+    sof-firmware
+  ];
 
   fileSystems."/" = {
     device = "none";
