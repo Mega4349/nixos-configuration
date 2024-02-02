@@ -200,7 +200,7 @@ in
       exec autotiling --limit 2
       exec firefox
       exec swaync
-      exec vencorddesktop #discordcanary
+      exec vesktop #discordcanary
       exec dbus-sway-environment
       exec steam
 			exec mpdscribble
