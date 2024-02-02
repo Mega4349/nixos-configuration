@@ -1,11 +1,10 @@
-@define-color cc-bg rgba(26, 27, 38, 0.9);
-
-@define-color noti-border-color rgba(205, 214, 244, 0.9);
-@define-color noti-bg rgba(49, 50, 68, 0.9);
-@define-color noti-bg-hover rgba(49, 50, 68, 0.9);
-@define-color noti-bg-focus rgba(49, 50, 68, 0.9);
-@define-color noti-close-bg rgba(205, 214, 244, 0.9);
-@define-color noti-close-bg-hover rgba(205, 214, 244, 0.9);
+@define-color cc-bg rgba(26, 27, 38, 1.0);
+@define-color noti-border-color rgba(205, 214, 244, 1.0);
+@define-color noti-bg rgba(49, 50, 68, 1.0);
+@define-color noti-bg-hover rgba(49, 50, 68, 1.0);
+@define-color noti-bg-focus rgba(49, 50, 68, 1.0);
+@define-color noti-close-bg rgba(205, 214, 244, 1.0);
+@define-color noti-close-bg-hover rgba(205, 214, 244, 1.0);
 
 @define-color bg-selected rgb(122, 162, 247);
 
