@@ -23,11 +23,10 @@ in
 
   home.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
-    #XDG_SESSION_DESKTOP = "sway";
+    XDG_SESSION_DESKTOP = "sway";
     XDG_CURRENT_DESKTOP = "sway";
 
     QT_QPA_PLATFORM="wayland;xcb";
-    #QT_QPA_PLATFORMTHEME = "qt6ct";
     QT_WAYLAND_FORCE_DPI = "physical";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
 
@@ -40,12 +39,6 @@ in
     package = pkgs.swayfx;
   
     wrapperFeatures.gtk = true;
-
-    extraSessionCommands = ''
-      export XDG_CURRENT_DESKTOP=sway
-      export XDG_SESSION_TYPE=wayland
-    '';
-
     config = {
       bars = [{ command = "waybar"; }];
 
