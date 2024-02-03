@@ -7,4 +7,3 @@ todo:<br>
 	stop using light<br>
 	move sway-dbus script to scripts file<br>
 	don't launch steam on laptop<br>
-	move notifications to the right side of the screen<br>

@@ -1,12 +1,12 @@
 {
   "$schema": "/etc/xdg/swaync/configSchema.json",
 
-  "positionX": "left",
+  "positionX": "right",
   "positionY": "bottom",
-  "control-center-margin-top": 8,
-  "control-center-margin-bottom": 8,
-  "control-center-margin-right": 8,
-  "control-center-margin-left": 8,
+  "control-center-margin-top": 10,
+  "control-center-margin-bottom": 10,
+  "control-center-margin-right": 1355,
+  "control-center-margin-left": 10,
   "control-center-width": 500,
   "control-center-height": 600,
   "fit-to-screen": false,
@@ -48,7 +48,7 @@
     },
     "mpris": {
       "image-size": 96,
-      "image-radius": 12
+      //"image-radius": 12
     }
   }
 }
