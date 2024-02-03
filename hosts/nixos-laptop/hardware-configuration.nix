@@ -26,11 +26,14 @@
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
   	supportedFilesystems = [ "ntfs" ];
+    extraModprobeConfig = ''
+      options snd-hda-intel dsp_driver=1
+    '';
 	};
 
 	environment.systemPackages = with pkgs; [ 
     appimage-run 
-    sof-firmware
+    ntfs3g
   ];
 
   fileSystems."/" = {
@@ -140,6 +143,9 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   hardware = {
+    firmware =  with pkgs; [
+      sof-firmware
+    ];
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     opengl = {
       extraPackages = with pkgs; [
