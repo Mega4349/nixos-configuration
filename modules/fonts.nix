@@ -2,7 +2,7 @@
 
 {
   fonts = {
-    fontDir.enable = true;
+    enableDefaultPackages = false;
     packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk
@@ -14,10 +14,10 @@
       source-han-sans-japanese
       source-han-serif-japanese
       
-      ubuntu_font_family
-      
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       jetbrains-mono
+
+      unifont
       
 			maple-mono
     ];
