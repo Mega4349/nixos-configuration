@@ -8,32 +8,13 @@
       "layer" = "bottom";
       "position" = "left";
 
-      modules-left = [ "sway/workspaces" "sway/mode" "hyprland/workspaces" ];
+      modules-left = [ "sway/workspaces" "sway/mode" ];
       modules-center = [ "clock" ];
       modules-right = [ ] ++ 
       (if osConfig.networking.hostName == "nixos-laptop" then 
       [ "idle_inhibitor" "pulseaudio" "network" "battery" "backlight" "custom/notification" "sway/language" "tray" ]
       else [ "idle_inhibitor" "pulseaudio" "network" "custom/notification" "sway/language" "tray" ]);
       
-      "hyprland/workspaces" = {
-        "format" = "{icon}";
-        "on-click" = "activate";
-        "on-scroll-up" = "hyprctl dispatch workspace e-1";
-        "on-scroll-down" = "hyprctl dispatch workspace e+1";
-        "format-icons" = { 
-          "1" = "一"; 
-          "2" = "二"; 
-          "3" = "三"; 
-          "4" = "四"; 
-          "5" = "五"; 
-          "6" = "六"; 
-          "7" = "七"; 
-          "8" = "八";
-          "9" = "九";
-          "10" = "十";
-        };
-      };
-
       "sway/workspaces" = {
         "format" = "{icon}";
         "format-icons" = { 
@@ -145,9 +126,9 @@
 			}
 
 			window > box {
-			  margin-top: 10px;
-			  margin-left: 10px;
-			  margin-bottom: 10px;
+			  margin-top: 12px;
+			  margin-left: 12px;
+			  margin-bottom: 12px;
 			  color: #a4abcf;
 			  border: 2px solid;
 			  background: #16161e;
