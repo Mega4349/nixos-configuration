@@ -47,8 +47,8 @@ in
       };
         
       gaps = {
-        outer = 5;
-        inner = 5;
+        outer = 6;
+        inner = 6;
       };
 
       input = {
