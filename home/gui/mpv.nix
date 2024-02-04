@@ -39,6 +39,12 @@
       screenshot-directory = "~/Pictures/mpv";
 			screenshot-png-compression = "7";
     };
+		bindings = {
+			g = "ignore";
+			G = "ignore";
+			h = "ignore";
+			H = "ignore";
+		};
   };
 
 	xdg.configFile = {
