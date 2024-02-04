@@ -1,6 +1,19 @@
 { pkgs, ... }:
 
 let
+
+  dbus-sway-environment = pkgs.writeTextFile {
+    name = "dbus-sway-environment";
+    destination = "/bin/dbus-sway-environment";
+    executable = true;
+
+    text = ''
+      dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+      systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
+      systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
+    '';
+  };
+  
   randomSwww = pkgs.writeTextFile {
    name = "randomSwww";
    destination = "/bin/randomSwww";
@@ -95,7 +108,8 @@ in
 	home.packages = with pkgs; [
 		imagemagick
     swww
-
+    
+    dbus-sway-environment
     randomSwww
 		roundedShadowScript
 		shadowScript

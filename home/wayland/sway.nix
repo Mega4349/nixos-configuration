@@ -1,22 +1,7 @@
 { pkgs, inputs, ... }:
 
-let 
-  dbus-sway-environment = pkgs.writeTextFile {
-    name = "dbus-sway-environment";
-    destination = "/bin/dbus-sway-environment";
-    executable = true;
-
-    text = ''
-      dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-      systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
-      systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
-    '';
-  };
-
-in
 {
   home.packages = with pkgs; [
-    dbus-sway-environment
 		autotiling
     sway-contrib.grimshot
   ];
@@ -198,7 +183,7 @@ in
       exec steam
 			exec mpdscribble
       exec mpd-mpris
-      exec sleep 2 && mpd-discord-rpc
+      exec sleep 30 && mpd-discord-rpc
       exec swww-daemon 
       exec sleep 1 && randomSwww ~/Pictures/Wallpapers
 
