@@ -14,7 +14,7 @@
 		
 	  xserver = {
 	    desktopManager.xterm.enable = false;
-	    extraLayouts.canary = {
+	    xkb.extraLayouts.canary = {
 	      description = "Canary keyboard layout";
 	    	languages = ["eng"];
 	      symbolsFile = builtins.fetchurl {
