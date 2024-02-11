@@ -18,7 +18,6 @@
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ]; #pkgs.linuxKernel.packages.linux_6_5.amdgpu-pro pkgs.amf-headers ]; # For virtual camera in OBS
-    kernelParams = [ "radeon.si_support=0" "amdgpu.si_support=1" ];
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
       interpreter = "${pkgs.appimage-run}/bin/appimage-run";
