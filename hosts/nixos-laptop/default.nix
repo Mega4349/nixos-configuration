@@ -11,6 +11,7 @@
   
   # For controlling screen brightness
   programs.light.enable = true;
+  services.blueman.enable = true;
 
   environment.persistence."/nix/persist" = {
     hideMounts = true;
