@@ -188,6 +188,7 @@
       exec sleep 1 && randomSwww ~/Pictures/Wallpapers
 
       # Assign windows to workspaces
+      assign [app_id="WebApp-anilist"] 1
       assign [app_id="firefox"] 2
       assign [app_id="vesktop"] 3
       assign [app_id="discord"] 3 
