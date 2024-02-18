@@ -6,3 +6,4 @@ todo:<br>
 	beets<br>
 	stop using light<br>
 	don't launch steam on laptop<br>
+	move sway window bindings into their modules<br>
