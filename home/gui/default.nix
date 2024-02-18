@@ -2,7 +2,9 @@
 
 {
   imports = [
+    ./anilist.nix
     ./discord.nix
+    ./firefox-webapps.nix
     ./games.nix
     ./mozilla.nix
     ./mpv.nix
