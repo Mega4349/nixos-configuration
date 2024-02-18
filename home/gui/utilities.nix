@@ -28,8 +28,6 @@
 			
       deluge-gtk
 
-			trackma-gtk
-									
       zathura
 			imv
 			gimp
@@ -55,9 +53,6 @@
 				".config/blender"
 				".config/deluge"
 				".config/wootility-lekker"
-				".config/trackma"
-
-				".local/share/trackma"
 			];
 			files = [ # fricking kde apps and not having config directories
 				".config/kriarc"
