@@ -9,9 +9,7 @@
     enable = true;
     scripts = with pkgs.mpvScripts; [
       sponsorblock
-      thumbfast
 			mpv-playlistmanager
-			mpv-cheatsheet
 			mpris
     ];
     config = {
@@ -46,9 +44,4 @@
 			H = "ignore";
 		};
   };
-
-	xdg.configFile = {
-		"mpv/scripts".source = ./config/mpv/scripts;
-		"mpv/script-opts".source = ./config/mpv/script-opts;
-	};
 }
