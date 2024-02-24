@@ -4,7 +4,6 @@
   imports = [
     inputs.impermanence.nixosModules.impermanence
     inputs.nur.nixosModules.nur
-    inputs.aagl.nixosModules.default
 
     ./hardware-configuration.nix
   	../../modules
@@ -22,8 +21,6 @@
       ];
     };
   };
-
-  programs.honkers-railway-launcher.enable = true;
 
   # Set hostname
   networking.hostName = "nixos-desktop";

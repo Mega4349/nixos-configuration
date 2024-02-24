@@ -26,12 +26,6 @@
     # Game stuff
     nix-gaming.url = "github:fufexan/nix-gaming";
 
-    # Game stuff
-    aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    
     # Anyrun launcher
     anyrun = {
       url = "github:Kirottu/anyrun";
@@ -45,7 +39,7 @@
 		};
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, agenix, nur, nix-gaming, aagl, anyrun, anyrun-nixos-options, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, agenix, nur, nix-gaming, anyrun, anyrun-nixos-options, ... }: 
   let
     mkSystem = modules: nixpkgs.lib.nixosSystem {
       inherit modules;
