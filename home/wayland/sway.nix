@@ -183,9 +183,11 @@
       exec steam
 			exec mpdscribble
       exec mpd-mpris
-      exec killall mpd-discord-rpc && sleep 30 && mpd-discord-rpc # sleep so that discord has time to start, doesn't work if it starts after discord
+      exec sleep 30 && killall mpd-discord-rpc && mpd-discord-rpc # sleep so that discord has time to start, doesn't work if it starts after discord
       exec swww-daemon 
       exec sleep 1 && randomSwww ~/Pictures/Wallpapers
+
+      exec_always killall mpd-discord-rpc && mpd-discord-rpc      
 
       # Assign windows to workspaces
       assign [app_id="WebApp-anilist"] 1
