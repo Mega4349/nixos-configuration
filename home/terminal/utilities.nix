@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -13,7 +13,8 @@
     fastfetch
 		pfetch
 
-    ani-cli
+    (pkgs.ani-cli.override { mpv = config.programs.mpv.finalPackage; })
+        
 		manga-cli
     
     htop
