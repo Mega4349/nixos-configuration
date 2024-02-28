@@ -9,8 +9,8 @@
     enable = true;
     scripts = with pkgs.mpvScripts; [
       sponsorblock
-			mpv-playlistmanager
 			mpris
+			uosc
     ];
     config = {
       volume = "80";
