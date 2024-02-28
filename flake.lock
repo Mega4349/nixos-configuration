@@ -302,6 +302,27 @@
         "type": "github"
       }
     },
+    "programsdb": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1709145753,
+        "narHash": "sha256-7wjlpLM9TFMKqeA0Q1jd1/mwhEYu53fYixMiCcheMnE=",
+        "owner": "wamserma",
+        "repo": "flake-programs-sqlite",
+        "rev": "cd06f7829d6b5c12fbbaff233a4618545b559e98",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wamserma",
+        "repo": "flake-programs-sqlite",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -311,7 +332,8 @@
         "impermanence": "impermanence",
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_2",
-        "nur": "nur"
+        "nur": "nur",
+        "programsdb": "programsdb"
       }
     },
     "systems": {
@@ -326,6 +348,21 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "utils": {
+      "locked": {
+        "lastModified": 1678901627,
+        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
         "type": "github"
       }
     }

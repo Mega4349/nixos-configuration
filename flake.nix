@@ -13,6 +13,12 @@
 
     # Impermanence for persistence on ephemeral root
     impermanence.url = "github:nix-community/impermanence";
+
+    # Fix for command-not-found with flakes
+    programsdb = {
+      url = "github:wamserma/flake-programs-sqlite";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
     # Agenix for secrets management
     agenix = {
@@ -39,7 +45,7 @@
 		};
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, agenix, nur, nix-gaming, anyrun, anyrun-nixos-options, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, programsdb, agenix, nur, nix-gaming, anyrun, anyrun-nixos-options, ... }: 
   let
     mkSystem = modules: nixpkgs.lib.nixosSystem {
       inherit modules;
