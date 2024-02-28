@@ -20,12 +20,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
-    # Agenix for secrets management
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Nix User Repository, used for firefox extensions
     nur.url = "github:nix-community/NUR";
 
@@ -45,7 +39,7 @@
 		};
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, programsdb, agenix, nur, nix-gaming, anyrun, anyrun-nixos-options, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, programsdb, nur, nix-gaming, anyrun, anyrun-nixos-options, ... }: 
   let
     mkSystem = modules: nixpkgs.lib.nixosSystem {
       inherit modules;
