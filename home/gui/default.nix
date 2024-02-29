@@ -7,6 +7,7 @@
     ./firefox-webapps.nix
     ./games.nix
     ./mozilla.nix
+    ./music.nix
     ./mpv.nix
     ./nemo.nix
     ./osu-stable.nix
