@@ -39,7 +39,7 @@
     };
 		bindings = {
 			g = "ignore";
-			G = "add sub-scale +0.1";
+			G = "add sub-scale +0.1"; # default configuration for this key, but sponsorblock steals it 
 			h = "ignore";
 			H = "ignore";
 		};
