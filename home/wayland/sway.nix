@@ -62,6 +62,27 @@
         hide_cursor = "3000";
       };
 
+      defaultWorkspace = "1";
+
+      # Execute on startup
+      startup = [
+        { command = "light -S 30"; }
+        { command = "autotiling -- limit 2"; }
+        { command = "firefox"; }
+        { command = "swaync"; }
+        { command = "vesktop"; }
+        { command = "dbus-sway-environment"; }
+        { command = "steam"; }
+        { command = "mpdscribble"; }
+        { command = "mpd-mpris"; }
+        { command = "sleep 30 && killall mpd-discord-rpc && mpd-discord-rpc"; } # sleep so that discord has time to start, doesn't work if it starts after discord
+        { command = "swww-daemon"; }
+        { command = "sleep 1 && randomSwww ~/Pictures/Wallpapers"; }
+
+        # Always exec when reloading sway
+        { command = "killall mpd-discord-rpc && mpd-discord-rpc"; always = true; }
+      ];
+
       keybindings = let 
         mod = "Mod4";
         term = "kitty --single-instance";
@@ -110,7 +131,7 @@
         "${mod}+7" = "workspace number 7";
         "${mod}+8" = "workspace number 8";
         "${mod}+9" = "workspace number 9";
-        #"${mod}+0" = "workspace number 10";
+        "${mod}+0" = "workspace number 10";
         
         # Move focused container to workspace
         "${mod}+Shift+1" = "move container to workspace number 1";
@@ -153,9 +174,6 @@
     };
     	
     extraConfig = ''
-      #Hopefully fixes sway starting on workspace 10
-      bindsym Mod4+0 workspace number 10 
-
       bindsym --whole-window Mod4+button4 workspace prev
       bindsym --whole-window Mod4+button5 workspace next
       
@@ -172,22 +190,6 @@
       
       bindgesture swipe:right workspace prev
       bindgesture swipe:left workspace next
-
-      # Execute on startup
-      exec light -S 30
-      exec autotiling --limit 2
-      exec firefox
-      exec swaync
-      exec vesktop #discordcanary
-      exec dbus-sway-environment
-      exec steam
-			exec mpdscribble
-      exec mpd-mpris
-      exec sleep 30 && killall mpd-discord-rpc && mpd-discord-rpc # sleep so that discord has time to start, doesn't work if it starts after discord
-      exec swww-daemon 
-      exec sleep 1 && randomSwww ~/Pictures/Wallpapers
-
-      exec_always killall mpd-discord-rpc && mpd-discord-rpc      
 
       # Assign windows to workspaces
       assign [app_id="WebApp-anilist"] 1
