@@ -28,6 +28,7 @@
       bars = [{ command = "waybar"; }];
 
       focus= {
+        wrapping = "yes";
         followMouse = "always";
       };
         
