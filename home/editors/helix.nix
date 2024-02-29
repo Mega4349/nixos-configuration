@@ -19,14 +19,6 @@
         esc = [ "collapse_selection" "keep_primary_selection" ];
       };
     };
-    languages = { 
-      language = [{
-        name = "nix";
-        auto-format = true;
-        comment-token = "#";
-        indent = { tab-width = 2; unit = " "; };
-      }]; 
-    };
     themes = {
       # Author: Paul Graydon <p.y.graydon@gmail.com>
       tokyonight-night = let
@@ -126,5 +118,128 @@
       "markup.raw" = { fg = cyan; };
       };
     };
+    languages = with pkgs;
+        {
+          language-server = {
+            efm-lsp-prettier = {
+              command = "${efm-langserver}/bin/efm-langserver";
+              config = {
+                documentFormatting = true;
+                languages = lib.genAttrs [ "typescript" "javascript" "typescriptreact" "javascriptreact" "vue" "json" "markdown" ] (_: [{
+                  formatCommand = "${nodePackages.prettier}/bin/prettier --stdin-filepath \${INPUT}";
+                  formatStdin = true;
+                }]);
+              };
+            };
+            eslint = {
+              command = "vscode-eslint-language-server";
+              args = [ "--stdio" ];
+              config = {
+                validate = "on";
+                packageManager = "yarn";
+                useESLintClass = false;
+                codeActionOnSave.mode = "all";
+                # codeActionsOnSave = { mode = "all"; };
+                format = true;
+                quiet = false;
+                onIgnoredFiles = "off";
+                rulesCustomizations = [ ];
+                run = "onType";
+                # nodePath configures the directory in which the eslint server should start its node_modules resolution.
+                # This path is relative to the workspace folder (root dir) of the server instance.
+                nodePath = "";
+                # use the workspace folder location or the file location (if no workspace folder is open) as the working directory
+
+                workingDirectory.mode = "auto";
+                experimental = { };
+                problems.shortenToSingleLine = false;
+                codeAction = {
+                  disableRuleComment = {
+                    enable = true;
+                    location = "separateLine";
+                  };
+                  showDocumentation.enable = true;
+                };
+              };
+            };
+
+            typescript-language-server = {
+              command = "${nodePackages.typescript-language-server}/bin/typescript-language-server";
+              args = [ "--stdio" "--tsserver-path=${nodePackages.typescript}/lib/node_modules/typescript/lib" ];
+              config.documentFormatting = false;
+            };
+
+            nil = {
+              command = "${nil}.default}/bin/nil";
+              config.nil = {
+                formatting.command = [ "${nixpkgs-fmt}/bin/nixpkgs-fmt" ];
+                # formatting.command = [ "alejandra" "-q" ];
+                nix.flake.autoEvalInputs = true;
+              };
+            };
+            rust-analyzer = {
+              config.rust-analyzer = {
+                cargo.loadOutDirsFromCheck = true;
+                checkOnSave.command = "clippy";
+                procMacro.enable = true;
+                lens = { references = true; methodReferences = true; };
+                completion.autoimport.enable = true;
+                experimental.procAttrMacros = true;
+              };
+            };
+          };
+          language =
+            let
+              jsTsWebLanguageServers =
+                [
+                  { name = "typescript-language-server"; except-features = [ "format" ]; }
+                  "eslint"
+                  { name = "efm-lsp-prettier"; only-features = [ "format" ]; }
+                ];
+            in
+            [
+              {
+                name = "bash";
+                auto-format = true;
+                file-types = [ "sh" "bash" ];
+                formatter = {
+                  command = "${pkgs.shfmt}/bin/shfmt";
+                  # Indent with 2 spaces, simplify the code, indent switch cases, add space after redirection
+                  args = [ "-i" "4" "-s" "-ci" "-sr" ];
+                };
+              }
+              { name = "rust"; auto-format = false; file-types = [ "lalrpop" "rs" ]; language-servers = [ "rust-analyzer" ]; }
+
+              { name = "c-sharp"; language-servers = [ "omnisharp" ]; }
+              { name = "typescript"; language-servers = jsTsWebLanguageServers; }
+              { name = "javascript"; language-servers = jsTsWebLanguageServers; }
+              { name = "jsx"; language-servers = jsTsWebLanguageServers; }
+              { name = "tsx"; language-servers = jsTsWebLanguageServers; }
+              { name = "vue"; language-servers = [{ name = "vuels"; except-features = [ "format" ]; } { name = "efm-lsp-prettier"; } "eslint"]; }
+              { name = "sql"; formatter.command = "pg_format"; }
+              { name = "nix"; language-servers = [ "nil" ]; }
+              { name = "json"; language-servers = [{ name = "vscode-json-language-server"; except-features = [ "format" ]; } "efm-lsp-prettier"]; }
+              { name = "markdown"; language-servers = [{ name = "marksman"; except-features = [ "format" ]; } "ltex-ls" "efm-lsp-prettier"]; }
+
+            ];
+        };
   };
+
+  home.packages = with pkgs; [
+    nil
+    lldb
+
+    cmake-language-server
+    jsonnet-language-server
+    marksman # Markdown
+    taplo # Toml
+    pgformatter
+    (python3.withPackages (ps: with ps; [ python-lsp-server ] ++ python-lsp-server.optional-dependencies.all))
+    nodePackages.bash-language-server # Bash
+    nodePackages.pyright # Python
+    nodePackages.stylelint
+    nodePackages.vscode-langservers-extracted
+    nodePackages.yaml-language-server # YAML / JSON
+    rnix-lsp
+  ];
 }
