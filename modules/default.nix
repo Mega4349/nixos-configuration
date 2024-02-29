@@ -9,6 +9,7 @@
 		./nix.nix
 		./services.nix
     ./sound.nix
+		./system.nix
 		./users.nix
     ./utilities.nix
 		./virtualisation.nix
