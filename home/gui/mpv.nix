@@ -39,7 +39,7 @@
     };
 		bindings = {
 			g = "ignore";
-			G = "ignore";
+			G = "add sub-scale +0.1";
 			h = "ignore";
 			H = "ignore";
 		};
