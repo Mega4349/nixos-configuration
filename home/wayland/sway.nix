@@ -202,6 +202,7 @@
       for_window [app_id="float"] floating enable
 
       for_window [app_id="com.obsproject.Studio"] floating enable
+      for_window [app_id="qalculate-gtk"] floating enable
 
       for_window [app_id="blueman-manager"] floating enable, resize set width 40 ppt height 30 ppt
       for_window [app_id="OpenTabletDriver.UX.Gtk"] floating enable, resize set width 60 ppt height 75 ppt
