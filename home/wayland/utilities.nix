@@ -70,7 +70,7 @@
         }
         {
           timeout = 420;
-          command = "${pkgs.systemd}/bin/systemctl suspend";
+          command = "${pkgs.systemd}/bin/systemctl -i suspend";
         }
       ];
     };
