@@ -3,7 +3,7 @@
 {
   programs.firefox.webapps.tidal = {
     url = "https://listen.tidal.com";
-    id = 1;
+    id = 2;
 
     extraSettings = config.programs.firefox.profiles."mega".settings;
 

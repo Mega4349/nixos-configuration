@@ -8,7 +8,7 @@
     extraSettings = config.programs.firefox.profiles."mega".settings;
 
     icon = ./config/anilist.jpg;
-    #mimeType = ["x-scheme-handler/element"];
-    #categories = ["Network" "InstantMessaging" "Chat" "VideoConference"]
+    #mimeType = [ "" ];
+    #categories = [ "" ];
   };
 }
