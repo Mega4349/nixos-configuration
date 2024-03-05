@@ -8,10 +8,10 @@
     ./games.nix
     ./mozilla.nix
     ./mpv.nix
-    ./music.nix
     ./nemo.nix
     ./osu-stable.nix
     ./recording.nix
+    ./tidal.nix
     ./utilities.nix
   ];
 }
