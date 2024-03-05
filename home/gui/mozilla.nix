@@ -62,6 +62,11 @@
           "reader.parse-on-load.force-enabled" = true;
           # Sharing indicator
           "privacy.webrtc.legacyGlobalIndicator" = false;
+
+          # drm
+          "browser.eme.ui.enabled" = true;
+          "media.gmp-widevinecdm.visible" = true;
+          "media.gmp-widevinecdm.enabled" = true;
           
           "app.shield.optoutstudies.enabled" = false;
           "app.update.auto" = false;
