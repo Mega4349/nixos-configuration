@@ -2,7 +2,6 @@
 
 {
   imports = [
-    inputs.nix-gaming.nixosModules.steamCompat
     inputs.home-manager.nixosModules.home-manager 
   ];
 

@@ -63,7 +63,7 @@
         hide_cursor = "3000";
       };
 
-      defaultWorkspace = "1";
+      defaultWorkspace = "workspace number 1";
 
       # Execute on startup
       startup = [

@@ -240,6 +240,5 @@
     nodePackages.stylelint
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server # YAML / JSON
-    rnix-lsp
   ];
 }

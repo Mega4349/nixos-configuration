@@ -7,6 +7,7 @@
       driSupport = true;
       driSupport32Bit = true;
     };
+    steam-hardware.enable = true;
     opentabletdriver = {
       enable = true;
       daemon.enable = true; 
