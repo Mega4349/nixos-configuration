@@ -13,7 +13,7 @@
     fastfetch
 		pfetch
 
-    (pkgs.ani-cli.override { mpv = config.programs.mpv.finalPackage; })
+    (ani-cli.override { mpv = config.programs.mpv.finalPackage; })
         
 		manga-cli
     
