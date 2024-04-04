@@ -21,7 +21,7 @@
     btop
     amdgpu_top
 
-    (nvtop.override {
+    (nvtopPackages.full.override {
       nvidia = false;
       msm = false;
     })
