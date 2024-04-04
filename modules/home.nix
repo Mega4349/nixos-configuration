@@ -48,8 +48,8 @@
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
-      extraCompatPackages = [
-        inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
       ];
     };
     # Gamemode to run games better
