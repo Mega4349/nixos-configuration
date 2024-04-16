@@ -145,10 +145,6 @@
   services.fstrim.enable = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
-    bluetooth = {
-      enable = true; # enables support for Bluetooth
-      powerOnBoot = true; # powers up the default Bluetooth controller on boot
-    };
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     opengl = {
       extraPackages = with pkgs; [

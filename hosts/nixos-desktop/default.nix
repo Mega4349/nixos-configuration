@@ -9,8 +9,6 @@
   	../../modules
 	];
 
-  services.blueman.enable = true;
-
   environment = {
     persistence."/nix/persist" = {
       hideMounts = true;
