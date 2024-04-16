@@ -20,6 +20,8 @@ in
     packages = with pkgs; [
       gnused
 
+      wlx-overlay-s
+
       prismlauncher
   	  heroic
       bottles
