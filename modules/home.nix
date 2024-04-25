@@ -12,9 +12,17 @@
   };
 
   environment = {
+    systemPackages = with pkgs; [
+      wlx-overlay-s
+    ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
     };
+    etc."openal/alsoft.conf".text = ''
+      drivers=pulse,alsa
+      [pulse]
+      allow-moves=true
+    '';
     #gnome.excludePackages = (with pkgs; [
     #  gnome-photos
     #  gnome-tour
