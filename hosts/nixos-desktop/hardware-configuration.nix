@@ -3,6 +3,13 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, modulesPath, pkgs, ... }:
 
+let
+  amdgpu-kernel-module = pkgs.callPackage ../../modules/pkgs/amdgpu-kernel-module.nix {
+    # Make sure the module targets the same kernel as your system is using.
+    kernel = config.boot.kernelPackages.kernel;
+  };
+in
+
 {
   imports = [(
     modulesPath + "/installer/scan/not-detected.nix"
@@ -17,7 +24,12 @@
     };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ]; #pkgs.linuxKernel.packages.linux_6_5.amdgpu-pro pkgs.amf-headers ]; # For virtual camera in OBS
+    extraModulePackages = [ 
+      config.boot.kernelPackages.v4l2loopback # For virtual camera in OBS
+      (amdgpu-kernel-module.overrideAttrs (_: {
+        patches = [ ../../modules/pkgs/amdgpu-cap-sys-nice-begone.patch ];
+      }))
+    ];
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
       interpreter = "${pkgs.appimage-run}/bin/appimage-run";

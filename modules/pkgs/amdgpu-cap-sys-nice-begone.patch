@@ -1,0 +1,11 @@
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_ctx.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_ctx.c
+index d2139ac12159..c7f1d36329c8 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_ctx.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_ctx.c
+@@ -107,7 +107,7 @@ static int amdgpu_ctx_priority_permit(struct drm_file *filp,
+ 	if (drm_is_current_master(filp))
+ 		return 0;
+ 
+-	return -EACCES;
++	return 0;
+ }
