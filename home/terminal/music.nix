@@ -54,7 +54,6 @@
       opusTools
       playerctl
       mpd-mpris
-      tidal-dl
   	];
 		persistence."/nix/persist/home/mega".directories = [
 			".mpdscribble"	

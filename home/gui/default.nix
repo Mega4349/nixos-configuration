@@ -12,7 +12,6 @@
     ./osu-stable.nix
     ./recording.nix
     ./spotify.nix
-    ./tidal.nix
     ./utilities.nix
   ];
 }
