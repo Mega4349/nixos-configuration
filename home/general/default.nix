@@ -8,6 +8,7 @@
     ./sound.nix
     ./theme.nix
     ./virtualisation.nix
+    ./vr.nix
     ./xdg.nix
   ];
 }

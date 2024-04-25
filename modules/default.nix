@@ -13,5 +13,6 @@
 		./users.nix
     ./utilities.nix
 		./virtualisation.nix
+		./vr.nix
 	];
 }
