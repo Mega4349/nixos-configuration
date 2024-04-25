@@ -39,7 +39,7 @@
 
       input = {
         "*" = {
-          xkb_layout = "us,se,canary";
+          xkb_layout = "us,se";
           xkb_options = "grp:alt_caps_toggle";
         };
         "1133:16531:Logitech_PRO_X" = { # wireless 

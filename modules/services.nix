@@ -12,18 +12,8 @@
       #dataDir = "/home/mega/.config/deluge";
     };
 		
-	  xserver = {
-	    desktopManager.xterm.enable = false;
-	    xkb.extraLayouts.canary = {
-	      description = "Canary keyboard layout";
-	    	languages = ["eng"];
-	      symbolsFile = builtins.fetchurl {
-	        url = "https://raw.githubusercontent.com/Apsu/Canary/main/canary";
-	        sha256 = "sha256:1rv9hb9v1rwn2abds09kc5nrgypzzg6g0izynil8v8m16a99dznj";
-	      };
-	    };
-	  };
-	};
+	  xserver.desktopManager.xterm.enable = false;
+  };
 
 	systemd = {
 	  user.services = {
