@@ -32,7 +32,7 @@
 
 	qt = {
     enable = true;
-    platformTheme = "gtk";
+    platformTheme.name = "gtk";
     style.package = pkgs.tokyo-night-gtk;
   };
 } 
