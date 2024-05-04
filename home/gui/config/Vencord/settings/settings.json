@@ -380,6 +380,10 @@
         },
         "TypingIndicator": {
             "enabled": true
+            "includeMutedChannels": false,
+            "includeCurrentChannel": true,
+            "indicatorMode": 1,
+            "includeBlockedUsers": false
         },
         "TypingTweaks": {
             "enabled": false
