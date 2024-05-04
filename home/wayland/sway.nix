@@ -44,7 +44,7 @@
         };
         "1133:16531:Logitech_PRO_X" = { # wireless 
           accel_profile = "flat";
-          pointer_accel = "-0.15";
+          pointer_accel = "-0.25";
         }; 
 				"1133:49300:Logitech_PRO_X_Wireless" = { # wired mode, ironically
 					accel_profile = "flat";
