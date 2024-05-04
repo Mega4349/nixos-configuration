@@ -48,7 +48,7 @@
         }; 
 				"1133:49300:Logitech_PRO_X_Wireless" = { # wired mode, ironically
 					accel_profile = "flat";
-					pointer_accel = "-0.15";
+					pointer_accel = "-0.25";
 				};
         "1102:4618:ALP0013:00_044E:120A_Touchpad" = {
           tap = "enabled";
