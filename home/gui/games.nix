@@ -38,7 +38,6 @@ in
       ".local/share/bottles"
 		  ".config/heroic"
 		  ".config/OpenTabletDriver"
-		  ".local/share/honkers-railway-launcher"
 		  ".local/share/PrismLauncher"
 		  ".stepmania-5.1"
 	  ];
