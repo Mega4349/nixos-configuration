@@ -23,6 +23,7 @@ in
       wlx-overlay-s
 
       prismlauncher
+      jdk8
   	  heroic
       bottles
       stepmania
