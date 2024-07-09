@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-		autotiling
+		autotiling-rs
     sway-contrib.grimshot
   ];
 
