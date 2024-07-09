@@ -4,7 +4,7 @@
   hardware = {
     graphics = {
       enable = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
     steam-hardware.enable = true;
     opentabletdriver = {
