@@ -8,3 +8,5 @@ todo:<br>
 	don't launch steam on laptop<br>
 	move sway window bindings into their modules<br>
 	sway default workspace<br>
+	bambu/orca<br>
+	envision<br>
