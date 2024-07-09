@@ -9,7 +9,7 @@
 
     #realesrgan-ncnn-vulkan
     
-	  neofetch
+	  #neofetch
     fastfetch
 		pfetch
 

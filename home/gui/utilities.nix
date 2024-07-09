@@ -7,8 +7,8 @@
 			
       libreoffice
 			
-      blender-hip
-			
+      #blender-hip
+			 
       deluge-gtk
 
       zathura
