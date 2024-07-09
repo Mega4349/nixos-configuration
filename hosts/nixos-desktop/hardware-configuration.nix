@@ -167,7 +167,8 @@ in
       ];
       extraPackages32 = with pkgs; [
         #pkgsi686Linux.amdvlk
-        driversi686Linux.vaapiVdpau
+        
+        #driversi686Linux.vaapiVdpau
       ];
     };
   };
