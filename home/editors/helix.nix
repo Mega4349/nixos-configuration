@@ -236,7 +236,7 @@
     pgformatter
     (python3.withPackages (ps: with ps; [ python-lsp-server ] ++ python-lsp-server.optional-dependencies.all))
     nodePackages.bash-language-server # Bash
-    nodePackages.pyright # Python
+    pyright # Python
     nodePackages.stylelint
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server # YAML / JSON
