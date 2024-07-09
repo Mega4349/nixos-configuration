@@ -10,3 +10,4 @@ todo:<br>
 	sway default workspace<br>
 	bambu/orca<br>
 	envision<br>
+	btop gpu support<br>
