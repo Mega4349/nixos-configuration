@@ -151,7 +151,7 @@
       sof-firmware
     ];
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    opengl = {
+    graphics = {
       extraPackages = with pkgs; [
         intel-media-driver
         intel-vaapi-driver
