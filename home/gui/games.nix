@@ -26,7 +26,6 @@ in
       jdk8
   	  heroic
       bottles
-      stepmania
       steamtinkerlaunch
 
       lazer-vulkan
@@ -40,7 +39,6 @@ in
 		  ".config/heroic"
 		  ".config/OpenTabletDriver"
 		  ".local/share/PrismLauncher"
-		  ".stepmania-5.1"
 	  ];
 	};
 }
