@@ -1,11 +1,11 @@
 { lib, config, pkgs, ... }:
 
-{
-  programs = lib.mkIf (config.networking.hostName == "nixos-desktop") {
+lib.mkIf (config.networking.hostName == "nixos-desktop") {
+  programs = {
     envision.enable = true;
     corectrl.enable = true;
   };
-  services = lib.mkIf (config.networking.hostName == "nixos-desktop") {
+  services = {
     udev.packages = with pkgs; [
       xr-hardware
     ];
@@ -18,7 +18,7 @@
     STEAMVR_LH_ENABLE = "1";
     XRT_COMPOSITOR_COMPUTE = "1";
   };
-  environment.systemPackages = with pkgs; lib.mkIf (config.networking.hostName == "nixos-desktop") [
+  environment.systemPackages = with pkgs; [
     opencomposite
     usbutils
   ];
