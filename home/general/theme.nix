@@ -5,7 +5,7 @@
     enable = true;
     theme = {
       name = "Tokyonight-Dark-BL";
-      package = pkgs.tokyo-night-gtk;
+      package = pkgs.tokyonight-gtk-theme;
     };
     iconTheme = {
       name = "Papirus";
