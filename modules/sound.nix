@@ -13,8 +13,5 @@
 	  wireplumber.enable = true;
 	};
 
-  # Only meant for ALSA configurations, set to false for pipewire
-	sound.enable = false;
-
   hardware.pulseaudio.enable = false;
 }
