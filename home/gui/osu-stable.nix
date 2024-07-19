@@ -22,13 +22,13 @@ lib.mkIf (osConfig.networking.hostName == "nixos-desktop") {
 	  ];
   };
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      xwayland = prev.xwayland.overrideAttrs (o: {
-        patches = (o.patches or []) ++ [
-          ./pkgs/patch/xwayland-vsync.diff
-        ];
-      });
-    })
-  ];
+  #nixpkgs.overlays = [
+  #  (final: prev: {
+  #    xwayland = prev.xwayland.overrideAttrs (o: {
+  #      patches = (o.patches or []) ++ [
+  #        ./pkgs/patch/xwayland-vsync.diff
+  #      ];
+  #    });
+  #  })
+  #];
 }
