@@ -1,23 +1,26 @@
 { pkgs, config, ... }:
 
 {
-  xdg.configFile."openvr/openvrpaths.vrpath".text = ''
-    {
-      "config" :
-      [
-        "${config.xdg.dataHome}/Steam/config"
-      ],
-      "external_drivers" : null,
-      "jsonid" : "vrpathreg",
-      "log" :
-      [
-        "${config.xdg.dataHome}/Steam/logs"
-      ],
-      "runtime" :
-      [
-        "${pkgs.opencomposite}/lib/opencomposite"
-      ],
-      "version" : 1
-    }
-  '';
+  #xdg.configFile."openvr/openvrpaths.vrpath".text = ''
+  #  {
+  #    "config" :
+  #    [
+  #      "${config.xdg.dataHome}/Steam/config"
+  #    ],
+  #    "external_drivers" : null,
+  #    "jsonid" : "vrpathreg",
+  #    "log" :
+  #    [
+  #      "${config.xdg.dataHome}/Steam/logs"
+  #    ],
+  #    "runtime" :
+  #    [
+  #      "${pkgs.opencomposite}/lib/opencomposite"
+  #    ],
+  #    "version" : 1
+  #  }
+  #'';
+  home.persistence."/nix/persist/home/mega".directories = [
+    ".local/share/envision"
+  ];
 }
