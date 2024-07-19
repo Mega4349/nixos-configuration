@@ -11,7 +11,7 @@
     ./nemo.nix
     ./osu-stable.nix
     ./recording.nix
-    ./spotify.nix
+    #./spotify.nix
     ./utilities.nix
   ];
 }

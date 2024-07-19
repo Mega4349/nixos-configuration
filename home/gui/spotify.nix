@@ -1,11 +1,11 @@
 { pkgs, inputs, ... }:
 
 let 
-	spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
+	spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
 	imports = [ 
-    inputs.spicetify-nix.homeManagerModule 
+    inputs.spicetify-nix.homeManagerModules.default 
   ];
 
 	programs.spicetify = {
@@ -15,8 +15,9 @@ in
     colorScheme = "TokyoNight";
 
     enabledExtensions = with spicePkgs.extensions; [
+		  adblock
       fullAppDisplay
-			playlistIcons
+			#playlistIcons
     ];
   };
 
