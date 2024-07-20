@@ -31,8 +31,7 @@
   box-shadow: none;
 }
 
-.control-center .notification-row {
-}
+.control-center .notification-row {}
 
 .notification {
   transition: all 100ms ease;
@@ -101,8 +100,7 @@
   background: @noti-bg-hover;
 }
 
-.notification-default-action {
-}
+.notification-default-action {}
 
 /* When alternative actions are visible */
 .notification-default-action:not(:only-child) {
@@ -117,15 +115,13 @@
 }
 
 /* add bottom border radius to eliminate clipping */
-.notification-action:first-child {
-}
+.notification-action:first-child {}
 
 .notification-action:last-child {
   border-right: 1px solid @noti-border-color;
 }
 
-.image {
-}
+.image {}
 
 .body-image {
   margin-top: 6px;
@@ -194,6 +190,7 @@
   background-clip: border-box;
   padding: 8px;
   margin: 2px;
+  border-radius: 0px;
   /*box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),
     0 2px 6px 2px rgba(0, 0, 0, 0.3);*/
 }
@@ -218,7 +215,8 @@
   margin: 8px;
   font-size: 1.5rem;
 }
-.widget-title > button {
+
+.widget-title>button {
   font-size: initial;
   color: white;
   text-shadow: none;
@@ -226,7 +224,8 @@
   border: 2px solid @noti-border-color;
   box-shadow: none;
 }
-.widget-title > button:hover {
+
+.widget-title>button:hover {
   background: @noti-bg-hover;
 }
 
@@ -235,16 +234,19 @@
   margin: 8px;
   font-size: 1.1rem;
 }
-.widget-dnd > switch {
+
+.widget-dnd>switch {
   font-size: initial;
   background: @noti-bg;
   border: 1px solid @noti-border-color;
   box-shadow: none;
 }
-.widget-dnd > switch:checked {
+
+.widget-dnd>switch:checked {
   background: @bg-selected;
 }
-.widget-dnd > switch slider {
+
+.widget-dnd>switch slider {
   background: @noti-bg-hover;
 }
 
@@ -252,7 +254,8 @@
 .widget-label {
   margin: 8px;
 }
-.widget-label > label {
+
+.widget-label>label {
   font-size: 1.1rem;
 }
 
@@ -260,15 +263,20 @@
 .widget-mpris {
   /* The parent to all players */
 }
+
 .widget-mpris-player {
   padding: 8px;
   margin: 8px;
   background-color: @noti-bg;
+  border-radius: 0px;
+  box-shadow: none;
 }
+
 .widget-mpris-title {
   font-weight: bold;
   font-size: 1.25rem;
 }
+
 .widget-mpris-subtitle {
   font-size: 1.1rem;
 }
