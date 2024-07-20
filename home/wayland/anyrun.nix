@@ -22,6 +22,17 @@
       showResultsImmediately = false;
       maxEntries = 7;
     };
+    extraCss = ''
+      window {
+        background: none;
+      }
+      entry {
+        background: $16161e;
+      }
+      list {
+        border-radius: 0px;
+      }
+    '';
 		extraConfigFiles."nixos-options.ron".text = let
       nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
       # merge your options
