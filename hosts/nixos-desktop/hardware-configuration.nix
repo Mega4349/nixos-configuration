@@ -156,7 +156,11 @@ in
   # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
   services.fstrim.enable = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  ];
   hardware = {
+    amdgpu.opencl.enable = true;
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     graphics = {
       extraPackages = with pkgs; [
@@ -167,7 +171,6 @@ in
       ];
       extraPackages32 = with pkgs; [
         #pkgsi686Linux.amdvlk
-        
         #driversi686Linux.vaapiVdpau
       ];
     };
