@@ -13,12 +13,18 @@
     fastfetch
 		pfetch
 
-    (ani-cli.override { mpv = config.programs.mpv.finalPackage; })
+    (ani-cli.override {
+      mpv = config.programs.mpv.finalPackage;
+    })
         
 		manga-cli
     
     htop
-    btop
+    
+    (btop.override {
+      rocmSupport = true;
+    })
+    
     amdgpu_top
 
     (nvtopPackages.full.override {
