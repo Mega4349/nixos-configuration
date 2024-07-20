@@ -13,6 +13,7 @@
 		glxinfo
 		vulkan-tools
     psmisc
+    usbutils
   	jq
 		tree
     libva-utils
