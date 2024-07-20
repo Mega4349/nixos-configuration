@@ -11,4 +11,3 @@ todo:<br>
 	bambu/orca<br>
 	envision<br>
   vencord plugins<br>
-  swaync theme<br>
