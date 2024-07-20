@@ -11,3 +11,4 @@ todo:<br>
 	bambu/orca<br>
 	envision<br>
 	btop gpu support<br>
+  vencord plugins<br>
