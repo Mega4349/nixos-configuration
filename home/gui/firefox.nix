@@ -93,7 +93,7 @@
         clearurls
         don-t-fuck-with-paste
         duckduckgo-privacy-essentials
-        enhanced-github
+        #enhanced-github
         ff2mpv
         #firefox-translators
         github-file-icons
