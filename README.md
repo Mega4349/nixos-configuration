@@ -2,8 +2,7 @@
 My scuffed NixOS configuration using Flakes. May or may not work 
 
 todo:<br> 
-  GTK Broken??<br>
-	use passwordfile for secret password<br>
+  use passwordfile for secret password<br>
 	beets<br>
 	stop using light<br>
 	don't launch steam on laptop<br>
