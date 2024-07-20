@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ lib, pkgs, config, ... }:
 
-{
+lib.mkIf (config.networking.hostName == "nixos-desktop") {
   virtualisation.libvirtd = {
     enable = true;
     qemu.verbatimConfig = ''
