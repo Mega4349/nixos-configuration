@@ -12,3 +12,4 @@ todo:<br>
 	envision<br>
 	btop gpu support<br>
   vencord plugins<br>
+  swaync theme<br>
