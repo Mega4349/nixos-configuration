@@ -2,8 +2,6 @@
 
 {
 	services = {
-    openssh.enable = true;
-    
     # Service for deluge torrent client 
     deluge = {
       enable = true;

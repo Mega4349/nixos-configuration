@@ -15,8 +15,6 @@
 
       ".cache"
 
-      ".ssh"
-
       ".local/state/home-manager"
       ".local/state/nix"
     ];
