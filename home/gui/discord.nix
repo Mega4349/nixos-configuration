@@ -6,7 +6,9 @@
     	(discord-canary.override {
       	withVencord = true;
   		})
-			vesktop
+			(vesktop.override {
+				withSystemVencord = true;
+			})
   	];
 		persistence."/nix/persist/home/mega".directories = [
 			".config/discordcanary"
