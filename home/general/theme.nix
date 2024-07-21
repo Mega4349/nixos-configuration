@@ -40,5 +40,5 @@
     window {
       border-radius: 0 0 0 0;
     }
-  ''
+  '';
 } 
