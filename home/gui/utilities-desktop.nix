@@ -3,7 +3,7 @@
 lib.mkIf (osConfig.networking.hostName == "nixos-desktop") {
   home = {
     packages = with pkgs; [
-      #blender-hip
+      blender-hip
       wootility
       via
       avidemux
