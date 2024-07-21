@@ -35,4 +35,10 @@
     platformTheme.name = "gtk";
     style.package = pkgs.tokyo-night-gtk;
   };
+
+  xdg.configFile."gtk-3.0/gtk.css".text = ''
+    window {
+      border-radius: 0 0 0 0;
+    }
+  ''
 } 
