@@ -1,34 +1,35 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
 	home = {
 		packages = with pkgs; [
-			krita
-			
-      libreoffice
-			
-      #blender-hip
-			 
-      deluge-gtk
-
-      zathura
-			imv
-			gimp
-      avidemux
-			
-      wootility
+		  krita
+		  
+	    libreoffice
+		  
+	    deluge-gtk
+	
+	    zathura
+		  imv
+		  gimp
+		  
+	    mission-center
+			gpu-viewer
+	      
+	    qalculate-gtk
+		  
+		  gparted
+	      
+		  unrar
+	    unzip
+		  xarchiver
+		];  
+		lib.mkIf (osConfig.networking.hostName == "nixos-desktop") packages = with pkgs; [
+			blender-hip
+			orca-slicer
+			wootility
 			via
-      
-      mission-center
-		  gpu-viewer
-      
-      qalculate-gtk
-			
-			gparted
-      
-			unrar
-  		unzip
-	  	xarchiver
+			avidemux
 		];
 
   	persistence."/nix/persist/home/mega" = {
