@@ -19,6 +19,7 @@
     };
     packages = with pkgs; [
       ffmpeg
+      gpu-screen-recorder-gtk
     ];
   };
 
