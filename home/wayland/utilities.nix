@@ -52,7 +52,6 @@
       indicator = true;
 
       fade-in = 0.5;
-      grace = 2;
     };
   };
   
