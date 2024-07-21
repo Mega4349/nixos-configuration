@@ -4,6 +4,7 @@ lib.mkIf (osConfig.networking.hostName == "nixos-desktop") {
   home = {
     packages = with pkgs; [
       blender-hip
+      orca-slicer
       wootility
       via
       avidemux
