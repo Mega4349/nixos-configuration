@@ -12,3 +12,4 @@ todo:<br>
 	envision<br>
   vencord plugins<br>
   waybar date<br>
+  freecad<br>
