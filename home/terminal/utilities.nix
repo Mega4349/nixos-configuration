@@ -16,6 +16,8 @@
     (ani-cli.override {
       mpv = config.programs.mpv.finalPackage;
     })
+
+    animdl
         
 		manga-cli
     
