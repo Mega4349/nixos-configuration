@@ -17,6 +17,7 @@
         "/var/lib/libvirtd"
         "/var/lib/libvirt"
         "/var/cache/libvirt"
+        "/var/lib/waydroid"
       ];
     };
   };

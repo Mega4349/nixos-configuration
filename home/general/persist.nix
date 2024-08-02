@@ -17,6 +17,7 @@
 
       ".local/state/home-manager"
       ".local/state/nix"
+      ".local/share/waydroid"
     ];
   };
 }
