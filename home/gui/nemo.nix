@@ -16,7 +16,7 @@ in
 {
   home.packages = with pkgs; [
     kitty_cwd
-    cinnamon.nemo
+    nemo
     #xfce.tumbler
     #xfce.thunar-volman
   ];
